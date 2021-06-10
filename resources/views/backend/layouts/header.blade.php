@@ -53,6 +53,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+    
       <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -69,11 +70,13 @@
                 <button class="btn btn-navbar" type="button" data-widget="navbar-search">
                   <i class="fas fa-times"></i>
                 </button>
+                
               </div>
             </div>
           </form>
         </div>
       </li>
+      <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
     </ul>
   </nav>
   <!-- /.navbar -->
