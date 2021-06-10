@@ -62,7 +62,7 @@ class AuthController extends Controller
   
             //Login Fail
             Session::flash('error', 'Email atau password salah');
-            return redirect()->route('backend.dashboard');
+            return redirect()->route('login');
         }
   
     }
