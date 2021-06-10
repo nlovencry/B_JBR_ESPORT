@@ -110,7 +110,10 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Mobile <span>Legend</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <p class="animate__animated animate__fadeInUp">
+                Mobile Legends adalah sebuah game yang bisa dimainkan di smartphone Android dan juga iOS. Game yang memiliki lama permainan antara 15 menit
+                untuk satu rondenya ini adalah sebuah game yang sudah banyak mencuri perhatian untuk para pemainnya terhitung sejak tahun 2016. Mobile Legends 
+                sendiri dibuat oleh Moonton, developer asal China.</p>
                 <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
               </div>
             </div>
@@ -121,7 +124,12 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated fanimate__adeInDown"><span>PUBG</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <p class="animate__animated animate__fadeInUp">
+                PUBG ini merupakan salah satu permainan battle royale yang bisa dimainkan melalui handphone atau pc.
+                Anda bisa mengajak teman untuk bergabung dalam tim atau menemui para pemain baru di dalam game saat sedang bermain.
+                Game PUBG adalah game online yang disebarluaskan oleh Tencent, di mana jumlah orang yang melakukan unduhan mencapai seratus juta lebih.
+                Sistem bermain PUBG ini last men standing, artinya pemain terakhir yang menang.
+                Pemain itu harus lebih dulu bertahan hidup dari serangan pemain lain.</p>
                 <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
               </div>
             </div>
@@ -132,7 +140,11 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Free <span>Fire</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <p class="animate__animated animate__fadeInUp">
+                Garena Free Fire atau biasa disebut Free Fire adalah sebuah game dengan genre survival, third-person shooter.
+                Game ini dikembangkan oleh 111dots studios yang lebih berbentuk battle royale. Permainan ini mengumpulkan kurang lebih 50 pemain 
+                terjun payung yang akan menuju ke sebuah peta luas. Pada dasarnya permainan ini mengharuskan setiap pemain saling membunuh satu sama lain 
+                agar bisa bertahan sampai akhir permainan dan memenangkan permainan tersebut.</p>
                 <a href="" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
               </div>
             </div>
