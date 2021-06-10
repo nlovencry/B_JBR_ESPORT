@@ -31,8 +31,12 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for=""><strong>Username</strong></label>
-                        <input type="text" name="username" class="form-control" placeholder="Username">
+                        <label for=""><strong>Nama Lengkap</strong></label>
+                        <input type="text" name="name" class="form-control" placeholder="Nama Lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label for=""><strong>Email</strong></label>
+                        <input type="text" name="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label for=""><strong>Password</strong></label>
