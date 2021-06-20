@@ -14,7 +14,7 @@
                 <div class="card-header">
                     <h3 class="text-center">Form Register</h3>
                 </div>
-             <form action="{{ route('register') }}" method="post">
+                <form action="{{ route('register') }}" method="post">
                 @csrf
                 <div class="card-body">
                     @if(session('errors'))
@@ -35,8 +35,8 @@
                         <input type="text" name="name" class="form-control" placeholder="Nama Lengkap">
                     </div>
                     <div class="form-group">
-                        <label for=""><strong>Username</strong></label>
-                        <input type="text" name="username" class="form-control" placeholder="Username">
+                        <label for=""><strong>Email</strong></label>
+                        <input type="text" name="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group">
                         <label for=""><strong>Password</strong></label>

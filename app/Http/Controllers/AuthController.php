@@ -30,13 +30,13 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $rules = [
-            'username'              => 'required|string',
+            'email'                 => 'required|email',
             'password'              => 'required|string'
         ];
   
         $messages = [
-            'username.required'     => 'username wajib diisi',
-            'username.string'       => 'username tidak valid',
+            'email.required'        => 'Email wajib diisi',
+            'email.email'           => 'Email tidak valid',
             'password.required'     => 'Password wajib diisi',
             'password.string'       => 'Password harus berupa string'
         ];
@@ -48,7 +48,7 @@ class AuthController extends Controller
         }
   
         $data = [
-            'username'  => $request->input('username'),
+            'email'     => $request->input('email'),
             'password'  => $request->input('password'),
         ];
   
@@ -61,7 +61,7 @@ class AuthController extends Controller
         } else { // false
   
             //Login Fail
-            Session::flash('error', 'username atau password salah');
+            Session::flash('error', 'Email atau password salah');
             return redirect()->route('login');
         }
   
@@ -76,7 +76,7 @@ class AuthController extends Controller
     {
         $rules = [
             'name'                  => 'required|min:3|max:35',
-            'username'              => 'required|string|unique:users,username',
+            'email'                 => 'required|email|unique:users,email',
             'password'              => 'required|confirmed'
         ];
   
@@ -84,13 +84,13 @@ class AuthController extends Controller
             'name.required'         => 'Nama Lengkap wajib diisi',
             'name.min'              => 'Nama lengkap minimal 3 karakter',
             'name.max'              => 'Nama lengkap maksimal 35 karakter',
-            'username.required'     => 'username wajib diisi',
-            'username.string'       => 'username tidak valid',
-            'username.unique'       => 'username sudah terdaftar',
+            'email.required'        => 'Email wajib diisi',
+            'email.email'           => 'Email tidak valid',
+            'email.unique'          => 'Email sudah terdaftar',
             'password.required'     => 'Password wajib diisi',
             'password.confirmed'    => 'Password tidak sama dengan konfirmasi password'
         ];
-  
+    
         $validator = Validator::make($request->all(), $rules, $messages);
   
         if($validator->fails()){
@@ -99,8 +99,9 @@ class AuthController extends Controller
   
         $user = new User;
         $user->name = ucwords(strtolower($request->name));
-        $user->username = strtolower($request->username);
+        $user->email = strtolower($request->email);
         $user->password = Hash::make($request->password);
+        $user->email_verified_at = \Carbon\Carbon::now();
         $simpan = $user->save();
   
         if($simpan){
