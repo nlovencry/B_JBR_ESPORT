@@ -15,15 +15,15 @@ class CreateCoachTable extends Migration
     {
         Schema::create('coach', function (Blueprint $table) {
             $table->bigIncrements('id_coach')->unique();
-            $table->bigInteger('id_team')->unsigned();
+            $table->string('email', 100);
             $table->string('nama_coach', 100);
-            $table->integer('jenis_kelamin')->unsigned()->default(1);
+            $table->string('jenis_kelamin', 5);
+            $table->string('usia', 5);
+            $table->string('nohp_coach', 13);
             $table->text('alamat');
             $table->string('foto', 100);
-            $table->string('status', 20);
-
-            $table->foreign('id_team')->references('id_team')->on('team')->onUpdate('CASCADE')->onDelete('CASCADE');
-
+            $table->string('winrate', 100);
+            $table->string('is_active', 5);
             $table->timestamps();
         });
     }

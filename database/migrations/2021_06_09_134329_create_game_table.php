@@ -16,6 +16,7 @@ class CreateGameTable extends Migration
         Schema::create('game', function (Blueprint $table) {
             $table->bigIncrements('id_game')->unique();
             $table->string('nama_game', 50);
+            $table->text('keterangan');
             $table->timestamps();
         });
     }

@@ -15,11 +15,10 @@ class CreateAbsensiTable extends Migration
     {
         Schema::create('absensi', function (Blueprint $table) {
             $table->bigIncrements('id_absensi')->unique();
-            $table->bigInteger('id_player')->unsigned();
             $table->date('tanggal');
+            $table->time('waktu_dibuka');
+            $table->time('waktu_ditutup');
             $table->text('keterangan');
-
-            $table->foreign('id_player')->references('id_player')->on('player')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

@@ -20,9 +20,6 @@ class CreateEventTable extends Migration
             $table->date('tanggal');
             $table->text('keterangan');
             $table->string('gambar', 100);
-
-            $table->foreign('id_game')->references('id_game')->on('game')->onUpdate('CASCADE')->onDelete('CASCADE');
-
             $table->timestamps();
         });
     }
