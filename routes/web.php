@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::group(['namespace' => 'Backend'], function(){
-<<<<<<< Updated upstream
     Route::get('admin','DashboardAdmin@admin');
     Route::get('coach','DashboardAdmin@coach');
     Route::resource('datagame','DataGameController');
@@ -33,13 +32,4 @@ Route::group(['namespace' => 'Backend'], function(){
 
 Route::group(['namespace' => 'Frontend'], function(){
     Route::get('index','HomepageController@index');
-=======
-    Route::get('admin','DashboardAdmin@index');
-    Route::get('data-game','DataGameController@index');
-    Route::resource('datagame','DataGameController');
-});
-
-Route::get('index', function(){
-    return view('index');
->>>>>>> Stashed changes
 });
