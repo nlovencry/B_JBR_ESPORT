@@ -11,7 +11,12 @@ class DashboardAdmin extends Controller
         return view('backend.admin.dashboard');
     }
 
+<<<<<<< Updated upstream
     public function coach(){
         return view('backend.coach.dashboard');
+=======
+    public function datagame(){
+        return view('backend.data-game');
+>>>>>>> Stashed changes
     }
 }

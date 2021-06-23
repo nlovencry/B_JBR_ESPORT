@@ -10,12 +10,20 @@ class DataGameController extends Controller
 {
     public function index(){
         $datagame = DB::table('game')->get();
+<<<<<<< Updated upstream
         return view('backend.admin.data-game',compact('datagame'));
+=======
+        return view('backend.data-game',compact('datagame'));
+>>>>>>> Stashed changes
     }
 
     public function create(){
         $datagame = null;
+<<<<<<< Updated upstream
         return view('backend.admin.data-game-create',compact('datagame'));
+=======
+        return view('backend.data-game-create',compact('datagame'));
+>>>>>>> Stashed changes
     }
 
     public function store(Request $request){
@@ -30,7 +38,11 @@ class DataGameController extends Controller
 
     public function edit($id_game){
         $datagame = DB::table('game')->where('id_game',$id_game)->first();
+<<<<<<< Updated upstream
         return view('backend.admin.data-game-edit',compact('datagame'));
+=======
+        return view('backend.data-game-edit',compact('datagame'));
+>>>>>>> Stashed changes
     }
 
     public function update(Request $request){
