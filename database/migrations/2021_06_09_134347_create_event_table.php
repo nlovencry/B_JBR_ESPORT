@@ -15,9 +15,11 @@ class CreateEventTable extends Migration
     {
         Schema::create('event', function (Blueprint $table) {
             $table->bigIncrements('id_event')->unique();
-            $table->bigInteger('id_game')->unsigned();
             $table->string('nama_event', 50);
-            $table->date('tanggal');
+            $table->date('tanggal_pendaftaran');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_akhir');
+            $table->integer('price');
             $table->text('keterangan');
             $table->string('gambar', 100);
             $table->timestamps();

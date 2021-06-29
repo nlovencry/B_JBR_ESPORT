@@ -24,7 +24,7 @@
               @php
                   $no = 1;
               @endphp
-              @foreach ($dataplayer as $dp)
+              @foreach ($player as $dp)
                   <tr>
                       <td>{{$no++}}</td>
                       <td>{{$dp->nama_player}}</td>
@@ -38,7 +38,7 @@
                       </td>
                       <td><img src="{{ asset('images/'.$dp->foto)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
                       <td>
-                        <form action="{{ $dp->is_active == 1 ? route('dataplayer.nonactive', $dp->id_player) : route('dataplayer.active', $dp->id_player)}}" method="POST">
+                        <form action="{{ $dp->is_active == 1 ? route('player.nonactive', $dp->id_player) : route('player.active', $dp->id_player)}}" method="POST">
                           <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_player">
                             Detail
                           </button>

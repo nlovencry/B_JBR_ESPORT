@@ -53,31 +53,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-<<<<<<< Updated upstream:resources/views/backend/admin/layouts/sidebar.blade.php
                 <a href="{{ url('datagame')}}" class="nav-link">
-=======
-                <a href="{{ url('data-game')}}" class="nav-link">
->>>>>>> Stashed changes:resources/views/backend/layouts/sidebar.blade.php
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Game</p>
                 </a>
               </li>
               <li class="nav-item">
-<<<<<<< Updated upstream:resources/views/backend/admin/layouts/sidebar.blade.php
                 <a href="{{ url('datacoach')}}" class="nav-link">
-=======
-                <a href="#" class="nav-link">
->>>>>>> Stashed changes:resources/views/backend/layouts/sidebar.blade.php
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Coach</p>
                 </a>
               </li>
               <li class="nav-item">
-<<<<<<< Updated upstream:resources/views/backend/admin/layouts/sidebar.blade.php
                 <a href="{{ url('dataplayer')}}" class="nav-link">
-=======
-                <a href="#" class="nav-link">
->>>>>>> Stashed changes:resources/views/backend/layouts/sidebar.blade.php
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Player</p>
                 </a>
@@ -85,8 +73,7 @@
             </ul>
           </li>
           <li class="nav-item">
-<<<<<<< Updated upstream:resources/views/backend/admin/layouts/sidebar.blade.php
-            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+            <a href="{{ url('dataevent')}}" class="nav-link">
               <i class="nav-icon fas fa-trophy"></i>
               <p>Event</p>
             </a>
@@ -95,13 +82,6 @@
             <a href="pages/layout/fixed-sidebar.html" class="nav-link">
               <i class="nav-icon fas fa-lock"></i>
               <p>Ganti Password</p>
-=======
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Absensi
-              </p>
->>>>>>> Stashed changes:resources/views/backend/layouts/sidebar.blade.php
             </a>
           </li>
         </ul>

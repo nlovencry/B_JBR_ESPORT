@@ -19,16 +19,6 @@ class DataPlayerController extends Controller
         return view('backend.admin.data-player',compact('dataplayer'));
     }
 
-    public function player(){
-        $dataplayer = DB::table('player')
-                            ->select('player.*','game.nama_game','team.id_team','team.nama_team')
-                            ->join('game','game.id_game','=','player.id_game')
-                            ->join('team','team.id_team','=','player.id_team')
-                            ->get();
-                            // dd($dataplayer);
-        return view('backend.coach.data-player',compact('dataplayer'));
-    }
-
     public function create(){
         $dataplayer = null;
         $datagame = DB::table('game')->get();

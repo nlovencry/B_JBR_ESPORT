@@ -15,6 +15,7 @@ class CreateCoachTable extends Migration
     {
         Schema::create('coach', function (Blueprint $table) {
             $table->bigIncrements('id_coach')->unique();
+            $table->bigInteger('id_game')->unsigned();
             $table->string('email', 100);
             $table->string('nama_coach', 100);
             $table->string('jenis_kelamin', 5);

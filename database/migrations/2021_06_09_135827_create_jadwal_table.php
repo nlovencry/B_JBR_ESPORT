@@ -15,9 +15,11 @@ class CreateJadwalTable extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->bigIncrements('id_jadwal')->unique();
+            $table->bigInteger('id_game')->unsigned();
             $table->bigInteger('id_coach')->unsigned();
             $table->date('tanggal');
             $table->string('nama_jadwal');
+            $table->time('waktu_mulai');
             $table->text('keterangan');
             $table->timestamps();
         });
