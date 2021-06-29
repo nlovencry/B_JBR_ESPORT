@@ -78,6 +78,7 @@
           </form>
         </div>
       </li>
+      <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
     </ul>
   </nav>
   <!-- /.navbar -->
