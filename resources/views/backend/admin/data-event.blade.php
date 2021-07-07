@@ -71,6 +71,7 @@
         <h4 class="modal-title">Detail Tournament</h4>
       </div>
       <div class="modal-body">
+        @foreach ($dataevent as $de)
         <div class="row">
           <div class="col-12">
             <label for="exampleInputNama">Nama Tournament</label>
@@ -88,13 +89,13 @@
               <label for="exampleInputTanggal">Tanggal Mulai</label>
               <input type="email" name="tanggal_mulai" class="form-control" value="{{ isset($de) ? $de->tanggal_mulai : ''}}" readonly>
             </div>
-          </div>
-          <div class="row">
+        </div>
+        <div class="row">
             <div class="col-12">
               <label for="exampleInputTanggal">Tanggal Pendaftaran</label>
               <input type="email" name="tanggal_akhir" class="form-control" value="{{ isset($de) ? $de->tanggal_akhir : ''}}" readonly>
             </div>
-          </div>
+        </div>
         <div class="row">
           <div class="col-12">
             <label for="exampleInputHadiah">Hadiah</label>
@@ -110,9 +111,10 @@
         <div class="row">
           <div class="col-12">
             <label for="exampleInputPoster">Poster</label><br>
-            {{-- <img src="{{ asset('images/'.$de->gambar)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px"> --}}
+            <img src="{{ asset('images/'.$de->gambar)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
           </div>
         </div>
+        @endforeach
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

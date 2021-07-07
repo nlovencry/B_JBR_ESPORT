@@ -1,74 +1,82 @@
 @extends('backend/admin/layouts/template')
 @section('content')
 <div class="container-fluid">
-    <div class="container-fluid">
-        <!-- /.row -->
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Tambah Data Coach</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form method="POST" action="{{ route('datacoach.store')}}" enctype="multipart/form-data">
-                {!! csrf_field() !!}
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-5">
-                      <label for="exampleInputEmail">Email</label>
-                      <input type="email" name="email" class="form-control" placeholder="Email" required>
-                    </div>
-                    <div class="col-7">
-                      <label for="exampleInputNama">Nama Lengkap</label>
-                      <input type="text" name="nama_coach" class="form-control" placeholder="Nama Lengkap" required>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-5">
-                      <label for="exampleInputJk">Jenis Kelamin</label>
-                      <select name="jenis_kelamin" class="form-control" required>
-                          <option value="1">Laki-laki</option>
-                          <option value="2">Perempuan</option>
-                      </select>
-                    </div>
-                    <div class="col-3">
-                      <label for="exampleInputUsia">Usia</label>
-                      <input type="number" name="usia" class="form-control" placeholder="Usia" required>
-                    </div>
-                    <div class="col-4">
-                      <label for="exampleInputNoHP">No HP</label>
-                      <input type="number" name="nohp_coach" class="form-control" placeholder="No HP" required>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputAlamat">Alamat</label>
-                    <textarea name="alamat" id="alamat" rows="5" class="form-control" placeholder="Alamat Lengkap"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">Foto</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                    {{-- <img src="{{ asset('images')}}/default.png" id="previewImg" alt="foto" style="max-width: 200px; margin-top: 20px; max-height:200px"> --}}
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-              </form>
-            </div>
-            <!-- /.card -->
-          </div>
+  <!-- /.row -->
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Tambah Data Coach</h3>
         </div>
-        <!-- /.row -->
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="POST" action="{{ route('datacoach.store')}}" enctype="multipart/form-data">
+          {!! csrf_field() !!}
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <label for="exampleInputGame1">Pilih Game</label>
+                <select name="id_game" class="form-control" required>
+                  @foreach ($datagame as $game)
+                    <option value="{{$game->id_game}}">{{$game->nama_game}}</option>
+                  @endforeach 
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5">
+                <label for="exampleInputEmail">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
+              </div>
+              <div class="col-7">
+                <label for="exampleInputNama">Nama Lengkap</label>
+                <input type="text" name="nama_coach" class="form-control" placeholder="Nama Lengkap" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5">
+                <label for="exampleInputJk">Jenis Kelamin</label>
+                <select name="jenis_kelamin" class="form-control" required>
+                    <option value="1">Laki-laki</option>
+                    <option value="2">Perempuan</option>
+                </select>
+              </div>
+              <div class="col-3">
+                <label for="exampleInputUsia">Usia</label>
+                <input type="number" name="usia" class="form-control" placeholder="Usia" required>
+              </div>
+              <div class="col-4">
+                <label for="exampleInputNoHP">No HP</label>
+                <input type="number" name="nohp_coach" class="form-control" placeholder="No HP" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputAlamat">Alamat</label>
+              <textarea name="alamat" id="alamat" rows="5" class="form-control" placeholder="Alamat Lengkap"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">Foto</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+              </div>
+              {{-- <img src="{{ asset('images')}}/default.png" id="previewImg" alt="foto" style="max-width: 200px; margin-top: 20px; max-height:200px"> --}}
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.card -->
     </div>
+  </div>
+  <!-- /.row -->
 </div>
 @endsection
 @push('js')
