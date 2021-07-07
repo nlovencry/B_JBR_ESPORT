@@ -14,7 +14,7 @@
                 <div class="card-header">
                     <h3 class="text-center">Form Register</h3>
                 </div>
-                <form method="POST" action="{{route('register')}}" enctype="multipart/form-data">
+                <form method="POST" action="" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="card-body">
                     @if(session('errors'))
