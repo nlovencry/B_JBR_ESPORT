@@ -16,6 +16,10 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::group(['namespace' => 'Backend'], function(){
+    Route::get('register_show','AuthController@showFormRegister');
+    Route::get('login_show', 'AuthController@showFormLogin');
+    Route::post('register', 'AuthController@register');
+    Route::post('login', 'AuthController@login');
     Route::get('admin','DashboardAdmin@admin');
     Route::get('coach','DashboardAdmin@coach');
     Route::resource('player','PlayerController');
@@ -28,14 +32,20 @@ Route::group(['namespace' => 'Backend'], function(){
     Route::put('datacoach/active/{datacoach}','DataCoachController@active')->name('datacoach.active');
     Route::put('dataplayer/nonactive/{dataplayer}','DataPlayerController@nonactive')->name('dataplayer.nonactive');
     Route::put('dataplayer/active/{dataplayer}','DataPlayerController@active')->name('dataplayer.active');
+    
+    
+    
+});
 
+<<<<<<< HEAD
  
     Route::group(['middleware' => 'auth'], function () {
  
+=======
+Route::group(['middleware' => 'auth'], function () {
+>>>>>>> 9d63844e36ef62a50f55f7bd3f12a05c06fdfd59
     Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
- 
-    });
 });
 
 Route::group(['namespace' => 'Frontend'], function(){

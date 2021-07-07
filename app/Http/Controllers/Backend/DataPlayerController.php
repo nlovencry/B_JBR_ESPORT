@@ -87,8 +87,8 @@ class DataPlayerController extends Controller
          $data = [
             'id_game' => $request->id_game,
             'id_team' => 0,
-            'email' => $request->email,
-            'nama_player' => $request->nama_player,
+            'email' => strtolower($request->email),
+            'nama_lengkap' => ucwords(strtolower($request->nama_lengkap)),
             'jenis_kelamin' => $request->jenis_kelamin,
             'usia' => $request->usia,
             'nohp_player' => $request->nohp_player,
