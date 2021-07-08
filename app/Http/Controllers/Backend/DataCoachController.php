@@ -16,7 +16,8 @@ class DataCoachController extends Controller
 
     public function create(){
         $datacoach = null;
-        return view('backend.admin.data-coach-create',compact('datacoach'));
+        $datagame = DB::table('game')->get();
+        return view('backend.admin.data-coach-create',compact('datacoach','datagame'));
     }
 
     public function store(Request $request){
@@ -36,6 +37,7 @@ class DataCoachController extends Controller
             $namafoto = $request->nama_coach.'_'.$foto->getClientOriginalName();
             $pathfoto = $foto->move('images',$namafoto);
             DB::table('coach')->insert([
+                'id_game' => $request->id_game,
                 'email' => $request->email,
                 'nama_coach' => $request->nama_coach,
                 'jenis_kelamin' => $request->jenis_kelamin,
