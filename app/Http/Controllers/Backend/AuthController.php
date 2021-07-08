@@ -57,7 +57,7 @@ class AuthController extends Controller
   
             //Login Fail
             Session::flash('error', 'Email atau password salah');
-            return redirect()->route('login_show');
+            return redirect()->route('login');
         }
   
     }
@@ -72,7 +72,7 @@ class AuthController extends Controller
         $rules = [
             'id_game'               => 'required',
             'email'                 => 'required|email|unique:player,email',
-            'nama_lengkap'           => 'required|min:5|max:100',
+            'nama_player'           => 'required|min:5|max:100',
             'jenis_kelamin'         => 'required',
             'usia'                  => 'required',
             'nohp_player'           => 'required|max:13',
@@ -89,9 +89,9 @@ class AuthController extends Controller
             'email.required'                => 'Email wajib diisi',
             'email.email'                   => 'Email tidak valid',
             'email.unique'                  => 'Email sudah terdaftar',
-            'nama_lengkap.required'          => 'Nama Lengkap wajib diisi',
-            'nama_lengkap.min'               => 'Nama lengkap minimal 3 karakter',
-            'nama_lengkap.max'               => 'Nama lengkap maksimal 35 karakter',
+            'nama_player.required'          => 'Nama Lengkap wajib diisi',
+            'nama_player.min'               => 'Nama lengkap minimal 3 karakter',
+            'nama_player.max'               => 'Nama lengkap maksimal 35 karakter',
             'jenis_kelamin.required'        => 'Jenis Kelamin wajib diisi',
             'usia.required'                 => 'Usia wajib diisi',
             'nohp_player.required'          => 'No HP wajib diisi',
@@ -124,9 +124,11 @@ class AuthController extends Controller
             'id_game' => $request->id_game,
             'id_team' => 0,
             'email' => strtolower($request->email),
-            'nama_player' => ucwords(strtolower($request->nama_lengkap)),
+            'nama_player' => ucwords(strtolower($request->nama_player)),
             'jenis_kelamin' => $request->jenis_kelamin,
             'usia' => $request->usia,
+            'nohp_player' => $request->nohp_player,
+            'alamat' => $request->alamat,
             'foto' => $namafoto,
             'winrate' => 'default.jpg',
             'izin_ortu' => $request->izin_ortu,
@@ -142,10 +144,10 @@ class AuthController extends Controller
   
         if($user){
             Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-            return redirect()->route('login_show');
+            return redirect()->route('login');
         } else {
             Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
-            return redirect()->route('register_show');
+            return redirect()->route('register');
         }
     }
   

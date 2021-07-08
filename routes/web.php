@@ -16,10 +16,10 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::group(['namespace' => 'Backend'], function(){
-    Route::get('register_show','AuthController@showFormRegister');
-    Route::get('login_show', 'AuthController@showFormLogin');
-    Route::post('register', 'AuthController@register');
-    Route::post('login', 'AuthController@login');
+    Route::get('register','AuthController@showFormRegister');
+    Route::get('login', 'AuthController@showFormLogin');
+    Route::post('register', 'AuthController@register')->name('register');
+    Route::post('login', 'AuthController@login')->name('login');
     Route::get('admin','DashboardAdmin@admin');
     Route::get('coach','DashboardAdmin@coach');
     Route::resource('player','PlayerController');
