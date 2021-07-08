@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,19 +36,9 @@ Route::group(['namespace' => 'Backend'], function(){
     
 });
 
-<<<<<<< HEAD
- 
-    Route::group(['middleware' => 'auth'], function () {
- 
-=======
-Route::group(['middleware' => 'auth'], function () {
->>>>>>> 9d63844e36ef62a50f55f7bd3f12a05c06fdfd59
-    Route::get('home', [HomeController::class, 'index'])->name('home');
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-});
 
 Route::group(['namespace' => 'Frontend'], function(){
     Route::get('index','HomepageController@index');
 });
 
-Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.home')->middleware(is_admin);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'adminHome'])->name('home');
