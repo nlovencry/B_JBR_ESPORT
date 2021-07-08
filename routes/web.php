@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+
 Route::group(['namespace' => 'Backend'], function(){
     Route::get('register','AuthController@showFormRegister');
     Route::get('login', 'AuthController@showFormLogin');
@@ -37,11 +38,25 @@ Route::group(['namespace' => 'Backend'], function(){
     
 });
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('home', [HomeController::class, 'index'])->name('home');
-    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-});
+// Route::get('logout','App\Http\Controllers\Backend\AuthController@logout')->name('logout');
+
+// Route::group(['middleware' => 'auth'], function () {
+//     Route::get('home', [HomeController::class, 'index'])->name('home');
+//     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+// });
 
 Route::group(['namespace' => 'Frontend'], function(){
     Route::get('index','HomepageController@index');
+});
+
+Route::group(['middleware' => ['auth']], function (){
+    Route::group(['middleware' => ['cek_login:admin']], function (){
+        Route::get('admin','App\Http\Controollers\AdminController@index')->name('admin');
+    });
+    Route::group(['middleware' => ['cek_login:coach']], function (){
+        Route::get('coach','App\Http\Controollers\CoachController@index')->name('coach');
+    });
+
+    
+
 });
