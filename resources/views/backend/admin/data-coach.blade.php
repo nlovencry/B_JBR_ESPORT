@@ -1,83 +1,85 @@
 @extends('backend/admin/layouts/template')
 @section('content')
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Data Player</h3>
-          <div class="card-tools">
-              <div class="input-group input-group-sm" style="width: 150px;">
-                <a href="{{ route('dataplayer.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Data Coach</h3>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                      <a href="{{ route('datacoach.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
+                    </div>
+                </div>
               </div>
-          </div>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-          <table id="example2" class="table table-bordered table-hover">
-            <thead>
-            <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>No HP</th>
-              <th>Status</th>
-              <th>Foto</th>
-              <th>Aksi</th>
-            </tr>
-            </thead>
-            <tbody>
-              @php
-                  $no = 1;
-              @endphp
-              @foreach ($datacoach as $dc)
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
                   <tr>
-                      <td>{{$no++}}</td>
-                      <td>{{$dc->nama_coach}}</td>
-                      <td>{{$dc->nohp_coach}}</td>
-                      <td>
-                        @if ($dc->is_active == 1)
-                            {{ 'active' }}
-                        @else
-                            {{ 'non-active' }}
-                        @endif
-                      </td>
-                      <td><img src="{{ asset('images/'.$dc->foto)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
-                      <td>
-                        <form action="{{ $dc->is_active == 1 ? route('datacoach.nonactive', $dc->id_coach) : route('datacoach.active', $dc->id_coach)}}" method="POST">
-                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_coach">
-                            Detail
-                          </button>
-                          <a href="{{ route('datacoach.edit',$dc->id_coach)}}" class="btn btn-warning btn-sm">Edit</a>
-                          @csrf
-                          @method('PUT')
-                          @if ($dc->is_active == 1)
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menonaktifkan User Ini?')">Non-Active</button>
-                          @else
-                            <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Mengaktifkan User Ini?')">Active</button>
-                          @endif
-                        </form>
-                      </td>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>No HP</th>
+                    <th>Status</th>
+                    <th>Foto</th>
+                    <th>Aksi</th>
                   </tr>
-              @endforeach
-            </tbody>
-          </table>
+                  </thead>
+                  <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($datacoach as $dc)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$dc->nama_coach}}</td>
+                            <td>{{$dc->nohp_coach}}</td>
+                            <td>
+                              @if ($dc->is_active == 1)
+                                  {{ 'active' }}
+                              @else
+                                  {{ 'non-active' }}
+                              @endif
+                            </td>
+                            <td><img src="{{ asset('images/'.$dc->foto)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
+                            <td>
+                              <form action="{{ $dc->is_active == 1 ? route('datacoach.nonactive', $dc->id_coach) : route('datacoach.active', $dc->id_coach)}}" method="POST">
+                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_coach">
+                                  Detail
+                                </button>
+                                <a href="{{ route('datacoach.edit',$dc->id_coach)}}" class="btn btn-warning btn-sm">Edit</a>
+                                @csrf
+                                @method('PUT')
+                                @if ($dc->is_active == 1)
+                                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menonaktifkan User Ini?')">Non-Active</button>
+                                @else
+                                  <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Mengaktifkan User Ini?')">Active</button>
+                                @endif
+                              </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
         </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
+        <!-- /.row -->
     </div>
-    <!-- /.col -->
-  </div>
-  <!-- /.row -->
 </div>
 <div class="modal fade" id="detail_coach">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Detail Coach</h4>
+        </button>
       </div>
       <div class="modal-body">
-        @foreach ($datacoach as $dc)
         <div class="row">
           <div class="col-12">
             <label for="exampleInputEmail">Email</label>
@@ -126,7 +128,6 @@
             <img src="{{ asset('images/'.$dc->foto)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
           </div>
         </div>
-        @endforeach
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -193,5 +194,33 @@ $(function () {
       "responsive": true,
     });
   });
+</script>
+<!-- jQuery -->
+<script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
+<!-- SweetAlert2 -->
+<script src="{{asset('backend/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<!-- Toastr -->
+<script src="{{asset('backend/plugins/toastr/toastr.min.js')}}"></script>
+<script>
+  $(function() {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+  $('.success').click(function() {
+    toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+  });
+  $('.toastrDefaultInfo').click(function() {
+    toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+  });
+  $('.toastrDefaultError').click(function() {
+    toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+  });
+  $('.toastrDefaultWarning').click(function() {
+    toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+  });
+});
 </script>
 @endpush
