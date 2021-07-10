@@ -49,11 +49,11 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::get('index','HomepageController@index');
 });
 
-Route::group(['middleware' => ['auth']], function (){
-    Route::group(['middleware' => ['cek_login:admin']], function (){
-        Route::get('admin','Backend\DashboardAdmin@admin');
-    });
-    Route::group(['middleware' => ['cek_login:coach']], function (){
-        Route::get('coach','Backend\DashboardAdmin@coach');
-    });
-});
+// Route::group(['middleware' => ['auth']], function (){
+//     Route::group(['middleware' => ['cek_login:admin']], function (){
+//         Route::get('admin','Backend\DashboardAdmin@admin');
+//     });
+//     Route::group(['middleware' => ['cek_login:coach']], function (){
+//         Route::get('coach','Backend\DashboardAdmin@coach');
+//     });
+// });
