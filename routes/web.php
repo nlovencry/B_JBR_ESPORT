@@ -19,6 +19,7 @@ use App\Http\Controllers\HomeController;
 Route::group(['namespace' => 'Backend'], function(){
     Route::get('register','AuthController@showFormRegister');
     Route::get('login', 'AuthController@showFormLogin');
+    Route::post('logout','AuthController@logout')->name('logout');
     Route::post('register', 'AuthController@register')->name('register');
     Route::post('login', 'AuthController@login')->name('login');
     Route::get('admin','DashboardAdmin@admin');
@@ -51,9 +52,20 @@ Route::group(['namespace' => 'Frontend'], function(){
 
 // Route::group(['middleware' => ['auth']], function (){
 //     Route::group(['middleware' => ['cek_login:admin']], function (){
+<<<<<<< Updated upstream
 //         Route::get('admin','Backend\DashboardAdmin@admin');
 //     });
 //     Route::group(['middleware' => ['cek_login:coach']], function (){
 //         Route::get('coach','Backend\DashboardAdmin@coach');
 //     });
+=======
+//         Route::get('admin','Backend\DashboardAdmin@admin')->name('admin');
+//     });
+//     Route::group(['middleware' => ['cek_login:coach']], function (){
+//         Route::get('coach','Backend\DashboardAdmin@coach')->name('coach');
+//     });
+
+    
+
+>>>>>>> Stashed changes
 // });

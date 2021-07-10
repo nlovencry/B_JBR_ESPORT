@@ -158,7 +158,14 @@ class AuthController extends Controller
 
     public function logout()
     {
+<<<<<<< Updated upstream
         Auth::logout(); // menghapus session yang aktif
         return redirect()->route('login');
+=======
+        $this->guard()->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
+        return redirect()->route('login')->withSuccess('Terimakasih');
+>>>>>>> Stashed changes
     }
 }
