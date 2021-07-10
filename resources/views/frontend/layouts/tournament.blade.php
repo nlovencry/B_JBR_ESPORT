@@ -1,7 +1,7 @@
 <!-- Tournaments section -->
 <section class="tournaments-section spad">
     <div class="container">
-        <div class="tournament-title">Tournaments</div>
+        <div class="tournament-title">Recent Tournaments</div>
         <div class="row">
             <div class="col-md-6">
                 <div class="tournament-item mb-4 mb-lg-0">
