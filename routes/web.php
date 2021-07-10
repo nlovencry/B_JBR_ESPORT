@@ -51,12 +51,9 @@ Route::group(['namespace' => 'Frontend'], function(){
 
 Route::group(['middleware' => ['auth']], function (){
     Route::group(['middleware' => ['cek_login:admin']], function (){
-        Route::get('admin','App\Http\Controollers\AdminController@index')->name('admin');
+        Route::get('admin','Backend\DashboardAdmin@admin');
     });
     Route::group(['middleware' => ['cek_login:coach']], function (){
-        Route::get('coach','App\Http\Controollers\CoachController@index')->name('coach');
+        Route::get('coach','Backend\DashboardAdmin@coach');
     });
-
-    
-
 });

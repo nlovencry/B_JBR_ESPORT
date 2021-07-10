@@ -12,7 +12,7 @@
 				<img src="{{asset('frontend/img/logo.png')}}" alt="">
 			</a>
 			<div class="user-panel">
-				<a href="#">Login</a>  /  <a href="#">Register</a>
+				<a href="{{ url('login')}}">Login / Register</a>
 			</div>
 			<!-- responsive -->
 			<div class="nav-switch">
@@ -22,9 +22,8 @@
 			<nav class="main-menu">
 				<ul>
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Games</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Forums</a></li>
+					<li><a href="#">Team</a></li>
+					<li><a href="#">Tournament</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
 			</nav>
