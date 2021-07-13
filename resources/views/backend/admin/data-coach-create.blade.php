@@ -76,6 +76,15 @@
               </div>
               {{-- <img src="{{ asset('images')}}/default.png" id="previewImg" alt="foto" style="max-width: 200px; margin-top: 20px; max-height:200px"> --}}
             </div>
+            <div class="form-group">
+              <label for="exampleInputFile">Winrate</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="foto" name="winrate" onchange="previewFile(this)">
+                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+              </div>
+            </div>
           </div>
           <!-- /.card-body -->
           <div class="card-footer">

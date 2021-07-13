@@ -16,6 +16,16 @@
               <form method="POST" action="{{ route('dataplayer.store')}}" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="card-body">
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                      <strong>Whoops!</strong> There were some problems with your input. <br><br>
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+                  @endif
                   <div class="row">
                     <label for="exampleInputGame1">Pilih Game</label>
                     <select name="id_game" class="form-control" required>
@@ -27,11 +37,11 @@
                   <div class="row">
                     <div class="col-5">
                       <label for="exampleInputEmail">Email</label>
-                      <input type="email" name="email" class="form-control" placeholder="Email" required>
+                      <input type="email" name="email" class="form-control" value="{{old('email')}}">
                     </div>
                     <div class="col-7">
                       <label for="exampleInputNama">Nama Lengkap</label>
-                      <input type="text" name="nama_player" class="form-control" placeholder="Nama Lengkap" required>
+                      <input type="text" name="name" class="form-control" value="{{old('name')}}">
                     </div>
                   </div>
                   <div class="row">
@@ -44,35 +54,35 @@
                     </div>
                     <div class="col-3">
                       <label for="exampleInputUsia">Usia</label>
-                      <input type="number" name="usia" class="form-control" placeholder="Usia" required>
+                      <input type="number" name="usia" class="form-control" value="{{old('usia')}}"d>
                     </div>
                     <div class="col-4">
                       <label for="exampleInputNoHP">No HP</label>
-                      <input type="number" name="nohp_player" class="form-control" placeholder="No HP" required>
+                      <input type="number" name="nohp" class="form-control" value="{{old('nohp')}}">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputAlamat">Alamat</label>
-                    <textarea name="alamat" id="alamat" rows="5" class="form-control" placeholder="Masukkan Alamat Lengkap"></textarea>
+                    <textarea name="alamat" id="alamat" rows="5" class="form-control">{{old('alamat')}}</textarea>
                   </div>
                   <div class="row">
                     <div class="col-4">
                       <label for="exampleInputIzin">Izin Orang Tua</label>
                       <select name="izin_ortu" class="form-control" required>
                           <option value="1">Ya</option>
-                          <option value="0">Tidak</option>
+                          <option value="2">Tidak</option>
                       </select>
                     </div>
                     <div class="col-4">
                       <label for="exampleInputOffline">Bersedia Offline</label>
                       <select name="bersedia_offline" class="form-control" required>
                           <option value="1">Ya</option>
-                          <option value="0">Tidak</option>
+                          <option value="2">Tidak</option>
                       </select>
                     </div>
                     <div class="col-4">
                       <label for="exampleInputNoHP">No HP OrangTua</label>
-                      <input type="number" name="nohp_ortu" class="form-control" placeholder="No HP Ortu" required>
+                      <input type="number" name="nohp_ortu" class="form-control" value="{{old('nohp_ortu')}}">
                     </div>
                   </div>
                   <div class="form-group">

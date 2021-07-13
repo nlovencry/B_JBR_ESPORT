@@ -41,4 +41,29 @@ class DataEventController extends Controller
         // dd($request);
         return redirect()->route('dataevent.index')->with('success','Data Player Berhasil Disimpan');
     }
+
+    public function edit($id_event){
+        $dataevent = DB::table('event')->where('id_event',$id_event)->first();
+        return view('backend.admin.data-event-edit',compact('dataevent'));
+    }
+
+    public function update(Request $request){
+        $namafoto =  $request->gambar;
+        if($request->hasfile('gambar')){
+            $gambar = $request->file('gambar');
+            $namafoto = $request->nama_event.'_'.$gambar->getClientOriginalName();
+            $pathfoto = $gambar->move('images',$namafoto);
+        }
+        $data = [
+            'nama_event' => $request->nama_event,
+            'tanggal_pendaftaran' => $request->tanggal_pendaftaran,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_akhir' => $request->tanggal_akhir,
+            'price' => $request->price,
+            'keterangan' => $request->keterangan,
+            'gambar' => $namafoto,
+        ];
+        DB::table('event')->where('id_event',$request->id_event)->update($data);
+        return redirect()->route('dataevent.index')->with('success','Data Event Berhasil Diperbarui');
+    }
 }

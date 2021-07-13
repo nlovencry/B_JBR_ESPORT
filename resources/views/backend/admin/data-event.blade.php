@@ -20,8 +20,6 @@
               <th>No</th>
               <th>Nama Tournament</th>
               <th>Tanggal Pendaftaran</th>
-              <th>Tanggal Mulai</th>
-              <th>Tanggal Akhir</th>
               <th>Hadiah</th>
               <th>Poster</th>
               <th>Aksi</th>
@@ -36,12 +34,18 @@
                       <td>{{$no++}}</td>
                       <td>{{$de->nama_event}}</td>
                       <td>{{$de->tanggal_pendaftaran}}</td>
-                      <td>{{$de->tanggal_mulai}}</td>
-                      <td>{{$de->tanggal_akhir}}</td>
                       <td>{{$de->price}}</td>
                       <td><img src="{{ asset('images/'.$de->gambar)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
                       <td>
-                        
+                        {{-- <form action="{{ route('dataevent.destroy', $item->id_event) }}" method="POST"> --}}
+                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_tour">
+                            Detail
+                          </button>
+                          <a href="{{ route('dataevent.edit',$de->id_event)}}" class="btn btn-warning btn-sm">Edit</a>
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
+                          {{-- </form> --}}
                       </td>
                   </tr>
               @endforeach

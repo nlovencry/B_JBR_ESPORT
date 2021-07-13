@@ -32,7 +32,7 @@
               @foreach ($dataplayer as $dp)
                   <tr>
                       <td>{{$no++}}</td>
-                      <td>{{$dp->nama_player}}</td>
+                      <td>{{$dp->name}}</td>
                       <td>{{$dp->nama_game}}</td>
                       <td>
                         @if ($dp->is_active == 1)
@@ -77,7 +77,7 @@
         <h4 class="modal-title">Detail Player</h4>
       </div>
       <div class="modal-body">
-        @foreach ($dataplayer as $dp)
+        {{-- @foreach ($dataplayer as $dp) --}}
         <div class="row">
           <div class="col-12">
             <label for="exampleInputGame">Game</label>
@@ -100,7 +100,7 @@
         <div class="row">
           <div class="col-12">
             <label for="exampleInputNama">Nama Lengkap</label>
-            <input type="text" name="nama_player" class="form-control" value="{{ isset($dp) ? $dp->nama_player : ''}}" readonly>
+            <input type="text" name="name" class="form-control" value="{{ isset($dp) ? $dp->name : ''}}" readonly>
           </div>
         </div>
         <div class="row">
@@ -118,7 +118,7 @@
         <div class="row">
           <div class="col-12">
             <label for="exampleInputNoHP">No HP</label>
-            <input type="text" name="nohp_player" class="form-control" value="{{ isset($dp) ? $dp->nohp_player : ''}}" readonly>
+            <input type="text" name="nohp" class="form-control" value="{{ isset($dp) ? $dp->nohp : ''}}" readonly>
           </div>
         </div>
         <div class="row">
@@ -157,7 +157,13 @@
             <img src="{{ asset('images/'.$dp->foto)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
           </div>
         </div>
-        @endforeach
+        <div class="row">
+          <div class="col-12">
+            <label for="exampleInputFoto">Winrate</label><br>
+            <img src="{{ asset('images/'.$dp->winrate)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
+          </div>
+        </div>
+        {{-- @endforeach --}}
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

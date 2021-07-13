@@ -17,6 +17,16 @@
                 {!! csrf_field() !!}
                 {!! isset($dataplayer) ? method_field('PUT') : '' !!}
                 <div class="card-body">
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                      <strong>Whoops!</strong> There were some problems with your input. <br><br>
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+                  @endif
                   <div class="row">
                     <input type="hidden" name="id_player" value="{{$dataplayer->id_player}}">
                     <label for="exampleInputGame1">Pilih Game</label>
@@ -26,6 +36,7 @@
                       @endforeach
                     </select>
                     <input type="hidden" name="id_team" value="{{$dataplayer->id_team}}">
+                    <input type="hidden" name="id" value="{{$dataplayer->id}}">
                   </div>
                   <div class="row">
                     <div class="col-5">
@@ -34,7 +45,7 @@
                     </div>
                     <div class="col-7">
                       <label for="exampleInputNama">Nama Lengkap</label>
-                      <input type="text" name="nama_player" class="form-control" value="{{ isset($dataplayer) ? $dataplayer->nama_player : ''}}" required>
+                      <input type="text" name="name" class="form-control" value="{{ isset($dataplayer) ? $dataplayer->name : ''}}" required>
                     </div>
                   </div>
                   <div class="row">
@@ -51,7 +62,7 @@
                     </div>
                     <div class="col-4">
                       <label for="exampleInputNoHP">No HP</label>
-                      <input type="number" name="nohp_player" class="form-control" value="{{ isset($dataplayer) ? $dataplayer->nohp_player : ''}}" required>
+                      <input type="number" name="nohp" class="form-control" value="{{ isset($dataplayer) ? $dataplayer->nohp : ''}}" required>
                     </div>
                   </div>
                   <div class="row">
@@ -92,11 +103,13 @@
                   <div class="form-group">
                     <label for="exampleInputFile">Winrate</label>
                     <div class="input-group">
+                      <input type="hidden" id="foto" name="winrate" value="{{ isset($dataplayer) ? $dataplayer->winrate : ''}}">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile(this)">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <label class="custom-file-label" for="exampleInputFile">{{ isset($dataplayer) ? $dataplayer->winrate : ''}}</label>
                       </div>
                     </div>
+                    <img src="{{ asset('images/'.$dataplayer->winrate)}}" id="previewImg" alt="foto" style="max-width: 150px; margin-top: 20px; max-height:200px">
                   </div>
                 </div>
                 <!-- /.card-body -->

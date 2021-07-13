@@ -18,13 +18,16 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label for="exampleInputGame1">Pilih Game</label>
-                        <select name="id_game" class="form-control" required>
-                        @foreach ($datagame as $game)
-                            <option value="{{$game->id_game}}">{{$game->nama_game}}</option>
-                        @endforeach 
-                        </select>
+                        <input type="text" class="form-control" value="{{auth()->user()->nama_game}}" readonly>
                     </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-12">
+                      <label for="exampleInputNama">Nama Coach</label>
+                      <input type="text" class="form-control" value="{{auth()->user()->id_coach}}" readonly>
+                      <input type="text" class="form-control" value="{{auth()->user()->name}}" readonly>
+                  </div>
+              </div>
                 <div class="row">
                     <div class="col-md-12">
                         <label for="exampleInputNama">Nama Team</label>

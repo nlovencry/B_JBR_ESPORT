@@ -2,7 +2,7 @@
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
         @foreach ($games as $item)
-        <div class="hs-item set-bg" data-setbg="{{url('images/'.$item->bg)}}">
+        <div class="hs-item set-bg" data-setbg="{{asset('frontend/img/slider-1.jpg')}}">
             <div class="hs-text">
                 <div class="container">
                     <h2>{{$item->nama_game}}</h2>

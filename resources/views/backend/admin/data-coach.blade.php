@@ -18,6 +18,7 @@
             <thead>
             <tr>
               <th>No</th>
+              <th>Game</th>
               <th>Nama</th>
               <th>No HP</th>
               <th>Status</th>
@@ -32,6 +33,7 @@
               @foreach ($datacoach as $dc)
                   <tr>
                       <td>{{$no++}}</td>
+                      <td>{{$dc->nama_game}}</td>
                       <td>{{$dc->name}}</td>
                       <td>{{$dc->nohp}}</td>
                       <td>
@@ -77,7 +79,7 @@
         <h4 class="modal-title">Detail Coach</h4>
       </div>
       <div class="modal-body">
-        @foreach ($datacoach as $dc)
+        {{-- @foreach ($datacoach as $dc) --}}
         <div class="row">
           <div class="col-12">
             <label for="exampleInputEmail">Email</label>
@@ -126,7 +128,13 @@
             <img src="{{ asset('images/'.$dc->foto)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
           </div>
         </div>
-        @endforeach
+        <div class="row">
+          <div class="col-12">
+            <label for="exampleInputFoto">Winrate</label><br>
+            <img src="{{ asset('images/'.$dc->winrate)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
+          </div>
+        </div>
+        {{-- @endforeach --}}
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

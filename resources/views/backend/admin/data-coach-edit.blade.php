@@ -17,8 +17,28 @@
                 {!! csrf_field() !!}
                 {!! isset($datacoach) ? method_field('PUT') : '' !!} 
                 <div class="card-body">
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                      <strong>Whoops!</strong> There were some problems with your input. <br><br>
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+                  @endif
                   <input type="hidden" name="id_coach" value="{{$datacoach->id_coach}}">
                   <input type="hidden" name="id" value="{{$datacoach->id}}">
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="exampleInputGame1">Pilih Game</label>
+                      <select name="id_game" class="form-control" required>
+                        @foreach ($datagame as $game)
+                          <option value="{{ isset($datacoach) ? $datacoach->id_game : ''}}">{{$game->nama_game}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
                   <div class="form-group">
                     <div class="row">
                       <div class="col-5">
@@ -62,6 +82,17 @@
                       </div>
                     </div>
                     <img src="{{ asset('images/'.$datacoach->foto)}}" id="previewImg" alt="foto" style="max-width: 150px; margin-top: 20px; max-height:200px">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Winrate</label>
+                    <div class="input-group">
+                      <input type="hidden" id="foto" name="winrate" value="{{ isset($datacoach) ? $datacoach->winrate : ''}}">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+                        <label class="custom-file-label" for="exampleInputFile">{{ isset($datacoach) ? $datacoach->winrate : ''}}</label>
+                      </div>
+                    </div>
+                    <img src="{{ asset('images/'.$datacoach->winrate)}}" id="previewImg" alt="foto" style="max-width: 150px; margin-top: 20px; max-height:200px">
                   </div>
                 </div>
                 <!-- /.card-body -->
