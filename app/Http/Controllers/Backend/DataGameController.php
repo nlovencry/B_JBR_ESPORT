@@ -27,22 +27,15 @@ class DataGameController extends Controller
         $this->validate($request, [
             'nama_game' => 'required',
             'keterangan' => 'required',
-            'bg' => 'required|mimes:png,jpg,jpeg',
          ]);
         $tanggal = now();
         $date = Carbon::parse($request->tanggal);
-        if($request->hasfile('bg')){
-            $bg = $request->file('bg');
-            $namafoto = $request->nama_player.' '.$bg->getClientOriginalName();
-            $pathfoto = $bg->move('images',$namafoto);
             DB::table('game')->insert([
                 'nama_game' => $request->nama_game,
                 'keterangan' => $request->keterangan,
-                'bg' => $namafoto,
                 'created_at' => $tanggal,
                 'updated_at' => $tanggal,
             ]);
-        }
         return redirect()->route('datagame.index')->with('success','Data Player Berhasil Disimpan');
     }
 

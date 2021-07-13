@@ -11,7 +11,8 @@ class DataPlayerController extends Controller
 {
     public function index(){
         $dataplayer = DB::table('player')
-                            ->select('player.*','game.nama_game','team.id_team','team.nama_team')
+                            ->select('player.*','users.*','game.nama_game','team.id_team','team.nama_team')
+                            ->leftjoin('users','users.id','=','player.id')
                             ->leftjoin('game','game.id_game','=','player.id_game')
                             ->leftjoin('team','team.id_team','=','player.id_team')
                             ->get();

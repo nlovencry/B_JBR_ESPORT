@@ -15,6 +15,16 @@
         <form method="POST" action="{{ route('datacoach.store')}}" enctype="multipart/form-data">
           {!! csrf_field() !!}
           <div class="card-body">
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input. <br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="row">
               <div class="col-12">
                 <label for="exampleInputGame1">Pilih Game</label>
@@ -32,7 +42,7 @@
               </div>
               <div class="col-7">
                 <label for="exampleInputNama">Nama Lengkap</label>
-                <input type="text" name="nama_coach" class="form-control" placeholder="Nama Lengkap" required>
+                <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" required>
               </div>
             </div>
             <div class="row">
@@ -49,7 +59,7 @@
               </div>
               <div class="col-4">
                 <label for="exampleInputNoHP">No HP</label>
-                <input type="number" name="nohp_coach" class="form-control" placeholder="No HP" required>
+                <input type="number" name="nohp" class="form-control" placeholder="No HP" required>
               </div>
             </div>
             <div class="form-group">

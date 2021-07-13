@@ -36,7 +36,7 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'auth'], function(){
 });
 
 Route::group(['namespace' => 'Frontend'], function(){
-    Route::get('/','HomepageController@index');
+    Route::get('/','HomepageController@index')->name('index');
 });
 
 // Route::group(['middleware' => ['auth']], function (){
@@ -48,5 +48,3 @@ Route::group(['namespace' => 'Frontend'], function(){
 //     });
 // });
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

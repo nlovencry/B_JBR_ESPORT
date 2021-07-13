@@ -18,6 +18,7 @@
                 {!! isset($datacoach) ? method_field('PUT') : '' !!} 
                 <div class="card-body">
                   <input type="hidden" name="id_coach" value="{{$datacoach->id_coach}}">
+                  <input type="hidden" name="id" value="{{$datacoach->id}}">
                   <div class="form-group">
                     <div class="row">
                       <div class="col-5">
@@ -26,7 +27,7 @@
                       </div>
                       <div class="col-7">
                         <label for="exampleInputNama">Nama Lengkap</label>
-                        <input type="text" name="nama_coach" class="form-control" value="{{ isset($datacoach) ? $datacoach->nama_coach : ''}}" required>
+                        <input type="text" name="name" class="form-control" value="{{ isset($datacoach) ? $datacoach->name : ''}}" required>
                       </div>
                     </div>
                   </div>
@@ -44,7 +45,7 @@
                     </div>
                     <div class="col-4">
                       <label for="exampleInputNoHP">No HP</label>
-                      <input type="number" name="nohp_coach" class="form-control" value="{{ isset($datacoach) ? $datacoach->nohp_coach : ''}}" required>
+                      <input type="number" name="nohp" class="form-control" value="{{ isset($datacoach) ? $datacoach->nohp : ''}}" required>
                     </div>
                   </div>
                   <div class="form-group">

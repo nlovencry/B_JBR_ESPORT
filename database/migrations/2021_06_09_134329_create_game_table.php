@@ -17,7 +17,6 @@ class CreateGameTable extends Migration
             $table->bigIncrements('id_game')->unique();
             $table->string('nama_game', 50);
             $table->text('keterangan');
-            $table->string('bg', 100);
             $table->timestamps();
         });
     }

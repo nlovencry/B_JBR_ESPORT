@@ -21,7 +21,6 @@
                 <th>Nama Game</th>
                 <th>Jumlah Tim</th>
                 <th>Keterangan</th>
-                <th>Background</th>
                 <th>Opsi</th>
               </tr>
             </thead>
@@ -35,7 +34,6 @@
                   <td>{{$item->nama_game}}</td>
                   <td>{{$item->total_team}}</td>
                   <td>{{$item->keterangan}}</td>
-                  <td><img src="{{ asset('images/'.$item->bg)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
                   <td>
                     <form action="{{ route('datagame.destroy', $item->id_game) }}" method="POST">
                     <a href="{{ route('datagame.edit',$item->id_game)}}" class="btn btn-warning btn-sm">Edit</a>

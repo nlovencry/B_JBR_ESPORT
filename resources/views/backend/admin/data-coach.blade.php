@@ -32,8 +32,8 @@
               @foreach ($datacoach as $dc)
                   <tr>
                       <td>{{$no++}}</td>
-                      <td>{{$dc->nama_coach}}</td>
-                      <td>{{$dc->nohp_coach}}</td>
+                      <td>{{$dc->name}}</td>
+                      <td>{{$dc->nohp}}</td>
                       <td>
                         @if ($dc->is_active == 1)
                             {{ 'active' }}
@@ -87,7 +87,7 @@
         <div class="row">
           <div class="col-12">
             <label for="exampleInputNama">Nama Lengkap</label>
-            <input type="text" name="nama_coach" class="form-control" value="{{ isset($dc) ? $dc->nama_coach : ''}}" readonly>
+            <input type="text" name="nama_coach" class="form-control" value="{{ isset($dc) ? $dc->name : ''}}" readonly>
           </div>
         </div>
         <div class="row">
@@ -105,7 +105,7 @@
         <div class="row">
           <div class="col-12">
             <label for="exampleInputNoHP">No HP</label>
-            <input type="text" name="nohp_coach" class="form-control" value="{{ isset($dc) ? $dc->nohp_coach : ''}}" readonly>
+            <input type="text" name="nohp_coach" class="form-control" value="{{ isset($dc) ? $dc->nohp : ''}}" readonly>
           </div>
         </div>
         <div class="row">
