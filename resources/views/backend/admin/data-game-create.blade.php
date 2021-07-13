@@ -12,7 +12,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form method="POST" action="{{ route('datagame.store') }}">
+        <form method="POST" action="{{ route('datagame.store') }}" enctype="multipart/form-data">
           {!! csrf_field() !!}
           <div class="card-body">
             <div class="form-group">
@@ -22,6 +22,15 @@
             <div class="form-group">
               <label for="exampleInputKet">Keterangan</label>
               <textarea name="keterangan" id="" rows="7" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile">Background</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="foto" name="bg" onchange="previewFile(this)">
+                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+              </div>
             </div>
           </div>
           <!-- /.card-body -->
@@ -36,3 +45,31 @@
   <!-- /.row -->
 </div>
 @endsection
+@push('js')
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('backend/dist/js/adminlte.min.js')}}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('backend/dist/js/demo.js')}}"></script>
+    <!-- Page specific script -->
+    <script>
+    $(function () {
+      bsCustomFileInput.init();
+    });
+</script>
+<script>
+  function previewFile(input) {
+    var File = $("input[type=file]").get(0).files[0];
+      if (file) {
+        var reader = new FileReader();
+        reader.onload = function(){
+          $('#previewImg').attr("src", reader.result);
+        }
+        reader.readAsDataURL(File);
+      }
+  } 
+</script>
+@endpush

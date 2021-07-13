@@ -5,7 +5,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Data Player</h3>
+          <h3 class="card-title">Data Game</h3>
           <div class="card-tools">
               <div class="input-group input-group-sm" style="width: 150px;">
                 <a href="{{ route('datagame.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
@@ -21,6 +21,7 @@
                 <th>Nama Game</th>
                 <th>Jumlah Tim</th>
                 <th>Keterangan</th>
+                <th>Background</th>
                 <th>Opsi</th>
               </tr>
             </thead>
@@ -32,8 +33,9 @@
                 <tr>
                   <td>{{$no++}}</td>
                   <td>{{$item->nama_game}}</td>
-                  <td></td>
+                  <td>{{$item->total_team}}</td>
                   <td>{{$item->keterangan}}</td>
+                  <td><img src="{{ asset('images/'.$item->bg)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
                   <td>
                     <form action="{{ route('datagame.destroy', $item->id_game) }}" method="POST">
                     <a href="{{ route('datagame.edit',$item->id_game)}}" class="btn btn-warning btn-sm">Edit</a>

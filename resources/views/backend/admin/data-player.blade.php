@@ -87,7 +87,8 @@
         <div class="row">
           <div class="col-12">
             <label for="exampleInputTeam">Team</label>
-            <input type="text" name="nama_team" class="form-control" value="{{ isset($dp) ? $dp->nama_team : ''}}" readonly>
+            <input type="text" name="nama_team" class="form-control" value="@if($dp->id_team==0)No Team @else {{$dp->nama_team}}
+          @endif" readonly>
           </div>
         </div>
         <div class="row">

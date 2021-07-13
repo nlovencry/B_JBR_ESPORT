@@ -16,56 +16,37 @@ use App\Http\Controllers\HomeController;
 */
 
 
-Route::group(['namespace' => 'Backend'], function(){
-    Route::get('register','AuthController@showFormRegister');
-    Route::get('login', 'AuthController@showFormLogin');
-    Route::post('logout','AuthController@logout')->name('logout');
-    Route::post('register', 'AuthController@register')->name('register');
-    Route::post('login', 'AuthController@login')->name('login');
-    Route::get('admin','DashboardAdmin@admin');
-    Route::get('coach','DashboardAdmin@coach');
+Route::group(['namespace' => 'Backend', 'middleware' => 'auth'], function(){
+    Route::get('admin','DashboardAdmin@admin')->name('admin');
+    Route::get('coach','DashboardAdmin@coach')->name('coach');
     Route::resource('player','PlayerController');
     Route::resource('datagame','DataGameController');
     Route::resource('dataplayer','DataPlayerController');
     Route::resource('datacoach','DataCoachController');
     Route::resource('datajadwal','DataJadwalController');
     Route::resource('dataevent','DataEventController');
+    Route::resource('datateam','DataTeamController');
+    Route::resource('detailteam','DetailTeamController');
     Route::put('datacoach/nonactive/{datacoach}','DataCoachController@nonactive')->name('datacoach.nonactive');
     Route::put('datacoach/active/{datacoach}','DataCoachController@active')->name('datacoach.active');
     Route::put('dataplayer/nonactive/{dataplayer}','DataPlayerController@nonactive')->name('dataplayer.nonactive');
     Route::put('dataplayer/active/{dataplayer}','DataPlayerController@active')->name('dataplayer.active');
-    
-    
-    
+    Route::put('player/nonactive/{player}','PlayerController@nonactive')->name('player.nonactive');
+    Route::put('player/active/{player}','PlayerController@active')->name('player.active');
 });
 
-// Route::get('logout','App\Http\Controllers\Backend\AuthController@logout')->name('logout');
-
-// Route::group(['middleware' => 'auth'], function () {
-//     Route::get('home', [HomeController::class, 'index'])->name('home');
-//     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-// });
-
 Route::group(['namespace' => 'Frontend'], function(){
-    Route::get('index','HomepageController@index');
+    Route::get('/','HomepageController@index');
 });
 
 // Route::group(['middleware' => ['auth']], function (){
 //     Route::group(['middleware' => ['cek_login:admin']], function (){
-<<<<<<< Updated upstream
 //         Route::get('admin','Backend\DashboardAdmin@admin');
 //     });
 //     Route::group(['middleware' => ['cek_login:coach']], function (){
 //         Route::get('coach','Backend\DashboardAdmin@coach');
 //     });
-=======
-//         Route::get('admin','Backend\DashboardAdmin@admin')->name('admin');
-//     });
-//     Route::group(['middleware' => ['cek_login:coach']], function (){
-//         Route::get('coach','Backend\DashboardAdmin@coach')->name('coach');
-//     });
-
-    
-
->>>>>>> Stashed changes
 // });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

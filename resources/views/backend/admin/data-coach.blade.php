@@ -5,10 +5,10 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Data Player</h3>
+          <h3 class="card-title">Data Coach</h3>
           <div class="card-tools">
               <div class="input-group input-group-sm" style="width: 150px;">
-                <a href="{{ route('dataplayer.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
+                <a href="{{ route('datacoach.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
               </div>
           </div>
         </div>

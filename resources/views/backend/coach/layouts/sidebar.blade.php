@@ -54,7 +54,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('datateam')}}" class="nav-link">
               <i class="nav-icon fab fa-teamspeak"></i>
               <p>Data Team</p>
             </a>

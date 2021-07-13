@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <label for="exampleInputAlamat">Alamat</label>
                         <textarea name="alamat" id="alamat" rows="5" class="form-control" placeholder="Masukkan Alamat Lengkap"></textarea>
-                      </div>
+                    </div>
                     <div class="row">
                         <div class="col-4">
                           <label for="exampleInputIzin">Izin Orang Tua</label>

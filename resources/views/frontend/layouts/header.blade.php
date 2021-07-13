@@ -12,7 +12,18 @@
 				<img src="{{asset('frontend/img/logo.png')}}" alt="">
 			</a>
 			<div class="user-panel">
-				<a href="{{ url('login')}}">Login / Register</a>
+				@if (Auth::user())
+				<a href="{{ route('logout') }}"
+				onclick="event.preventDefault();
+							  document.getElementById('logout-form').submit();">
+				 {{ __('Logout') }}
+			 	</a>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+					@csrf
+				</form>
+                @else
+				<a href="{{ route('login')}}">Login / Register</a>
+				@endif
 			</div>
 			<!-- responsive -->
 			<div class="nav-switch">

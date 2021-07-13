@@ -78,7 +78,7 @@
           </form>
         </div>
       </li>
-      <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+      <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
               </a>

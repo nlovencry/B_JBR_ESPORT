@@ -8,7 +8,7 @@
           <h3 class="card-title">Data Tournament</h3>
           <div class="card-tools">
               <div class="input-group input-group-sm" style="width: 150px;">
-                <a href="{{ route('dataplayer.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
+                <a href="{{ route('dataevent.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
               </div>
           </div>
         </div>
@@ -20,6 +20,8 @@
               <th>No</th>
               <th>Nama Tournament</th>
               <th>Tanggal Pendaftaran</th>
+              <th>Tanggal Mulai</th>
+              <th>Tanggal Akhir</th>
               <th>Hadiah</th>
               <th>Poster</th>
               <th>Aksi</th>
@@ -34,22 +36,12 @@
                       <td>{{$no++}}</td>
                       <td>{{$de->nama_event}}</td>
                       <td>{{$de->tanggal_pendaftaran}}</td>
+                      <td>{{$de->tanggal_mulai}}</td>
+                      <td>{{$de->tanggal_akhir}}</td>
                       <td>{{$de->price}}</td>
                       <td><img src="{{ asset('images/'.$de->gambar)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
                       <td>
-                        {{-- <form action="{{ $de->is_active == 1 ? route('dataplayer.nonactive', $de->id_player) : route('dataplayer.active', $de->id_player)}}" method="POST"> --}}
-                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_event">
-                            Detail
-                          </button>
-                          {{-- <a href="{{ route('dataplayer.edit',$de->id_player)}}" class="btn btn-warning btn-sm">Edit</a> --}}
-                          @csrf
-                          {{-- @method('PUT') --}}
-                          @if ($de->is_active == 1)
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menonaktifkan User Ini?')">Non-Active</button>
-                          @else
-                            <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Mengaktifkan User Ini?')">Active</button>
-                          @endif
-                        {{-- </form> --}}
+                        
                       </td>
                   </tr>
               @endforeach

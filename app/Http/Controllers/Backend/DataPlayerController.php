@@ -12,10 +12,10 @@ class DataPlayerController extends Controller
     public function index(){
         $dataplayer = DB::table('player')
                             ->select('player.*','game.nama_game','team.id_team','team.nama_team')
-                            ->join('game','game.id_game','=','player.id_game')
-                            ->join('team','team.id_team','=','player.id_team')
+                            ->leftjoin('game','game.id_game','=','player.id_game')
+                            ->leftjoin('team','team.id_team','=','player.id_team')
                             ->get();
-                            // dd($dataplayer);
+                            // dd(DB::getQueryLog());
         return view('backend.admin.data-player',compact('dataplayer'));
     }
 

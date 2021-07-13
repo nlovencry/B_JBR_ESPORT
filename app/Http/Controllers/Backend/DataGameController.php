@@ -5,11 +5,16 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use Carbon\Carbon;
 
 class DataGameController extends Controller
 {
     public function index(){
-        $datagame = DB::table('game')->get();
+        $datagame = DB::table('game')
+                    ->select('game.*', DB::raw('count(team.id_team) as total_team'),)
+                    ->leftjoin('team','game.id_game','=','team.id_game')
+                    ->groupBy('game.id_game')
+                    ->get();
         return view('backend.admin.data-game',compact('datagame'));
     }
 
@@ -17,15 +22,28 @@ class DataGameController extends Controller
         $datagame = null;
         return view('backend.admin.data-game-create',compact('datagame'));
     }
-
+    
     public function store(Request $request){
-        DB::table('game')->insert([
-            'nama_game' => $request->nama_game,
-            'keterangan' => $request->keterangan
-        ]);
-        
-        return redirect()->route('datagame.index')
-                        ->with('success','Data Game Berhasil Disimpan');
+        $this->validate($request, [
+            'nama_game' => 'required',
+            'keterangan' => 'required',
+            'bg' => 'required|mimes:png,jpg,jpeg',
+         ]);
+        $tanggal = now();
+        $date = Carbon::parse($request->tanggal);
+        if($request->hasfile('bg')){
+            $bg = $request->file('bg');
+            $namafoto = $request->nama_player.' '.$bg->getClientOriginalName();
+            $pathfoto = $bg->move('images',$namafoto);
+            DB::table('game')->insert([
+                'nama_game' => $request->nama_game,
+                'keterangan' => $request->keterangan,
+                'bg' => $namafoto,
+                'created_at' => $tanggal,
+                'updated_at' => $tanggal,
+            ]);
+        }
+        return redirect()->route('datagame.index')->with('success','Data Player Berhasil Disimpan');
     }
 
     public function edit($id_game){
@@ -34,11 +52,18 @@ class DataGameController extends Controller
     }
 
     public function update(Request $request){
-        DB::table('game')->where('id_game',$request->id_game)->update([
+        $namafoto =  $request->foto;
+        if($request->hasfile('foto')){
+            $foto = $request->file('foto');
+            $namafoto = $request->nama_coach.'_'.$foto->getClientOriginalName();
+            $pathfoto = $foto->move('images',$namafoto);
+        }
+        $data = [
             'nama_game' => $request->nama_game,
-            'keterangan' => $request->keterangan
-        ]);
-
+            'keterangan' => $request->keterangan,
+            'bg' =>$request->bg,
+        ];
+        DB::table('game')->where('id_game',$request->id_game)->update($data);
         return redirect()->route('datagame.index')->with('success','Data Game Berhasil Diperbarui');
     }
 
