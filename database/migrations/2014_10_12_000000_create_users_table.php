@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('nohp', 13);
             $table->text('alamat');
             $table->string('password');
-            $table->integer('role', 11);
+            $table->integer('role');
             $table->string('is_active', 5);
             $table->rememberToken();
             $table->timestamps();

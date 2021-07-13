@@ -18,20 +18,35 @@ class AkunSeeder extends Seeder
             [
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
+                'jenis_kelamin' => 'L',
+                'usia' => '20',
+                'nohp' => '0888888888',
+                'alamat' => 'BWI',
                 'password' => bcrypt('12345678'),
-                'level' => 'admin'
+                'role' => 1,
+                'is_active' => 'on'
             ],
             [
                 'name' => 'coach',
                 'email' => 'coach@gmail.com',
+                'jenis_kelamin' => 'L',
+                'usia' => '20',
+                'nohp' => '0888888898',
+                'alamat' => 'BWI',
                 'password' => bcrypt('12345678'),
-                'level' => 'coach'
+                'role' => 2,
+                'is_active' => 'on'
             ],
             [
-                'name' => 'user',
-                'email' => 'user@gmail.com',
+                'name' => 'player',
+                'email' => 'player@gmail.com',
+                'jenis_kelamin' => 'L',
+                'usia' => '20',
+                'nohp' => '08988888888',
+                'alamat' => 'BWI',
                 'password' => bcrypt('12345678'),
-                'level' => 'player'
+                'role' => 3,
+                'is_active' => 'on'
             ]
             ];
             foreach ($user as $key => $value) {
