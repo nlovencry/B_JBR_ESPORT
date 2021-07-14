@@ -33,7 +33,6 @@
               @foreach ($datacoach as $dc)
                   <tr>
                       <td>{{$no++}}</td>
-                      <td>{{$dc->nama_game}}</td>
                       <td>{{$dc->name}}</td>
                       <td>{{$dc->nohp}}</td>
                       <td>

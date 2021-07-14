@@ -29,16 +29,6 @@
                   @endif
                   <input type="hidden" name="id_coach" value="{{$datacoach->id_coach}}">
                   <input type="hidden" name="id" value="{{$datacoach->id}}">
-                  <div class="row">
-                    <div class="col-12">
-                      <label for="exampleInputGame1">Pilih Game</label>
-                      <select name="id_game" class="form-control" required>
-                        @foreach ($datagame as $game)
-                          <option value="{{ isset($datacoach) ? $datacoach->id_game : ''}}">{{$game->nama_game}}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </div>
                   <div class="form-group">
                     <div class="row">
                       <div class="col-5">
