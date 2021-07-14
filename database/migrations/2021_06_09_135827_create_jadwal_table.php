@@ -20,6 +20,7 @@ class CreateJadwalTable extends Migration
             $table->date('tanggal');
             $table->string('nama_jadwal');
             $table->time('waktu_mulai');
+            $table->time('waktu_akhir');
             $table->text('keterangan');
             $table->timestamps();
         });

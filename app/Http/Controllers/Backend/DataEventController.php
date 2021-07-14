@@ -48,7 +48,7 @@ class DataEventController extends Controller
     }
 
     public function update(Request $request){
-        $namafoto =  $request->gambar;
+        $namafoto =  $request->img;
         if($request->hasfile('gambar')){
             $gambar = $request->file('gambar');
             $namafoto = $request->nama_event.'_'.$gambar->getClientOriginalName();

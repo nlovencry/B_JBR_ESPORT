@@ -34,7 +34,7 @@
                       <label for="exampleInputGame1">Pilih Game</label>
                       <select name="id_game" class="form-control" required>
                         @foreach ($datagame as $game)
-                          <option value="{{ isset($datacoach) ? $datacoach->id_game : ''}}">{{$game->nama_game}}</option>
+                          <option value="{{ isset($datacoach) ? $game->id_game : ''}}">{{$game->nama_game}}</option>
                         @endforeach
                       </select>
                     </div>
@@ -88,11 +88,11 @@
                     <div class="input-group">
                       <input type="hidden" id="foto" name="winrate" value="{{ isset($datacoach) ? $datacoach->winrate : ''}}">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+                        <input type="file" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile2(this)">
                         <label class="custom-file-label" for="exampleInputFile">{{ isset($datacoach) ? $datacoach->winrate : ''}}</label>
                       </div>
                     </div>
-                    <img src="{{ asset('images/'.$datacoach->winrate)}}" id="previewImg" alt="foto" style="max-width: 150px; margin-top: 20px; max-height:200px">
+                    <img src="{{ asset('images/'.$datacoach->winrate)}}" id="previewImg2" alt="foto" style="max-width: 150px; margin-top: 20px; max-height:200px">
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -131,6 +131,18 @@
         var reader = new FileReader();
         reader.onload = function(){
           $('#previewImg').attr("src", reader.result);
+        }
+        reader.readAsDataURL(File);
+      }
+  } 
+</script>
+<script>
+  function previewFile2(input) {
+    var File = $("input[type=file]").get(0).files[0];
+      if (file) {
+        var reader = new FileReader();
+        reader.onload = function(){
+          $('#previewImg2').attr("src", reader.result);
         }
         reader.readAsDataURL(File);
       }

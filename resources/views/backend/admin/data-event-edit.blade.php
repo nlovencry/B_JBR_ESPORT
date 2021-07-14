@@ -12,7 +12,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form method="POST" action="{{ isset($dataevent) ? route ('dataevent.update', $dataevent->id_event) : route('dataevent.store') }}">
+        <form method="POST" action="{{ isset($dataevent) ? route ('dataevent.update', $dataevent->id_event) : route('dataevent.store') }}" enctype="multipart/form-data">
           {!! csrf_field() !!}
           {!! isset($dataevent) ? method_field('PUT') : '' !!} 
           <div class="card-body">
@@ -44,7 +44,7 @@
             <div class="form-group">
               <label for="exampleInputFile">Poster</label>
               <div class="input-group">
-                <input type="hidden" id="foto" name="gambar" value="{{ isset($dataevent) ? $dataevent->gambar : ''}}">
+                <input type="hidden" id="img" name="img" value="{{ isset($dataevent) ? $dataevent->gambar : ''}}">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="gambar" name="gambar" onchange="previewFile(this)">
                   <label class="custom-file-label" for="exampleInputFile">{{ isset($dataevent) ? $dataevent->gambar : ''}}</label>

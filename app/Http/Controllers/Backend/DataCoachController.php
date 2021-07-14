@@ -76,7 +76,9 @@ class DataCoachController extends Controller
                             ->select('coach.*','users.*','game.nama_game')
                             ->join('users','coach.id','=','users.id')
                             ->leftjoin('game','coach.id_game','=','game.id_game')
+                            ->where('id_coach',$id_coach)
                             ->first();
+        //dd($datacoach);
         $datagame = Game::all();
         return view('backend.admin.data-coach-edit',compact('datacoach','datagame'));
     }
@@ -86,12 +88,14 @@ class DataCoachController extends Controller
         $date = Carbon::parse($request->tanggal);
         $namafoto =  $request->foto;
         $namawin =  $request->winrate;
-        if($request->hasfile('foto','winrate')){
+        if($request->hasfile('foto')){
             $foto = $request->file('foto');
-            $winrate = $request->file('winrate');
             $namafoto = $request->name.'_'.$foto->getClientOriginalName();
-            $namawin = $request->name.'_'.$winrate->getClientOriginalName();
             $pathfoto = $foto->move('images',$namafoto);
+        }
+        if($request->hasfile('winrate')){
+            $winrate = $request->file('winrate');
+            $namawin = $request->name.'_'.$winrate->getClientOriginalName();
             $pathwin = $winrate->move('images',$namawin);
         }
         $user = [
