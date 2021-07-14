@@ -8,15 +8,13 @@ use DB;
 use Carbon\Carbon;
 use Hash;
 use App\Models\User;
-use App\Models\Game;
 
 class DataCoachController extends Controller
 {
     public function index(){
         $datacoach = DB::table('coach')
-                            ->select('coach.*','users.*','game.nama_game')
+                            ->select('coach.*','users.*')
                             ->join('users','coach.id','=','users.id')
-                            ->leftjoin('game','coach.id_game','=','game.id_game')
                             ->get();
                             // dd($datacoach);
         return view('backend.admin.data-coach', compact('datacoach'));
@@ -47,22 +45,21 @@ class DataCoachController extends Controller
             'usia' => $request->usia,
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
-            'password' => bcrypt('12345678'),
-            'role' => '2',
+            'password' => Hash::make($request->password),
+            'role' => '3',
         ]);
         $coach_id = $user->id;
         if($request->hasfile('foto')){
             $foto = $request->file('foto');
-            $winrate = $request->file('winrate');
+
             $namafoto = $request->name.'_'.$foto->getClientOriginalName();
-            $namawin = $request->name.'_'.$winrate->getClientOriginalName();
+
             $pathfoto = $foto->move('images',$namafoto);
             $pathwin = $winrate->move('images',$namawin);
             DB::table('coach')->insert([
                 'id' => $coach_id,
-                'id_game' => $request->id_game,
                 'foto' => $namafoto,
-                'winrate' => $namawin,
+                'winrate' => 'default.jpg',
                 'is_active' => '1',
                 'created_at' => $tanggal,
                 'updated_at' => $tanggal,
@@ -73,12 +70,10 @@ class DataCoachController extends Controller
 
     public function edit($id_coach){
         $datacoach = DB::table('coach')
-                            ->select('coach.*','users.*','game.nama_game')
-                            ->join('users','coach.id','=','users.id')
-                            ->leftjoin('game','coach.id_game','=','game.id_game')
-                            ->first();
-        $datagame = Game::all();
-        return view('backend.admin.data-coach-edit',compact('datacoach','datagame'));
+                                ->select('coach.*','users.*')
+                                ->join('users','coach.id','=','users.id')
+                                ->first();
+        return view('backend.admin.data-coach-edit',compact('datacoach'));
     }
 
     public function update(Request $request){
@@ -95,21 +90,20 @@ class DataCoachController extends Controller
             $pathwin = $winrate->move('images',$namawin);
         }
         $user = [
-            'email' => strtolower($request->email),
-            'name' => ucwords(strtolower($request->name)),
+            'email' => $request->email,
+            'name' => $request->name,
             'jenis_kelamin' => $request->jenis_kelamin,
             'usia' => $request->usia,
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
-            'role' => 2,
+            'role' => $request->role,
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         $data = [
             'id' => $request->id,
-            'id_game' => $request->id_game,
             'foto' => $namafoto,
-            'winrate' => $namawin,
+            'winrate' => 'default.jpg',
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
