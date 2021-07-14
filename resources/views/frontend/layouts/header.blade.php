@@ -32,12 +32,29 @@
 			<!-- site menu -->
 			<nav class="main-menu">
 				<ul>
+				@if (Auth::user())
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Team</a></li>
+					<li><a href="#">Tournament</a></li>
+					<li><a href="#">Event</a></li>
+					<li><a href="#">Presensi</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">{{ Auth::user()->name }}</a></li>
+					@csrf
+				</ul>
+			</nav>
+			@else
+			<nav class="main-menu">
+				<ul>
 					<li><a href="#">Home</a></li>
 					<li><a href="#">Team</a></li>
 					<li><a href="#">Tournament</a></li>
 					<li><a href="#">Contact</a></li>
 				</ul>
 			</nav>
+				@endif
+			<!--if menu-->
+			
 		</div>
 	</header>
 	<!-- Header section end -->
