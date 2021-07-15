@@ -11,16 +11,20 @@ class DataTeamController extends Controller
 {
     public function index(){
         $datateam = DB::table('team')
-                        ->select('team.*','game.id_game','game.nama_game','coach.id_coach','users.*', DB::raw('count(player.id_player) as total_player'),)
+                        ->select('team.*','game.id_game','game.nama_game','coach.id_coach','users.*',DB::raw('count(player.id_player) as total_player'),)
                         ->join('game','game.id_game','=','team.id_game')
                         ->join('coach','coach.id_coach','=','team.id_coach')
                         ->join('users','users.id','=','coach.id')
                         ->leftjoin('player','player.id_team','=','team.id_team')
                         ->groupBy('team.id_team')
                         ->get();
+        // $total_player = DB::table('team')
+        //                 ->select('team.*', DB::raw('count(player.id_player) as total_player'),)
+        //                 ->leftjoin('player','team.id_team','=','player.id_team')
+        //                 ->groupBy('team.id_team')
+        //                 ->get();
                         // dd(DB::getQueryLog());
-        $team_count = DB::table('player')->where('id_team','=','id_team')->count();
-        return view('backend.coach.data-team',compact('datateam','team_count'));
+        return view('backend.coach.data-team',compact('datateam'));
     }
 
     public function create(){

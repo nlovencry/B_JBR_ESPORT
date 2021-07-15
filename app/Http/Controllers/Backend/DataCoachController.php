@@ -8,15 +8,23 @@ use DB;
 use Carbon\Carbon;
 use Hash;
 use App\Models\User;
+use App\Models\Game;
 
 class DataCoachController extends Controller
 {
     public function index(){
         $datacoach = DB::table('coach')
-                            ->select('coach.*','users.*')
-                            ->join('users','coach.id','=','users.id')
+                            ->select('coach.*','users.*','game.nama_game')
+                            ->leftjoin('users','coach.id','=','users.id')
+                            ->leftjoin('game','game.id_game','coach.id_game')
                             ->get();
-                            // dd($datacoach);
+        // $coach_id = $datacoach->id_coach;
+        // $detailcoach = DB::table('coach')
+        //                     ->select('coach.*','users.*')
+        //                     ->join('users','coach.id','=','users.id')
+        //                     ->where('id_coach',$coach_id)
+        //                     ->get();
+        //                     dd($detailcoach);
         return view('backend.admin.data-coach', compact('datacoach'));
     }
 
@@ -39,32 +47,36 @@ class DataCoachController extends Controller
         $tanggal = now();
         $date = Carbon::parse($request->tanggal);
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => ucwords(strtolower($request->name)),
+            'email' => strtolower($request->email),
             'jenis_kelamin' => $request->jenis_kelamin,
             'usia' => $request->usia,
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
-            'password' => Hash::make($request->password),
-            'role' => '3',
+            'password' => bcrypt('12345678'),
+            'role' => '2',
         ]);
         $coach_id = $user->id;
         if($request->hasfile('foto')){
             $foto = $request->file('foto');
-
-            $namafoto = $request->name.'_'.$foto->getClientOriginalName();
-
+            $namafoto = $coach_id.'_'.$foto->getClientOriginalName();
             $pathfoto = $foto->move('images',$namafoto);
+        }
+        if($request->hasfile('winrate')){
+            $winrate = $request->file('winrate');
+            $namawin = $coach_id.'_'.$winrate->getClientOriginalName();
             $pathwin = $winrate->move('images',$namawin);
-            DB::table('coach')->insert([
+        }
+        $data =[
                 'id' => $coach_id,
+                'id_game' => $request->id_game,
                 'foto' => $namafoto,
-                'winrate' => 'default.jpg',
+                'winrate' => $namawin,
                 'is_active' => '1',
                 'created_at' => $tanggal,
                 'updated_at' => $tanggal,
-            ]);
-        }
+        ];
+        DB::table('coach')->insert([$data]);
         return redirect()->route('datacoach.index');
     }
 
@@ -87,29 +99,30 @@ class DataCoachController extends Controller
         $namawin =  $request->winrate;
         if($request->hasfile('foto')){
             $foto = $request->file('foto');
-            $namafoto = $request->name.'_'.$foto->getClientOriginalName();
+            $namafoto = $request->id.'_'.$foto->getClientOriginalName();
             $pathfoto = $foto->move('images',$namafoto);
         }
         if($request->hasfile('winrate')){
             $winrate = $request->file('winrate');
-            $namawin = $request->name.'_'.$winrate->getClientOriginalName();
+            $namawin = $request->id.'_'.$winrate->getClientOriginalName();
             $pathwin = $winrate->move('images',$namawin);
         }
         $user = [
-            'email' => $request->email,
-            'name' => $request->name,
+            'email' => strtolower($request->email),
+            'name' => ucwords(strtolower($request->name)),
             'jenis_kelamin' => $request->jenis_kelamin,
             'usia' => $request->usia,
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
-            'role' => $request->role,
+            'role' => 2,
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         $data = [
             'id' => $request->id,
+            'id_game' => $request->id_game,
             'foto' => $namafoto,
-            'winrate' => 'default.jpg',
+            'winrate' => $namawin,
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];

@@ -18,14 +18,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label for="exampleInputGame1">Pilih Game</label>
-                        <input type="text" class="form-control" value="{{$datagame->nama_game}}" name="{{$datagame->nama_game}}" readonly>
+                        <input type="hidden" class="form-control" value="{{$datagame->id_game}}" name="id_game">
+                        <input type="text" class="form-control" value="{{$datagame->nama_game}}">
                     </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                       <label for="exampleInputNama">Nama Coach</label>
-                      <input type="hidden" class="form-control" value="{{$coach->id_coach}}" name="{{$coach->id_coach}}" readonly>
-                      <input type="text" class="form-control" value="{{auth()->user()->name}}" readonly>
+                      <input type="hidden" class="form-control" value="{{$coach->id_coach}}" name="id_coach">
+                      <input type="text" class="form-control" value="{{auth()->user()->name}}">
                   </div>
               </div>
                 <div class="row">

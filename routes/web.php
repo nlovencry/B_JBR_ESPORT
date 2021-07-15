@@ -27,12 +27,15 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'auth'], function(){
     Route::resource('dataevent','DataEventController');
     Route::resource('datateam','DataTeamController');
     Route::resource('detailteam','DetailTeamController');
+    Route::resource('profile','ProfileController');
+    Route::post('profile/change','ProfileController@change')->name('profile.change');
     Route::put('datacoach/nonactive/{datacoach}','DataCoachController@nonactive')->name('datacoach.nonactive');
     Route::put('datacoach/active/{datacoach}','DataCoachController@active')->name('datacoach.active');
     Route::put('dataplayer/nonactive/{dataplayer}','DataPlayerController@nonactive')->name('dataplayer.nonactive');
     Route::put('dataplayer/active/{dataplayer}','DataPlayerController@active')->name('dataplayer.active');
     Route::put('player/nonactive/{player}','PlayerController@nonactive')->name('player.nonactive');
     Route::put('player/active/{player}','PlayerController@active')->name('player.active');
+    Route::put('detailteam/remove/{detailteam}','DetailTeamController@remove')->name('detailteam.remove');
 });
 
 Route::group(['namespace' => 'Frontend'], function(){
