@@ -38,7 +38,6 @@
 					<li><a href="#">Tournament</a></li>
 					<li><a href="#">Event</a></li>
 					<li><a href="#">Presensi</a></li>
-					<li><a href="#">Contact</a></li>
 					<li><a href="#">{{ Auth::user()->name }}</a></li>
 					@csrf
 				</ul>

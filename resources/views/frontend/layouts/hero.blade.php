@@ -2,7 +2,7 @@
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
         @foreach ($games as $item)
-        <div class="hs-item set-bg" data-setbg="{{asset('frontend/img/slider-1.jpg')}}">
+        <div class="hs-item set-bg" data-setbg="{{asset('frontend/img/slide.png')}}">
             <div class="hs-text">
                 <div class="container">
                     <h2>{{$item->nama_game}}</h2>
@@ -12,7 +12,7 @@
             </div>
         </div>
         @endforeach
-        {{-- <div class="hs-item set-bg" data-setbg="{{asset('frontend/img/slider-2.jpg')}}">
+        <!-- <div class="hs-item set-bg" data-setbg="{{asset('frontend/img/slider-2.jpg')}}">
             <div class="hs-text">
                 <div class="container">
                     <h2>The Best <span>Games</span> Out There</h2>
@@ -20,7 +20,7 @@
                     <a href="#" class="site-btn">Read More</a>
                 </div>
             </div>
-        </div> --}}
+        </div>  -->
     </div>
 </section>
 <!-- Hero section end -->
@@ -30,7 +30,7 @@
     <div class="ln-title">Latest News</div>
     <div class="news-ticker">
         <div class="news-ticker-contant">
-            @foreach ($tournament as $tour)
+            @foreach ($event as $tour)
                 <div class="nt-item"><span class="new">NEW</span>{{$tour->nama_event}}</div>
             @endforeach
         </div>

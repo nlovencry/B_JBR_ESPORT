@@ -70,14 +70,14 @@
   </div>
   <!-- /.row -->
 </div>
-<div class="modal fade" id="detail_player">
+<!-- <div class="modal fade" id="detail_player">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Detail Player</h4>
       </div>
       <div class="modal-body">
-        {{-- @foreach ($dataplayer as $dp) --}}
+        @foreach ($dataplayer as $dp)
         <div class="row">
           <div class="col-12">
             <label for="exampleInputGame">Game</label>
@@ -163,16 +163,14 @@
             <img src="{{ asset('images/'.$dp->winrate)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
           </div>
         </div>
-        {{-- @endforeach --}}
+        @endforeach
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-    <!-- /.modal-content -->
   </div>
-  <!-- /.modal-dialog -->
-</div>
+</div> -->
 <!-- /.modal -->
 @endsection
 @push('js')

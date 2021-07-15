@@ -5,6 +5,7 @@
             <div class="cata new">new</div>
             <h2>Recent Reviews</h2>
         </div>
+        @foreach ($player as $item)
         <div class="row">
             <div class="col-lg-3 col-md-6">
                 <div class="review-item">
@@ -12,7 +13,7 @@
                         <div class="score yellow">9.3</div>
                     </div>
                     <div class="review-text">
-                        <h5>Assasin’’s Creed</h5>
+                        <h5>{{$item->name}}</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
                     </div>
                 </div>
@@ -51,6 +52,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
 </section>
 <!-- Review section end -->
