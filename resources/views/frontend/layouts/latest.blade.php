@@ -7,13 +7,13 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="footer-logo text-white">
-                    <img src="{{asset('frontend/img/footer-logo.png')}}" alt="">
+                    <img src="{{asset('frontend/img/footer-pdpkn.png')}}" alt="">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="footer-widget mb-5 mb-md-0">
-                    <h4 class="fw-title">Latest Posts</h4>
+                    <h4 class="fw-title">UWUW</h4>
                     <div class="latest-blog">
                         <div class="lb-item">
                             <div class="lb-thumb set-bg" data-setbg="{{asset('frontend/img/latest-blog/1.jpg')}}"></div>
