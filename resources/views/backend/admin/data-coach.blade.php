@@ -33,6 +33,7 @@
               @foreach ($datacoach as $dc)
                   <tr>
                       <td>{{$no++}}</td>
+                      <td>{{$dc->nama_game}}</td>
                       <td>{{$dc->name}}</td>
                       <td>{{$dc->nohp}}</td>
                       <td>
@@ -71,69 +72,69 @@
   </div>
   <!-- /.row -->
 </div>
-<div class="modal fade" id="detail_coach">
+{{-- <div class="modal fade" id="detail_coach">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Detail Coach</h4>
       </div>
       <div class="modal-body">
-        {{-- @foreach ($datacoach as $dc) --}}
+        @foreach ($detailcoach as $detail)
         <div class="row">
           <div class="col-12">
             <label for="exampleInputEmail">Email</label>
-            <input type="email" name="email" class="form-control" value="{{ isset($dc) ? $dc->email : ''}}" readonly>
+            <input type="email" name="email" class="form-control" value="{{ isset($detail) ? $detail->email : ''}}" readonly>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label for="exampleInputNama">Nama Lengkap</label>
-            <input type="text" name="nama_coach" class="form-control" value="{{ isset($dc) ? $dc->name : ''}}" readonly>
+            <input type="text" name="nama_coach" class="form-control" value="{{ isset($detail) ? $detail->name : ''}}" readonly>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label for="exampleInputJK">Jenis Kelamin</label>
-            <input type="text" name="jenis_kelamin" class="form-control" value="@if($dc->jenis_kelamin == 1)Laki-laki @else Perempuan @endif" readonly>
+            <input type="text" name="jenis_kelamin" class="form-control" value="@if($detail->jenis_kelamin == 1)Laki-laki @else Perempuan @endif" readonly>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label for="exampleInputUsia">Usia</label>
-            <input type="text" name="usia" class="form-control" value="{{ isset($dc) ? $dc->usia : ''}}" readonly>
+            <input type="text" name="usia" class="form-control" value="{{ isset($detail) ? $detail->usia : ''}}" readonly>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label for="exampleInputNoHP">No HP</label>
-            <input type="text" name="nohp_coach" class="form-control" value="{{ isset($dc) ? $dc->nohp : ''}}" readonly>
+            <input type="text" name="nohp_coach" class="form-control" value="{{ isset($detail) ? $detail->nohp : ''}}" readonly>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label for="exampleInputAlamat">Alamat</label>
-            <textarea name="alamat" id="alamat" class="form-control" rows="5" readonly>{{ isset($dc) ? $dc->alamat : ''}}</textarea>
+            <textarea name="alamat" id="alamat" class="form-control" rows="5" readonly>{{ isset($detail) ? $detail->alamat : ''}}</textarea>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label for="exampleInputStatus">Status</label>
-            <input type="text" name="is_active" class="form-control" value="@if($dc->is_active == 1)active @else non-active @endif" readonly>
+            <input type="text" name="is_active" class="form-control" value="@if($detail->is_active == 1)active @else non-active @endif" readonly>
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label for="exampleInputFoto">Foto</label><br>
-            <img src="{{ asset('images/'.$dc->foto)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
+            <img src="{{ asset('images/'.$detail->foto)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
           </div>
         </div>
         <div class="row">
           <div class="col-12">
             <label for="exampleInputFoto">Winrate</label><br>
-            <img src="{{ asset('images/'.$dc->winrate)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
+            <img src="{{ asset('images/'.$detail->winrate)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
           </div>
         </div>
-        {{-- @endforeach --}}
+        @endforeach
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -142,7 +143,7 @@
     <!-- /.modal-content -->
   </div>
   <!-- /.modal-dialog -->
-</div>
+</div> --}}
 <!-- /.modal -->
 @endsection
 @push('js')

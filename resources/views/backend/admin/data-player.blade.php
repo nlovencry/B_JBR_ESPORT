@@ -70,7 +70,7 @@
   </div>
   <!-- /.row -->
 </div>
-<!-- <div class="modal fade" id="detail_player">
+{{-- <div class="modal fade" id="detail_player">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -170,7 +170,8 @@
       </div>
     </div>
   </div>
-</div> -->
+  <!-- /.modal-dialog -->
+</div> --}}
 <!-- /.modal -->
 @endsection
 @push('js')

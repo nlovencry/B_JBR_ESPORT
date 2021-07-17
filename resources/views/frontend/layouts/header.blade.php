@@ -30,9 +30,9 @@
 				<i class="fa fa-bars"></i>
 			</div>
 			<!-- site menu -->
+			@if (Auth::user())
 			<nav class="main-menu">
 				<ul>
-				@if (Auth::user())
 					<li><a href="#">Home</a></li>
 					<li><a href="#">Team</a></li>
 					<li><a href="#">Tournament</a></li>
