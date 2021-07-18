@@ -71,7 +71,7 @@
         <h4 class="modal-title">Detail Player</h4>
       </div>
       <div class="modal-body">
-        @foreach ($player as $dp)
+        {{-- @foreach ($player as $dp) --}}
         <div class="row">
           <div class="col-12">
             <label for="exampleInputGame">Game</label>
@@ -150,7 +150,13 @@
             <img src="{{ asset('images/'.$dp->foto)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
           </div>
         </div>
-        @endforeach
+        <div class="row">
+          <div class="col-12">
+            <label for="exampleInputFoto">Winrate</label><br>
+            <img src="{{ asset('images/'.$dp->winrate)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
+          </div>
+        </div>
+        {{-- @endforeach --}}
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

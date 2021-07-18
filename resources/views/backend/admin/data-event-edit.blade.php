@@ -78,6 +78,7 @@
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ url('dataevent')}}" class="btn btn-secondary">Cancel</a>
           </div>
         </form>
       </div>

@@ -38,8 +38,8 @@
                       <td>{{$dt->name}}</td>
                       <td>
                         {{-- <form action="{{ route('datajadwal.destroy', $dt->id_jadwal) }}" method="POST"> --}}
-                        <a href="{{route('detailteam.index', $dt->id_team)}}" class="btn btn-info btn-sm">Lihat</a>
-                        {{-- <a href="{{ route('datajadwal.edit',$dt->id_jadwal)}}" class="btn btn-warning btn-sm">Edit</a> --}}
+                        <a href="{{route('detailteam.show', $dt->id_team)}}" class="btn btn-info btn-sm">Lihat</a>
+                        <a href="{{ route('datateam.edit',$dt->id_team)}}" class="btn btn-warning btn-sm">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>

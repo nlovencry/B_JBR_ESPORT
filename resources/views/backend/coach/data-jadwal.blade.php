@@ -18,7 +18,7 @@
             <thead>
             <tr>
               <th>No</th>
-              <th>Tanggal</th>
+              <th>Team</th>
               <th>Nama Jadwal</th>
               <th>Waktu</th>
               <th>Keterangan</th>
@@ -32,7 +32,7 @@
               @foreach ($jadwal as $jd)
                   <tr>
                       <td>{{$no++}}</td>
-                      <td>{{$jd->tanggal}}</td>
+                      <td>{{$jd->nama_team}}</td>
                       <td>{{$jd->nama_jadwal}}</td>
                       <td>{{$jd->waktu_mulai}}</td>
                       <td>{{$jd->keterangan}}</td>

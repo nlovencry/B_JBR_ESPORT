@@ -34,7 +34,7 @@
                       <label for="exampleInputGame1">Pilih Game</label>
                       <select name="id_game" class="form-control" required>
                         @foreach ($datagame as $game)
-                          <option value="{{ isset($datacoach) ? $game->id_game : ''}}">{{$game->nama_game}}</option>
+                          <option {{  $datacoach->id_game == $game->id_game ? "selected" : ''}} value="{{ $game->id_game }}">{{$game->nama_game}}</option>
                         @endforeach
                       </select>
                     </div>

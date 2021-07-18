@@ -24,7 +24,7 @@
                     <b>Email</b><a class="text-muted float-right">{{$users->email}}</a>
                   </li>
                 </ul>
-                <a href="{{route('profile.change')}}" class="btn btn-primary btn-block"><i class="fas fa-lock"></i><b> Ganti Password</b></a>
+                <a href="{{ route('profile.show',$users->id)}}" class="btn btn-primary btn-block"><i class="fas fa-lock"></i><b> Ganti Password</b></a>
               </div>
               <!-- /.card-body -->
             </div>

@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('alamat');
             $table->string('password');
             $table->integer('role');
+            $table->string('is_active', 5);
             $table->rememberToken();
             $table->timestamps();
         });
