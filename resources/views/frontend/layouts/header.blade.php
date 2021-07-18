@@ -8,8 +8,8 @@
 	<header class="header-section">
 		<div class="container">
 			<!-- logo -->
-			<a class="site-logo" href="{{route('index')}}">
-				<img src="{{asset('frontend/img/logo.png')}}" alt="">
+			<a class="site-logo" href="index.html">
+				<img src="{{asset('frontend/img/pdpkn.png')}}" alt="">
 			</a>
 			<div class="user-panel">
 				@if (Auth::user())
@@ -36,7 +36,7 @@
 					<li><a href="#">Home</a></li>
 					<li><a href="#">Team</a></li>
 					<li><a href="#">Tournament</a></li>
-					<li><a href="#">Event</a></li>
+					<li><a href="#">Jadwal</a></li>
 					<li><a href="#">Presensi</a></li>
 					<li><a href="#">{{ Auth::user()->name }}</a></li>
 					@csrf
