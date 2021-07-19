@@ -39,14 +39,9 @@
                             <div class="tc-thumb set-bg" data-setbg="{{ asset('images/'.$item->foto)}}"></div>
                             <div class="tc-content">
                                 <p><a href="#">{{$item->name}}</a></p>
-                                <p><span>Email:  </span>{{$item->email}}</p>
+                                <p><span>Game:  </span>{{$item->nama_game}}</p>
                                 <p><span>Usia:  </span>{{$item->usia}}</p>
-                                <p><span>Alamat:  </span>{{$item->alamat}}</p>
-                                <div class="tc-date"> @if ($item->is_active == 1)
-                                    {{ 'Active' }}
-                                    @else
-                                    {{ 'Non-Active' }}
-                                    @endif</div>
+                            </div>
                         </div>
                         @endforeach
                     </div>

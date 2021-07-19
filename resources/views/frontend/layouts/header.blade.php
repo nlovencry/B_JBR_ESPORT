@@ -30,31 +30,19 @@
 				<i class="fa fa-bars"></i>
 			</div>
 			<!-- site menu -->
-			@if (Auth::user())
+			
 			<nav class="main-menu">
 				<ul>
-					
 					<li><a href="#">Home</a></li>
-					<li><a href="#">Team</a></li>
+					<li><a href="{{url('allteam')}}">Team</a></li>
 					<li><a href="#">Tournament</a></li>
+					@if (Auth::user())
 					<li><a href="#">Jadwal</a></li>
-					<li><a href="#">Presensi</a></li>
 					<li><a href="#">{{ Auth::user()->name }}</a></li>
 					@csrf
+					@endif
 				</ul>
 			</nav>
-			@else
-			<nav class="main-menu">
-				
-				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Team</a></li>
-					<li><a href="#">Tournament</a></li>
-				</ul>
-			</nav>
-				@endif
-			<!--if menu-->
-			
 		</div>
 	</header>
 	<!-- Header section end -->

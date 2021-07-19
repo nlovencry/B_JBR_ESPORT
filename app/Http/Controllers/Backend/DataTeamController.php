@@ -10,7 +10,6 @@ use Auth;
 class DataTeamController extends Controller
 {
     public function index(){
-
         $id = Auth::user()->id;
         $coach = DB::table('coach')->where('id',$id)->first();
         $datateam = DB::table('team')
