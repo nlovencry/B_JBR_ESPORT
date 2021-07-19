@@ -15,13 +15,25 @@
         <form method="POST" action="{{ route('datajadwal.store') }}">
           {!! csrf_field() !!}
           <div class="card-body">
-            <div class="form-group">
-              <label for="exampleInputTgl">Tanggal</label>
-              <input type="date" class="form-control" placeholder="Pilih Tanggal" name="tanggal">
+            <div class="row">
+              <input type="hidden" class="form-control" value="{{$datagame->id_game}}" name="id_game">
+              <input type="hidden" class="form-control" value="{{$coach->id_coach}}" name="id_coach">
+              <div class="col-12">
+                <label for="exampleInputGame1">Pilih Team</label>
+                <select name="id_team" class="form-control" required>
+                  @foreach ($datateam as $team)
+                    <option value="{{$team->id_team}}">{{$team->nama_team}}</option>
+                  @endforeach 
+                </select>
+              </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputNama">Nama Jadwal</label>
                 <input type="text" class="form-control" placeholder="Nama Jadwal Latihan" name="nama_jadwal">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputWaktu">Tanggal</label>
+              <input type="date" class="form-control" placeholder="Pilih Tanggal" name="tanggal">
             </div>
             <div class="form-group">
                 <label for="exampleInputWaktu">Waktu</label>
@@ -35,6 +47,7 @@
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ url('datajadwal')}}" class="btn btn-secondary">Cancel</a>
           </div>
         </form>
       </div>

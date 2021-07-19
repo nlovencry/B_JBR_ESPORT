@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Carbon\Carbon;
+use Hash;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -76,7 +78,22 @@ class ProfileController extends Controller
         return redirect()->route('profile.index')->with('success','Data Coach Berhasil Diperbarui');
     }
 
-    public function change(){
-        return view('backend.coach.change-password');
+    public function show($id){
+        // dd($id);
+        $users = DB::table('users')
+                            ->select('users.*','coach.*')
+                            ->leftjoin('coach','coach.id','=','users.id')
+                            ->groupBy('coach.id_coach')
+                            ->where('coach.id',Auth::user()->id)
+                            ->first();
+        return view('backend.coach.profile-change-password',compact('users'));
+    }
+
+    public function ubah(Request $request){
+        DB::table('users')->where('id',$request->id)->update([
+            'password' => Hash::make($request->password),
+        ]);
+        Session::flush();
+        return redirect()->route('login')->with('success','Password Berhasil diubah, silahkan login kembali.');
     }
 }

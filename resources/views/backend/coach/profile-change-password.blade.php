@@ -9,13 +9,12 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Edit Profile</h3>
+                <h3 class="card-title">Ganti Password</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="{{ route ('profile.change', $users->id_coach)}}" enctype="multipart/form-data">
+              <form method="POST" action="{{ route('profile.ubah') }}">
                 {!! csrf_field() !!}
-                {!! isset($users) ? method_field('PUT') : '' !!} 
                 <div class="card-body">
                   @if ($errors->any())
                     <div class="alert alert-danger">
@@ -27,7 +26,6 @@
                       </ul>
                   </div>
                   @endif
-                  <input type="hidden" name="id_coach" value="{{$users->id_coach}}">
                   <input type="hidden" name="id" value="{{$users->id}}">
                   <div class="row">
                     <div class="col-md-12">

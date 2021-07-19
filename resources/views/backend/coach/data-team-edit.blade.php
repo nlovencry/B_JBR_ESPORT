@@ -8,16 +8,18 @@
       <!-- general form elements -->
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">Tambah Team</h3>
+          <h3 class="card-title">Edit Team</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form method="POST" action="{{ route('datateam.store')}}">
-          {!! csrf_field() !!}
+        <form method="POST" action="{{ isset($datateam) ? route ('datateam.update', $datateam->id_team) : route('datateam.store') }}">
+            {!! csrf_field() !!}
+            {!! isset($datateam) ? method_field('PUT') : '' !!} 
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="exampleInputGame1">Game</label>
+                        <label for="exampleInputGame1">Pilih Game</label>
+                        <input type="hidden" class="form-control" value="{{$datateam->id_team}}" name="id_team">
                         <input type="hidden" class="form-control" value="{{$datagame->id_game}}" name="id_game">
                         <input type="text" class="form-control" value="{{$datagame->nama_game}}" readonly>
                     </div>
@@ -32,7 +34,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label for="exampleInputNama">Nama Team</label>
-                        <input type="text" class="form-control" placeholder="Nama Team" name="nama_team">
+                        <input type="text" class="form-control" value="{{ isset($datateam) ? $datateam->nama_team : ''}}" name="nama_team">
                     </div>
                 </div>
           </div>

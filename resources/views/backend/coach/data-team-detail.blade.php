@@ -5,10 +5,10 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Detail Team</h3>
+          <h3 class="card-title">Anggota Team</h3>
           <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 200px;">
-              <a href="{{route('detailteam.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Member</a>
+            <div class="input-group input-group-sm" style="width: 150px;">
+              <a href="{{route('detailteam.create')}}?id-team={{$id}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
             </div>
         </div>
         </div>
@@ -19,26 +19,25 @@
             <tr>
               <th>No</th>
               <th>Nama</th>
-              {{-- <th>Foto</th>
-              <th>Winrate</th>
-              <th>Aksi</th> --}}
+              <th>Aksi</th>
             </tr>
             </thead>
             <tbody>
               @php
                   $no = 1;
               @endphp
-              @foreach ($detailteam as $m)
-                <td>{{$no++}}</td>
-                <td>{{$m->name}}</td>
-                {{-- <td><img src="{{ asset('images/'.$member->foto)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
-                <td><img src="{{ asset('images/'.$member->winrate)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
-                <td>
-                  <form action="{{ $member->id_team == 1 ? route('detailteam.remove', $member->id_team) : route('detailteam.remove', $member->id_player)}}" method="POST">
-                    @method('PUT')
-                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Mengeluarkan User Ini Dari Team?')">Non-Active</button> 
-                    </form>
-                </td> --}}
+              @foreach ($detailteam as $member)
+                  <tr>
+                      <td>{{$no++}}</td>
+                      <td>{{$member->name}}</td>
+                      <td>
+                        {{-- <form action="{{ route('datajadwal.destroy', $dt->id_jadwal) }}" method="POST"> --}}
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
+                        {{-- </form> --}}
+                      </td>
+                  </tr>
               @endforeach
             </tbody>
           </table>

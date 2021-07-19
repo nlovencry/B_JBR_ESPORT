@@ -18,13 +18,6 @@ class DataCoachController extends Controller
                             ->leftjoin('users','coach.id','=','users.id')
                             ->leftjoin('game','game.id_game','coach.id_game')
                             ->get();
-        // $coach_id = $datacoach->id_coach;
-        // $detailcoach = DB::table('coach')
-        //                     ->select('coach.*','users.*')
-        //                     ->join('users','coach.id','=','users.id')
-        //                     ->where('id_coach',$coach_id)
-        //                     ->get();
-        //                     dd($detailcoach);
         return view('backend.admin.data-coach', compact('datacoach'));
     }
 
@@ -55,6 +48,7 @@ class DataCoachController extends Controller
             'alamat' => $request->alamat,
             'password' => bcrypt('12345678'),
             'role' => '2',
+            'is_active' => '1',
         ]);
         $coach_id = $user->id;
         if($request->hasfile('foto')){
@@ -72,7 +66,6 @@ class DataCoachController extends Controller
                 'id_game' => $request->id_game,
                 'foto' => $namafoto,
                 'winrate' => $namawin,
-                'is_active' => '1',
                 'created_at' => $tanggal,
                 'updated_at' => $tanggal,
         ];
@@ -82,9 +75,8 @@ class DataCoachController extends Controller
 
     public function edit($id_coach){
         $datacoach = DB::table('coach')
-                            ->select('coach.*','users.*','game.nama_game')
+                            ->select('coach.*','users.*')
                             ->join('users','coach.id','=','users.id')
-                            ->leftjoin('game','coach.id_game','=','game.id_game')
                             ->where('id_coach',$id_coach)
                             ->first();
         //dd($datacoach);
@@ -115,6 +107,7 @@ class DataCoachController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'role' => 2,
+            'is_active' => '1',
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
@@ -132,15 +125,21 @@ class DataCoachController extends Controller
         return redirect()->route('datacoach.index')->with('success','Data Coach Berhasil Diperbarui');
     }
 
-    public function nonactive($id_coach){
-        DB::table('coach')->where('id_coach',$id_coach)->update([
+    public function nonactive($id){
+        DB::table('users')
+                    ->select('users.*','coach.*')
+                    ->leftjoin('coach','coach.id','=','users.id')
+                    ->where('coach.id',$id)->update([
             'is_active' => 2,
         ]);
         return redirect()->route('datacoach.index');
     }
 
-    public function active($id_coach){
-        DB::table('coach')->where('id_coach',$id_coach)->update([
+    public function active($id){
+        DB::table('users')
+                    ->select('users.*','coach.*')
+                    ->leftjoin('coach','coach.id','=','users.id')
+                    ->where('coach.id',$id)->update([
             'is_active' => 1,
         ]);
         return redirect()->route('datacoach.index');

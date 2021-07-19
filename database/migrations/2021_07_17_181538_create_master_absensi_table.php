@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoachTable extends Migration
+class CreateMasterAbsensiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCoachTable extends Migration
      */
     public function up()
     {
-        Schema::create('coach', function (Blueprint $table) {
-            $table->bigIncrements('id_coach')->unique();
-            $table->bigInteger('id')->unsigned();
-            $table->bigInteger('id_game')->unsigned();
-            $table->string('foto', 100);
-            $table->string('winrate', 100);
+        Schema::create('master_absensi', function (Blueprint $table) {
+            $table->bigIncrements('id')->unique();
+            $table->bigInteger('id_jadwal')->unsigned();
+            $table->bigInteger('id_player')->unsigned();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateCoachTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coach');
+        Schema::dropIfExists('master_absensi');
     }
 }

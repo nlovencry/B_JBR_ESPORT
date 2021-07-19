@@ -50,6 +50,7 @@ class DataPlayerController extends Controller
             'alamat' => $request->alamat,
             'password' => bcrypt('12345678'),
             'role' => '3',
+            'is_active' => 1,
         ]);
         $player_id = $user->id;
         if($request->hasfile('foto')){
@@ -71,7 +72,6 @@ class DataPlayerController extends Controller
                 'izin_ortu' => $request->izin_ortu,
                 'bersedia_offline' => $request->bersedia_offline,
                 'nohp_ortu' => $request->nohp_ortu,
-                'is_active' => 1,
                 'created_at' => $tanggal,
                 'updated_at' => $tanggal,
             ];
@@ -114,6 +114,7 @@ class DataPlayerController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'role' => 3,
+            'is_active' => 1,
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
@@ -125,7 +126,6 @@ class DataPlayerController extends Controller
             'izin_ortu' => $request->izin_ortu,
             'bersedia_offline' => $request->bersedia_offline,
             'nohp_ortu' => $request->nohp_ortu,
-            'is_active' => 1,
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
          ];
@@ -135,15 +135,21 @@ class DataPlayerController extends Controller
         return redirect()->route('dataplayer.index')->with('success','Data Player Berhasil Diperbarui');
     }
 
-    public function nonactive($id_player){
-        DB::table('player')->where('id_player',$id_player)->update([
+    public function nonactive($id){
+        DB::table('users')
+                    ->select('users.*','player.*')
+                    ->leftjoin('player','player.id','=','users.id')
+                    ->where('player.id',$id)->update([
             'is_active' => 2,
         ]);
         return redirect()->route('dataplayer.index');
     }
 
-    public function active($id_player){
-        DB::table('player')->where('id_player',$id_player)->update([
+    public function active($id){
+        DB::table('users')
+                    ->select('users.*','player.*')
+                    ->leftjoin('player','player.id','=','users.id')
+                    ->where('player.id',$id)->update([
             'is_active' => 1,
         ]);
         return redirect()->route('dataplayer.index');

@@ -27,8 +27,9 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'auth'], function(){
     Route::resource('dataevent','DataEventController');
     Route::resource('datateam','DataTeamController');
     Route::resource('detailteam','DetailTeamController');
+    Route::post('profile/ubah','ProfileController@ubah')->name('profile.ubah');
     Route::resource('profile','ProfileController');
-    Route::post('profile/change','ProfileController@change')->name('profile.change');
+    Route::get('profile/show','ProfileController@show')->name('profile.show');
     Route::put('datacoach/nonactive/{datacoach}','DataCoachController@nonactive')->name('datacoach.nonactive');
     Route::put('datacoach/active/{datacoach}','DataCoachController@active')->name('datacoach.active');
     Route::put('dataplayer/nonactive/{dataplayer}','DataPlayerController@nonactive')->name('dataplayer.nonactive');

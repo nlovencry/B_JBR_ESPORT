@@ -23,7 +23,6 @@ class CreatePlayerTable extends Migration
             $table->string('izin_ortu', 5);
             $table->string('bersedia_offline', 5);
             $table->string('nohp_ortu', 13);
-            $table->string('is_active', 5);
             $table->timestamps();
         });
     }
