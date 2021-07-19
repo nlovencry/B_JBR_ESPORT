@@ -38,7 +38,7 @@
                       </td>
                       <td><img src="{{ asset('images/'.$dp->foto)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
                       <td>
-                        <form action="{{ $dp->is_active == 1 ? route('player.nonactive', $dp->id_player) : route('player.active', $dp->id_player)}}" method="POST">
+                        <form action="{{ $dp->is_active == 1 ? route('player.nonactive', $dp->id) : route('player.active', $dp->id)}}" method="POST">
                           <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_player">
                             Detail
                           </button>

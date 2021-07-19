@@ -5,12 +5,7 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Jadwal Latihan</h3>
-          <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 150px;">
-              <a href="{{ route('datajadwal.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
-            </div>
-        </div>
+          <h3 class="card-title">Detail Presensi</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -18,33 +13,21 @@
             <thead>
             <tr>
               <th>No</th>
-              <th>Team</th>
-              <th>Nama Jadwal</th>
-              <th>Waktu</th>
-              <th>Keterangan</th>
-              <th>Aksi</th>
+              <th>Nama</th>
+              <th>Nama Team</th>
+              <th>Waktu Presensi</th>
             </tr>
             </thead>
             <tbody>
               @php
                   $no = 1;
               @endphp
-              @foreach ($jadwal as $jd)
+              @foreach ($detailjadwal as $presensi)
                   <tr>
                       <td>{{$no++}}</td>
-                      <td>{{$jd->nama_team}}</td>
-                      <td>{{$jd->nama_jadwal}}</td>
-                      <td>{{$jd->waktu_mulai}}</td>
-                      <td>{{$jd->keterangan}}</td>
-                      <td>
-                        <form action="{{ route('datajadwal.destroy', $jd->id_jadwal) }}" method="POST">
-                        <a href="{{route('detailjadwal.show', $jd->id_jadwal)}}" class="btn btn-info btn-sm">Detail</a>
-                        <a href="{{ route('datajadwal.edit',$jd->id_jadwal)}}" class="btn btn-warning btn-sm">Edit</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
-                        </form>
-                      </td>
+                      <td>{{$presensi->name}}</td>
+                      <td>{{$presensi->nama_team}}</td>
+                      <td>{{$presensi->created_at}}</td>
                   </tr>
               @endforeach
             </tbody>

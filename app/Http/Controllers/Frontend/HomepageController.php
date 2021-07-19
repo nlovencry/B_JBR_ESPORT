@@ -20,6 +20,6 @@ class HomepageController extends Controller
         ->latest('player.created_at')
         ->paginate(4);
         // dd($player);
-        return view('frontend.index',compact('games','event'));
+        return view('frontend.index',compact('games','event','player'));
     }
 }
