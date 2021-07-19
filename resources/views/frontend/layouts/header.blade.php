@@ -8,8 +8,8 @@
 	<header class="header-section">
 		<div class="container">
 			<!-- logo -->
-			<a class="site-logo" href="index.html">
-				<img src="{{asset('frontend/img/pdpkn.png')}}" alt="">
+			<a class="site-logo" href="index.php">
+				<img src="{{asset('frontend/img/logo.png')}}" alt="">
 			</a>
 			<div class="user-panel">
 				@if (Auth::user())
@@ -33,6 +33,7 @@
 			@if (Auth::user())
 			<nav class="main-menu">
 				<ul>
+					
 					<li><a href="#">Home</a></li>
 					<li><a href="#">Team</a></li>
 					<li><a href="#">Tournament</a></li>
@@ -44,11 +45,11 @@
 			</nav>
 			@else
 			<nav class="main-menu">
+				
 				<ul>
 					<li><a href="#">Home</a></li>
 					<li><a href="#">Team</a></li>
 					<li><a href="#">Tournament</a></li>
-					<li><a href="#">Contact</a></li>
 				</ul>
 			</nav>
 				@endif
