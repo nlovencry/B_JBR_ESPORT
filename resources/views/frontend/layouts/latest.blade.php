@@ -8,7 +8,6 @@
             <div class="col-lg-4">
                 <div class="footer-logo text-white">
                     <img src="{{asset('frontend/img/footer-pdpkn.png')}}" alt="">
-                    <p>Pasport adalah singkatan dari Padepokan Santri E-sport yang merupakan web  manajemen dan web profile yang bergerak di bidang game e-sport. Di dalam website ini, terdapat fitur manajemen komunitas serta profile player.
                     </p>
                 </div>
             </div>
