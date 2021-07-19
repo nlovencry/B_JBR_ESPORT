@@ -27,10 +27,10 @@
 
 <!-- Latest news section -->
 <div class="latest-news-section">
-    <div class="ln-title">Latest News</div>
+    <div class="ln-title">News Event</div>
     <div class="news-ticker">
         <div class="news-ticker-contant">
-            @foreach ($event as $tour)
+            @foreach ($eventfoot as $tour)
                 <div class="nt-item"><span class="new">NEW</span>{{$tour->nama_event}}</div>
             @endforeach
         </div>

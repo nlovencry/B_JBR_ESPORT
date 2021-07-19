@@ -2,7 +2,7 @@
 <section class="recent-game-section spad set-bg" data-setbg="{{asset('frontend/img/recent-game-bg.png')}}">
     <div class="container">
         <div class="section-title">
-            <h2>Recent Games</h2>
+            <h2>Recent Team</h2>
         </div>
         <div class="row">
             @foreach ($games as $item)
@@ -13,8 +13,8 @@
                     </div>
                     <div class="rgi-content">
                         <h5>{{$item->nama_game}}</h5>
-                        <p>Lorem ipsum</p>
-                        <a href="#" class="comment">3 Comments</a>
+                        <p>{{$item->keterangan}}</p>
+                        <a href="#" class="comment">Tim</a>
                         <div class="rgi-extra">
                             <div class="rgi-star"><img src="{{asset('frontend/img/icons/star.png')}}" alt=""></div>
                             <div class="rgi-heart"><img src="{{asset('frontend/img/icons/heart.png')}}" alt=""></div>

@@ -8,72 +8,47 @@
             <div class="col-lg-4">
                 <div class="footer-logo text-white">
                     <img src="{{asset('frontend/img/footer-pdpkn.png')}}" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum dolor sit ame.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="footer-widget mb-5 mb-md-0">
-                    <h4 class="fw-title">UWUW</h4>
-                    <div class="latest-blog">
-                        <div class="lb-item">
-                            <div class="lb-thumb set-bg" data-setbg="{{asset('frontend/img/latest-blog/1.jpg')}}"></div>
-                            <div class="lb-content">
-                                <div class="lb-date">June 21, 2018</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-                                <a href="#" class="lb-author">By Admin</a>
-                            </div>
-                        </div>
-                        <div class="lb-item">
-                            <div class="lb-thumb set-bg" data-setbg="{{asset('frontend/img/latest-blog/2.jpg')}}"></div>
-                            <div class="lb-content">
-                                <div class="lb-date">June 21, 2018</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-                                <a href="#" class="lb-author">By Admin</a>
-                            </div>
-                        </div>
-                        <div class="lb-item">
-                            <div class="lb-thumb set-bg" data-setbg="{{asset('frontend/img/latest-blog/3.jpg')}}"></div>
-                            <div class="lb-content">
-                                <div class="lb-date">June 21, 2018</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisc ing ipsum </p>
-                                <a href="#" class="lb-author">By Admin</a>
-                            </div>
-                        </div>
-                    </div>
+                    <p>Pasport adalah singkatan dari Padepokan Santri E-sport yang merupakan web  manajemen dan web profile yang bergerak di bidang game e-sport. Di dalam website ini, terdapat fitur manajemen komunitas serta profile player.
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="footer-widget">
-                    <h4 class="fw-title">Top Comments</h4>
+                    <h4 class="fw-title">Latest Tournament</h4>
+                        @foreach ($eventfoot as $item)
+                        <div class="latest-blog">
+                            <div class="lb-item">
+                                <div class="lb-thumb set-bg" data-setbg="{{ asset('images/'.$item->gambar)}}"></div>
+                                    <div class="lb-content">
+                                        <p>{{$item->tanggal_mulai}}</p>
+                                        <p>{{$item->nama_event}}</p>
+                                        <p>{{$item->slot}} Slot</p>
+                                        <p><div class="lb-date">Prizes: {{$item->price}}</div></p>
+                                </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-widget">
+                    <h4 class="fw-title">News Player</h4>
                     <div class="top-comment">
+                        @foreach ($playerfoot as $item)
                         <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="{{asset('frontend/img/authors/1.jpg')}}"></div>
+                            <div class="tc-thumb set-bg" data-setbg="{{ asset('images/'.$item->foto)}}"></div>
                             <div class="tc-content">
-                                <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
+                                <p><a href="#">{{$item->name}}</a></p>
+                                <p><span>Email:  </span>{{$item->email}}</p>
+                                <p><span>Usia:  </span>{{$item->usia}}</p>
+                                <p><span>Alamat:  </span>{{$item->alamat}}</p>
+                                <div class="tc-date"> @if ($item->is_active == 1)
+                                    {{ 'Active' }}
+                                    @else
+                                    {{ 'Non-Active' }}
+                                    @endif</div>
                         </div>
-                        <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="{{asset('frontend/img/authors/2.jpg')}}"></div>
-                            <div class="tc-content">
-                                <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
-                        </div>
-                        <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="{{asset('frontend/img/authors/3.jpg')}}"></div>
-                            <div class="tc-content">
-                                <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
-                        </div>
-                        <div class="tc-item">
-                            <div class="tc-thumb set-bg" data-setbg="{{asset('frontend/img/authors/4.jpg')}}"></div>
-                            <div class="tc-content">
-                                <p><a href="#">James Smith</a> <span>on</span>  Lorem ipsum dolor sit amet, co</p>
-                                <div class="tc-date">June 21, 2018</div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

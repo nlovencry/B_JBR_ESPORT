@@ -12,9 +12,9 @@
                         <div class="ti-text">
                             <h4>{{$item->nama_event}}</h4>
                             <ul>
-                                <li><span>Tournament Beggins:</span> {{$item->tanggal_mulai}}</li>
-                                <li><span>Tounament Ends:</span> {{$item->tanggal_akhir}}</li>
-                                <li><span>Participants:</span> 10 teams</li>
+                                <li><span>Tournament Register:</span> {{$item->tgl_mulai_pendaftaran}}</li>
+                                <li><span>Tournament Begins:</span> {{$item->tanggal_mulai}}</li>
+                                <li><span>Participants:</span> {{$item->slot}} slot</li>
                                 <li><span>Tournament Author:</span> Admin</li>
                             </ul>
                             <p><span>Prizes:</span> {{$item->price}}</p>
