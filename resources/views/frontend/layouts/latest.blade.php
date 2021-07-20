@@ -23,10 +23,10 @@
                                         <p>{{$item->nama_event}}</p>
                                         <p>{{$item->slot}} Slot</p>
                                         <p><div class="lb-date">Prizes: {{$item->price}}</div></p>
-                                </div>
+                                    </div>
+                            </div>
                         </div>
-                    </div>
-                    @endforeach
+                        @endforeach
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">

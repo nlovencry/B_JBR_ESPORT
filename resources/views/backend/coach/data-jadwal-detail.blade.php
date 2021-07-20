@@ -27,7 +27,7 @@
                       <td>{{$no++}}</td>
                       <td>{{$presensi->name}}</td>
                       <td>{{$presensi->nama_team}}</td>
-                      <td>{{$presensi->created_at}}</td>
+                      <td>{{date("H:i", strtotime($presensi->created));}}</td>
                   </tr>
               @endforeach
             </tbody>

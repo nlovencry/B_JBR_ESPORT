@@ -37,13 +37,13 @@
                       <td>{{$dt->total_player}}</td>
                       <td>{{$dt->name}}</td>
                       <td>
-                        {{-- <form action="{{ route('datajadwal.destroy', $dt->id_jadwal) }}" method="POST"> --}}
+                        <form action="{{ route('datateam.destroy', $dt->id_team) }}" method="POST">
                         <a href="{{route('detailteam.show', $dt->id_team)}}" class="btn btn-info btn-sm">Lihat</a>
                         <a href="{{ route('datateam.edit',$dt->id_team)}}" class="btn btn-warning btn-sm">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
-                        {{-- </form> --}}
+                        </form>
                       </td>
                   </tr>
               @endforeach

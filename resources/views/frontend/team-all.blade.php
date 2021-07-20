@@ -13,7 +13,7 @@
 									<div class="cata new">{{$team->nama_game}}</div>
 								</div>
 								<div class="rgi-content">
-									<h5><a href="#">{{$team->nama_team}}</a></h5>
+									<h5><a href="{{route('allteam.show',$team->id_team)}}">{{$team->nama_team}}</a></h5>
 									<p>Coach : {{$team->name}} </p>
 									<a href="#" class="comment">Jumlah Anggota : {{$team->total_player}}</a>
 								</div>

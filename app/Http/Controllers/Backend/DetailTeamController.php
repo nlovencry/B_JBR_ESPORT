@@ -45,4 +45,14 @@ class DetailTeamController extends Controller
         DB::table('player')->where('id_player',$request->id_player)->update($data);
         return redirect()->route('detailteam.show',$request->id_team)->with('success','Data Team Berhasil Diperbarui');
     }
+
+    public function remove($id){
+        DB::table('users')
+                    ->select('users.id','player.id_player','player.id_team')
+                    ->leftjoin('player','player.id','=','users.id')
+                    ->where('player.id',$id)->update([
+            'id_team' => 0,
+        ]);
+        return redirect()->route('datateam.index');
+    }
 }

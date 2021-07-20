@@ -42,6 +42,8 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'auth'], function(){
 Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/','HomepageController@index')->name('index');
     Route::resource('allteam','AllTeamController');
+    Route::get('jadwal','JadwalController@index')->name('jadwal');
+    Route::resource('profil','ProfileController');
 });
 
 // Route::group(['middleware' => ['auth']], function (){
