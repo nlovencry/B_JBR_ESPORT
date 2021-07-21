@@ -50,16 +50,20 @@ class DataPlayerController extends Controller
             'alamat' => $request->alamat,
             'password' => bcrypt('12345678'),
             'role' => '3',
+            'is_active' => 1,
         ]);
         $player_id = $user->id;
         if($request->hasfile('foto')){
             $foto = $request->file('foto');
-            $winrate = $request->file('winrate');
-            $namafoto = $request->name.'_'.$foto->getClientOriginalName();
-            $namawin = $request->name.'_'.$winrate->getClientOriginalName();
+            $namafoto = $player_id.'_'.$foto->getClientOriginalName();
             $pathfoto = $foto->move('images',$namafoto);
-            $pathfoto = $winrate->move('images',$namawin);
-            DB::table('player')->insert([
+        }
+        if($request->hasfile('winrate')){
+            $winrate = $request->file('winrate');
+            $namawin = $player_id.'_'.$winrate->getClientOriginalName();
+            $pathwin = $winrate->move('images',$namawin);
+        }
+        $data = [
                 'id' => $player_id,
                 'id_game' => $request->id_game,
                 'id_team' => 0,
@@ -68,11 +72,10 @@ class DataPlayerController extends Controller
                 'izin_ortu' => $request->izin_ortu,
                 'bersedia_offline' => $request->bersedia_offline,
                 'nohp_ortu' => $request->nohp_ortu,
-                'is_active' => 1,
                 'created_at' => $tanggal,
                 'updated_at' => $tanggal,
-            ]);
-        }
+            ];
+        DB::table('player')->insert([$data]);
         return redirect()->route('dataplayer.index')->with('success','Data Player Berhasil Disimpan');
     }
 
@@ -89,18 +92,20 @@ class DataPlayerController extends Controller
     }
 
     public function update(Request $request){
-         $tanggal = now();
-         $date = Carbon::parse($request->tanggal);
-         $namafoto =  $request->foto;
-         $namawin =  $request->winrate;
-         if($request->hasfile('foto')){
+        $tanggal = now();
+        $date = Carbon::parse($request->tanggal);
+        $namafoto =  $request->foto;
+        $namawin =  $request->winrate;
+        if($request->hasfile('foto')){
             $foto = $request->file('foto');
-            $winrate = $request->file('winrate');
-            $namafoto = $request->name.'_'.$foto->getClientOriginalName();
-            $namawin = $request->name.'_'.$winrate->getClientOriginalName();
+            $namafoto = $request->id.'_'.$foto->getClientOriginalName();
             $pathfoto = $foto->move('images',$namafoto);
+        }
+        if($request->hasfile('winrate')){
+            $winrate = $request->file('winrate');
+            $namawin = $request->id.'_'.$winrate->getClientOriginalName();
             $pathwin = $winrate->move('images',$namawin);
-         }
+        }
          $user = [
             'email' => strtolower($request->email),
             'name' => ucwords(strtolower($request->name)),
@@ -109,6 +114,7 @@ class DataPlayerController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'role' => 3,
+            'is_active' => 1,
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
@@ -120,7 +126,6 @@ class DataPlayerController extends Controller
             'izin_ortu' => $request->izin_ortu,
             'bersedia_offline' => $request->bersedia_offline,
             'nohp_ortu' => $request->nohp_ortu,
-            'is_active' => 1,
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
          ];
@@ -130,15 +135,21 @@ class DataPlayerController extends Controller
         return redirect()->route('dataplayer.index')->with('success','Data Player Berhasil Diperbarui');
     }
 
-    public function nonactive($id_player){
-        DB::table('player')->where('id_player',$id_player)->update([
+    public function nonactive($id){
+        DB::table('users')
+                    ->select('users.*','player.*')
+                    ->leftjoin('player','player.id','=','users.id')
+                    ->where('player.id',$id)->update([
             'is_active' => 2,
         ]);
         return redirect()->route('dataplayer.index');
     }
 
-    public function active($id_player){
-        DB::table('player')->where('id_player',$id_player)->update([
+    public function active($id){
+        DB::table('users')
+                    ->select('users.*','player.*')
+                    ->leftjoin('player','player.id','=','users.id')
+                    ->where('player.id',$id)->update([
             'is_active' => 1,
         ]);
         return redirect()->route('dataplayer.index');

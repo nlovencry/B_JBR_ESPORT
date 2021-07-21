@@ -19,7 +19,6 @@ class CreateCoachTable extends Migration
             $table->bigInteger('id_game')->unsigned();
             $table->string('foto', 100);
             $table->string('winrate', 100);
-            $table->string('is_active', 5);
             $table->timestamps();
         });
     }

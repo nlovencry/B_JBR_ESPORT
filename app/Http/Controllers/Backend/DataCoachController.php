@@ -15,10 +15,9 @@ class DataCoachController extends Controller
     public function index(){
         $datacoach = DB::table('coach')
                             ->select('coach.*','users.*','game.nama_game')
-                            ->join('users','coach.id','=','users.id')
-                            ->leftjoin('game','coach.id_game','=','game.id_game')
+                            ->leftjoin('users','coach.id','=','users.id')
+                            ->leftjoin('game','game.id_game','coach.id_game')
                             ->get();
-                            // dd($datacoach);
         return view('backend.admin.data-coach', compact('datacoach'));
     }
 
@@ -41,42 +40,46 @@ class DataCoachController extends Controller
         $tanggal = now();
         $date = Carbon::parse($request->tanggal);
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => ucwords(strtolower($request->name)),
+            'email' => strtolower($request->email),
             'jenis_kelamin' => $request->jenis_kelamin,
             'usia' => $request->usia,
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'password' => bcrypt('12345678'),
             'role' => '2',
+            'is_active' => '1',
         ]);
         $coach_id = $user->id;
         if($request->hasfile('foto')){
             $foto = $request->file('foto');
-            $winrate = $request->file('winrate');
-            $namafoto = $request->name.'_'.$foto->getClientOriginalName();
-            $namawin = $request->name.'_'.$winrate->getClientOriginalName();
+            $namafoto = $coach_id.'_'.$foto->getClientOriginalName();
             $pathfoto = $foto->move('images',$namafoto);
+        }
+        if($request->hasfile('winrate')){
+            $winrate = $request->file('winrate');
+            $namawin = $coach_id.'_'.$winrate->getClientOriginalName();
             $pathwin = $winrate->move('images',$namawin);
-            DB::table('coach')->insert([
+        }
+        $data =[
                 'id' => $coach_id,
                 'id_game' => $request->id_game,
                 'foto' => $namafoto,
                 'winrate' => $namawin,
-                'is_active' => '1',
                 'created_at' => $tanggal,
                 'updated_at' => $tanggal,
-            ]);
-        }
+        ];
+        DB::table('coach')->insert([$data]);
         return redirect()->route('datacoach.index');
     }
 
     public function edit($id_coach){
         $datacoach = DB::table('coach')
-                            ->select('coach.*','users.*','game.nama_game')
+                            ->select('coach.*','users.*')
                             ->join('users','coach.id','=','users.id')
-                            ->leftjoin('game','coach.id_game','=','game.id_game')
+                            ->where('id_coach',$id_coach)
                             ->first();
+        //dd($datacoach);
         $datagame = Game::all();
         return view('backend.admin.data-coach-edit',compact('datacoach','datagame'));
     }
@@ -86,12 +89,14 @@ class DataCoachController extends Controller
         $date = Carbon::parse($request->tanggal);
         $namafoto =  $request->foto;
         $namawin =  $request->winrate;
-        if($request->hasfile('foto','winrate')){
+        if($request->hasfile('foto')){
             $foto = $request->file('foto');
-            $winrate = $request->file('winrate');
-            $namafoto = $request->name.'_'.$foto->getClientOriginalName();
-            $namawin = $request->name.'_'.$winrate->getClientOriginalName();
+            $namafoto = $request->id.'_'.$foto->getClientOriginalName();
             $pathfoto = $foto->move('images',$namafoto);
+        }
+        if($request->hasfile('winrate')){
+            $winrate = $request->file('winrate');
+            $namawin = $request->id.'_'.$winrate->getClientOriginalName();
             $pathwin = $winrate->move('images',$namawin);
         }
         $user = [
@@ -102,6 +107,7 @@ class DataCoachController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'role' => 2,
+            'is_active' => '1',
             'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
@@ -119,15 +125,21 @@ class DataCoachController extends Controller
         return redirect()->route('datacoach.index')->with('success','Data Coach Berhasil Diperbarui');
     }
 
-    public function nonactive($id_coach){
-        DB::table('coach')->where('id_coach',$id_coach)->update([
+    public function nonactive($id){
+        DB::table('users')
+                    ->select('users.*','coach.*')
+                    ->leftjoin('coach','coach.id','=','users.id')
+                    ->where('coach.id',$id)->update([
             'is_active' => 2,
         ]);
         return redirect()->route('datacoach.index');
     }
 
-    public function active($id_coach){
-        DB::table('coach')->where('id_coach',$id_coach)->update([
+    public function active($id){
+        DB::table('users')
+                    ->select('users.*','coach.*')
+                    ->leftjoin('coach','coach.id','=','users.id')
+                    ->where('coach.id',$id)->update([
             'is_active' => 1,
         ]);
         return redirect()->route('datacoach.index');

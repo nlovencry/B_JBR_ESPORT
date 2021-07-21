@@ -16,6 +16,24 @@
               <form method="POST" action="{{ route('dataevent.store')}}" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <div class="card-body">
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                      <strong>Whoops!</strong> There were some problems with your input. <br><br>
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+                  @endif
+                  <div class="row">
+                    <label for="exampleInputGame1">Pilih Game</label>
+                    <select name="id_game" class="form-control" required>
+                      @foreach ($datagame as $game)
+                        <option value="{{$game->id_game}}">{{$game->nama_game}}</option>
+                      @endforeach 
+                    </select>
+                  </div>
                   <div class="row">
                     <div class="col-12">
                       <label for="exampleInputNama">Nama Tournament</label>
@@ -23,9 +41,13 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-12">
-                      <label for="exampleInputTanggal">Tanggal Pendaftaran</label>
-                      <input type="date" name="tanggal_pendaftaran" class="form-control" placeholder="Pilih Tanggal" required>
+                    <div class="col-6">
+                      <label for="exampleInputTanggal">Tanggal Mulai Pendaftaran</label>
+                      <input type="date" name="tgl_mulai_pendaftaran" class="form-control" placeholder="Pilih Tanggal" required>
+                    </div>
+                    <div class="col-6">
+                      <label for="exampleInputTanggal">Tanggal Akhir Pendaftaran</label>
+                      <input type="date" name="tgl_akhir_pendaftaran" class="form-control" placeholder="Pilih Tanggal" required>
                     </div>
                   </div>
                   <div class="row">
@@ -37,6 +59,12 @@
                         <label for="exampleInputTanggal">Tanggal Akhir</label>
                         <input type="date" name="tanggal_akhir" class="form-control" placeholder="Pilih Tanggal" required>
                       </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <label for="exampleInputPrice">Slot/Participant</label>
+                      <input type="number" name="slot" class="form-control" placeholder="Total Hadiah" required>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-12">
@@ -63,6 +91,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
+                  <a href="{{ url('dataevent')}}" class="btn btn-secondary">Cancel</a>
                 </div>
               </form>
             </div>

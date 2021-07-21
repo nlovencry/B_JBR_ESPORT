@@ -5,11 +5,11 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Detail Team </h3>
+          <h3 class="card-title">Anggota Team</h3>
           <div class="card-tools">
-            {{-- <div class="input-group input-group-sm" style="width: 150px;">
-              <a href="{{route('teamdetail.create')}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
-            </div> --}}
+            <div class="input-group input-group-sm" style="width: 150px;">
+              <a href="{{route('detailteam.create')}}?id-team={{$id}}" class="btn btn-primary"><span><i class="fa fa-plus"></i></span> Tambah Data</a>
+            </div>
         </div>
         </div>
         <!-- /.card-header -->
@@ -18,10 +18,8 @@
             <thead>
             <tr>
               <th>No</th>
-              <th>Game</th>
-              <th>Nama Team</th>
-              <th>Jumlah Anggota</th>
-              <th>Nama Coach</th>
+              <th>Nama</th>
+              <th>Status</th>
               <th>Aksi</th>
             </tr>
             </thead>
@@ -29,7 +27,26 @@
               @php
                   $no = 1;
               @endphp
-              
+              @foreach ($detailteam as $member)
+                  <tr>
+                      <td>{{$no++}}</td>
+                      <td>{{$member->name}}</td>
+                      <td>
+                        @if ($member->is_active == 1)
+                            active
+                        @else
+                            non-active
+                        @endif
+                      </td>
+                      <td>
+                        <form action="{{ route('detailteam.remove', $member->id) }}" method="POST">
+                          @csrf
+                          @method('PUT')
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Remove</button>
+                        </form>
+                      </td>
+                  </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

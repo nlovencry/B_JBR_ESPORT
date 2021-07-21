@@ -17,14 +17,15 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <label for="exampleInputGame1">Pilih Game</label>
-                        <input type="text" class="form-control" value="{{auth()->user()->nama_game}}" readonly>
+                        <label for="exampleInputGame1">Game</label>
+                        <input type="hidden" class="form-control" value="{{$datagame->id_game}}" name="id_game">
+                        <input type="text" class="form-control" value="{{$datagame->nama_game}}" readonly>
                     </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                       <label for="exampleInputNama">Nama Coach</label>
-                      <input type="text" class="form-control" value="{{auth()->user()->id_coach}}" readonly>
+                      <input type="hidden" class="form-control" value="{{$coach->id_coach}}" name="id_coach">
                       <input type="text" class="form-control" value="{{auth()->user()->name}}" readonly>
                   </div>
               </div>
@@ -38,6 +39,7 @@
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ url('datateam')}}" class="btn btn-secondary">Cancel</a>
           </div>
         </form>
       </div>

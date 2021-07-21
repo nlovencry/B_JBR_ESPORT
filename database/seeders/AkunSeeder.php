@@ -24,7 +24,8 @@ class AkunSeeder extends Seeder
                 'alamat' => 'BWI',
                 'password' => bcrypt('12345678'),
                 'role' => 1,
-            ]
+                'is_active' => 1
+            ],               
         ];
             foreach ($user as $key => $value) {
                 User::create($value);

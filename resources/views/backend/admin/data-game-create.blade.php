@@ -23,19 +23,11 @@
               <label for="exampleInputKet">Keterangan</label>
               <textarea name="keterangan" id="" rows="7" class="form-control"></textarea>
             </div>
-            <div class="form-group">
-              <label for="exampleInputFile">Background</label>
-              <div class="input-group">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="foto" name="bg" onchange="previewFile(this)">
-                  <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                </div>
-              </div>
-            </div>
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ url('datagame')}}" class="btn btn-secondary">Cancel</a>
           </div>
         </form>
       </div>

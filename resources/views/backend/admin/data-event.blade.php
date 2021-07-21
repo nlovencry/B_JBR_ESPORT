@@ -18,10 +18,10 @@
             <thead>
             <tr>
               <th>No</th>
+              <th>Game</th>
               <th>Nama Tournament</th>
-              <th>Tanggal Pendaftaran</th>
+              <th>Slot/Participant</th>
               <th>Hadiah</th>
-              <th>Poster</th>
               <th>Aksi</th>
             </tr>
             </thead>
@@ -32,10 +32,10 @@
               @foreach ($dataevent as $de)
                   <tr>
                       <td>{{$no++}}</td>
+                      <td>{{$de->nama_game}}</td>
                       <td>{{$de->nama_event}}</td>
-                      <td>{{$de->tanggal_pendaftaran}}</td>
+                      <td>{{$de->slot}}</td>
                       <td>{{$de->price}}</td>
-                      <td><img src="{{ asset('images/'.$de->gambar)}}" id="previewImg" alt="foto" style="max-width: 150px; max-height:150px"></td>
                       <td>
                         {{-- <form action="{{ route('dataevent.destroy', $item->id_event) }}" method="POST"> --}}
                           <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_tour">
@@ -60,7 +60,7 @@
   </div>
   <!-- /.row -->
 </div>
-<div class="modal fade" id="detail_player">
+<div class="modal fade" id="detail_tour">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -76,8 +76,14 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <label for="exampleInputTanggal">Tanggal Pendaftaran</label>
-            <input type="email" name="tanggal_pendaftaran" class="form-control" value="{{ isset($de) ? $de->tanggal_pendaftaran : ''}}" readonly>
+            <label for="exampleInputTanggal">Tanggal Mulai Pendaftaran</label>
+            <input type="email" name="tgl_mulai_pendaftaran" class="form-control" value="{{ isset($de) ? $de->tgl_mulai_pendaftaran : ''}}" readonly>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <label for="exampleInputTanggal">Tanggal Akhir Pendaftaran</label>
+            <input type="email" name="tgl_akhir_pendaftaran" class="form-control" value="{{ isset($de) ? $de->tgl_akhir_pendaftaran : ''}}" readonly>
           </div>
         </div>
         <div class="row">
@@ -91,6 +97,12 @@
               <label for="exampleInputTanggal">Tanggal Pendaftaran</label>
               <input type="email" name="tanggal_akhir" class="form-control" value="{{ isset($de) ? $de->tanggal_akhir : ''}}" readonly>
             </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <label for="exampleInputHadiah">Slot/Participant</label>
+            <input type="text" name="slot" class="form-control" value="{{ isset($de) ? $de->slot : ''}}" readonly>
+          </div>
         </div>
         <div class="row">
           <div class="col-12">
