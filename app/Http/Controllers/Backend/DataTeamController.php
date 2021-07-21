@@ -23,7 +23,7 @@ class DataTeamController extends Controller
                         ->groupBy('team.id_team')
                         ->get();
                         // dd($datateam);
-        return view('backend.coach.data-team',compact('datateam'));
+        return view('backend.coach.data-team',compact('datateam','id','coach'));
     }
 
     public function create(){

@@ -5,16 +5,24 @@
             <h2>Recent Team</h2>
         </div>
         <div class="row">
-            @foreach ($games as $item)
+            @foreach ($team as $item)
             <div class="col-lg-4 col-md-6" style="margin-bottom: 25px">
                 <div class="recent-game-item">
-                    <div class="rgi-thumb set-bg" data-setbg="{{asset('frontend/img/recent-game/1.jpg')}}">
-                        <div class="cata new">new</div>
+                    <div class="rgi-thumb set-bg" data-setbg="{{asset('frontend/img/tim.png')}}">
+                        <div class="cata new">{{$item->nama_game}}</div>
                     </div>
                     <div class="rgi-content">
-                        <h5>{{$item->nama_game}}</h5>
-                        <p>{{$item->keterangan}}</p>
-                        <a href="#" class="comment">Tim</a>
+                        <h5>{{$item->nama_team}}</h5>
+                        <ul>
+                            {{-- <p>@if ($item->id_game == 1)
+                                {{ 'Mobile Legend' }}
+                                @elseif ($item->id_game == 2)
+                                {{ 'Free Fire' }}
+                                @elseif ($item->id_game == 3)
+                                {{ 'PUBG' }}
+                                @endif</p> --}}
+                                <p>{{$item->nama_team}}</p>
+                        </ul>
                         <div class="rgi-extra">
                             <div class="rgi-star"><img src="{{asset('frontend/img/icons/star.png')}}" alt=""></div>
                             <div class="rgi-heart"><img src="{{asset('frontend/img/icons/heart.png')}}" alt=""></div>

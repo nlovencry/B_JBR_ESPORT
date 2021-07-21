@@ -26,7 +26,14 @@ class HomepageController extends Controller
         ->leftjoin('game','game.id_game','=','player.id_game')
         ->latest('player.created_at')
         ->paginate(3);
+        $team = DB::table('team')
+        ->select('team.*','coach.*','game.nama_game')
+        ->leftjoin('coach','coach.id_coach','=','team.id_coach')
+        ->leftjoin('game','game.id_game','=','team.id_game')
+        ->latest('team.created_at')
+        ->paginate(3);
+        
         // dd($player);
-        return view('frontend.index',compact('games','event','player','eventfoot','playerfoot'));
+        return view('frontend.index',compact('games','event','player','eventfoot','playerfoot','team'));
     }
 }
