@@ -41,7 +41,7 @@
 								<div class="lb-content">
 									<div class="lb-date">{{$p->name}}</div>
 									<p>Game : {{$p->nama_game}}</p>
-									<p class="lb-author">{{$p->nama_team}}</p>
+									<a href="#" class="lb-author">{{$p->nama_team}}</a>
 								</div>
 							</div>
                             @endforeach
@@ -56,7 +56,7 @@
                                 <div class="review-text">
                                     <h5>{{$t->nama_event}}</h5>
                                     <p>{{$t->nama_game}}</p>
-									<p>Prize : {{$t->price}}</p>
+									<p>{{$t->price}}</p>
                                 </div>
                             @endforeach
 						</div>

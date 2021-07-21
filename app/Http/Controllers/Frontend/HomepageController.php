@@ -13,23 +13,23 @@ class HomepageController extends Controller
     public function index(){
         $games = DB::table('game')->latest()->paginate(3);;
         $event = DB::table('event')
-                            ->select('event.*','game.nama_game')
-                            ->leftjoin('game','game.id_game','=','event.id_game')
-                            ->latest()->paginate(2);
+        ->select('event.*','game.nama_game')
+        ->leftjoin('game','game.id_game','=','event.id_game')
+        ->latest()->paginate(2);
         $eventfoot = Event::latest()->paginate(3);
         $player = DB::table('player')
-                            ->select('player.*','users.*','game.nama_game')
-                            ->leftjoin('users','users.id','=','player.id')
-                            ->leftjoin('game','game.id_game','=','player.id_game')
-                            ->latest('player.created_at')
-                            ->paginate(4);
+        ->select('player.*','users.*','game.nama_game')
+        ->leftjoin('users','users.id','=','player.id')
+        ->leftjoin('game','game.id_game','=','player.id_game')
+        ->latest('player.created_at')
+        ->paginate(4);
         $playerfoot = DB::table('player')
-                            ->select('player.*','users.*','game.nama_game')
-                            ->leftjoin('users','users.id','=','player.id')
-                            ->leftjoin('game','game.id_game','=','player.id_game')
-                            ->where('users.is_active','1')
-                            ->latest('player.created_at')
-                            ->paginate(3);
+        ->select('player.*','users.*','game.nama_game')
+        ->leftjoin('users','users.id','=','player.id')
+        ->leftjoin('game','game.id_game','=','player.id_game')
+        ->where('users.is_active','1')
+        ->latest('player.created_at')
+        ->paginate(3);
         // dd($player);
         return view('frontend.index',compact('games','event','player','eventfoot','playerfoot','team'));
     }

@@ -16,7 +16,6 @@ class AllTeamController extends Controller
                             ->leftjoin('users','users.id','=','player.id')
                             ->leftjoin('game','game.id_game','=','player.id_game')
                             ->leftjoin('team','team.id_team','=','player.id_team')
-                            ->where('users.is_active',1)
                             ->latest('player.created_at')
                             ->paginate(3);
         $datateam = DB::table('team')
@@ -41,7 +40,6 @@ class AllTeamController extends Controller
                             ->leftjoin('users','users.id','=','player.id')
                             ->leftjoin('game','game.id_game','=','player.id_game')
                             ->leftjoin('team','team.id_team','=','player.id_team')
-                            ->where('users.is_active',1)
                             ->latest('player.created_at')
                             ->paginate(3);
         $datacoach = DB::table('team')
