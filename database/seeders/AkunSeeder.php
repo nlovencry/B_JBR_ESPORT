@@ -16,8 +16,8 @@ class AkunSeeder extends Seeder
     {
         $user = [
             [
-                'name' => 'bunga',
-                'email' => 'bunga@gmail.com',
+                'name' => 'hayung',
+                'email' => 'hayung@gmail.com',
                 'jenis_kelamin' => '2',
                 'usia' => '20',
                 'nohp' => '0888888888',

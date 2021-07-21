@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\auth;
+use App\Http\Controllers\Api\Apievent;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::group(['namespace' => 'Api'] ,function(){
+    Route::get('/event','Apievent@index')->name('apievent.index');
+    Route::get('/event/{id_event}','Apievent@show')->name('apievent.show');
+    Route::get('/jadwal','Apijadwal@index')->name('apijadwal.index');
+    Route::get('/jadwal/{id_jadwal}','Apijadwal@show')->name('apijadwal.show');
+});
+Route::post('/login', [auth::class, 'login']);
+Route::get('users/{id}', function ($id) {
+
+});
+
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/logout', [auth::class, 'logout']);
+});
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
