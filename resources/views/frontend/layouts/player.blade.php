@@ -15,18 +15,9 @@
                         <div class="review-text">
                             <h5>{{$item->name}}</h5>
                         </div>
-                            <ul>
-                                <p><span>Email Player:</span> {{$item->email}}
-                                <p><span>Jenis Kelamin:</span>
-                                    @if ($item->jenis_kelamin == 1)
-                                    {{ 'Laki-Laki' }}
-                                    @else
-                                    {{ 'Perempuan' }}
-                                    @endif
-                                <p><span>Usia:</span> {{$item->usia}}
-                                <p><span>No Hp:</span> {{$item->nohp}}
-                                <p><span>Alamat:</span> {{$item->alamat}}
-                            </ul>
+                            <center>
+                                <p>{{$item->nama_game}}</p>
+                            </center>
                         </div>
                     </div>
                 </div>

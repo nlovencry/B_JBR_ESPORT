@@ -90,6 +90,9 @@ class ProfileController extends Controller
     }
 
     public function ubah(Request $request){
+        $this->validate($request, [
+            'password' => 'required', 'string', 'min:8', 'confirmed',
+         ]);
         DB::table('users')->where('id',$request->id)->update([
             'password' => Hash::make($request->password),
         ]);

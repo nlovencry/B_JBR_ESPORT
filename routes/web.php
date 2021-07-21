@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'auth'], function(){
     Route::resource('detailteam','DetailTeamController');
     Route::post('profile/ubah','ProfileController@ubah')->name('profile.ubah');
     Route::resource('profile','ProfileController');
-    Route::get('profile/show','ProfileController@show')->name('profile.show');
+    Route::resource('detailjadwal','DetailJadwalController');
     Route::put('datacoach/nonactive/{datacoach}','DataCoachController@nonactive')->name('datacoach.nonactive');
     Route::put('datacoach/active/{datacoach}','DataCoachController@active')->name('datacoach.active');
     Route::put('dataplayer/nonactive/{dataplayer}','DataPlayerController@nonactive')->name('dataplayer.nonactive');
@@ -41,6 +41,9 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'auth'], function(){
 
 Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/','HomepageController@index')->name('index');
+    Route::resource('allteam','AllTeamController');
+    Route::get('jadwal','JadwalController@index')->name('jadwal');
+    Route::resource('profil','ProfileController');
 });
 
 // Route::group(['middleware' => ['auth']], function (){

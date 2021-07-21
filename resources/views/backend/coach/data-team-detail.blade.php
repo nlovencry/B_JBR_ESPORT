@@ -19,6 +19,7 @@
             <tr>
               <th>No</th>
               <th>Nama</th>
+              <th>Status</th>
               <th>Aksi</th>
             </tr>
             </thead>
@@ -31,11 +32,18 @@
                       <td>{{$no++}}</td>
                       <td>{{$member->name}}</td>
                       <td>
-                        {{-- <form action="{{ route('datajadwal.destroy', $dt->id_jadwal) }}" method="POST"> --}}
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
-                        {{-- </form> --}}
+                        @if ($member->is_active == 1)
+                            active
+                        @else
+                            non-active
+                        @endif
+                      </td>
+                      <td>
+                        <form action="{{ route('detailteam.remove', $member->id) }}" method="POST">
+                          @csrf
+                          @method('PUT')
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Remove</button>
+                        </form>
                       </td>
                   </tr>
               @endforeach

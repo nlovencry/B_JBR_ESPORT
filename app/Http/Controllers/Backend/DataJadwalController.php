@@ -12,7 +12,7 @@ class DataJadwalController extends Controller
     public function index(){
         $jadwal = DB::table('jadwal')
                                 ->select('jadwal.*','team.*')
-                                ->join('team','jadwal.id_team','=','team.id_team')
+                                ->leftjoin('team','jadwal.id_team','=','team.id_team')
                                 ->get();
         // dd($jadwal);
         return view('backend.coach.data-jadwal',compact('jadwal'));
@@ -30,7 +30,7 @@ class DataJadwalController extends Controller
     public function store(Request $request){
         $waktu_asal = $request->tanggal. ' ' . $request->waktu_mulai;
         $waktu_akhir = date('Y-m-d H:i:s',strtotime('+15 minutes',strtotime($waktu_asal)));
-        
+        $tanggal = now();
         $data = [
             'id_game' => $request->id_game,
             'id_coach' => $request->id_coach,
@@ -39,6 +39,8 @@ class DataJadwalController extends Controller
             'waktu_mulai' => $waktu_asal,
             'waktu_akhir' => $waktu_akhir,
             'keterangan' => $request->keterangan,
+            'created_at' => $tanggal,
+            'updated_at' => $tanggal,
         ];
         DB::table('jadwal')->insert($data);
         
@@ -47,17 +49,26 @@ class DataJadwalController extends Controller
 
     public function edit($id_jadwal){
         $datajadwal = DB::table('jadwal')->where('id_jadwal',$id_jadwal)->first();
-        return view('backend.coach.data-jadwal-edit',compact('datajadwal'));
+        $datateam = DB::table('team')->get();
+        return view('backend.coach.data-jadwal-edit',compact('datajadwal','datateam'));
     }
 
     public function update(Request $request){
-        DB::table('jadwal')->where('id_jadwal',$request->id_jadwal)->update([
-            'tanggal' => $request->tanggal,
+        $waktu_asal = $request->tanggal. ' ' . $request->waktu_mulai;
+        $waktu_akhir = date('Y-m-d H:i:s',strtotime('+15 minutes',strtotime($waktu_asal)));
+        $tanggal = now();
+        $data = [
+            'id_game' => $request->id_game,
+            'id_coach' => $request->id_coach,
+            'id_team' => $request->id_team,
             'nama_jadwal' => $request->nama_jadwal,
-            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_mulai' => $waktu_asal,
+            'waktu_akhir' => $waktu_akhir,
             'keterangan' => $request->keterangan,
-        ]);
-
+            'created_at' => $tanggal,
+            'updated_at' => $tanggal,
+        ];
+        DB::table('jadwal')->where('id_jadwal',$request->id_jadwal)->update($data);
         return redirect()->route('datajadwal.index')->with('success','Data Jadwal Berhasil Diperbarui');
     }
 

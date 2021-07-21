@@ -38,6 +38,7 @@
                       <td>{{$jd->keterangan}}</td>
                       <td>
                         <form action="{{ route('datajadwal.destroy', $jd->id_jadwal) }}" method="POST">
+                        <a href="{{route('detailjadwal.show', $jd->id_jadwal)}}" class="btn btn-info btn-sm">Detail</a>
                         <a href="{{ route('datajadwal.edit',$jd->id_jadwal)}}" class="btn btn-warning btn-sm">Edit</a>
                         @csrf
                         @method('DELETE')

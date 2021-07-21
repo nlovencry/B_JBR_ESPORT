@@ -10,7 +10,6 @@ use Auth;
 class DataTeamController extends Controller
 {
     public function index(){
-
         $id = Auth::user()->id;
         $coach = DB::table('coach')->where('id',$id)->first();
         $datateam = DB::table('team')
@@ -59,5 +58,10 @@ class DataTeamController extends Controller
         ];
         DB::table('team')->where('id_team',$request->id_team)->update($data);
         return redirect()->route('datateam.index')->with('success','Data Team Berhasil Diperbarui');
+    }
+
+    public function destroy($id_team){
+        DB::table('team')->where('id_team',$id_team)->delete();
+        return redirect()->route('datateam.index')->with('success','Data Team Berhasil Dihapus');
     }
 }

@@ -28,7 +28,7 @@ class DataEventController extends Controller
         $date = Carbon::parse($request->tanggal);
         if($request->hasfile('gambar')){
             $gambar = $request->file('gambar');
-            $namafoto = $request->nama_event.'_'.$gambar->getClientOriginalName();
+            $namafoto = $request->id_event.'_'.$gambar->getClientOriginalName();
             $pathfoto = $gambar->move('images',$namafoto);
             DB::table('event')->insert([
                 'id_game' => $request->id_game,
@@ -64,7 +64,7 @@ class DataEventController extends Controller
         $namafoto =  $request->img;
         if($request->hasfile('gambar')){
             $gambar = $request->file('gambar');
-            $namafoto = $request->nama_event.'_'.$gambar->getClientOriginalName();
+            $namafoto = $request->id_event.'_'.$gambar->getClientOriginalName();
             $pathfoto = $gambar->move('images',$namafoto);
         }
         $data = [

@@ -65,12 +65,6 @@
               <p>Jadwal Latihan</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-calendar-check"></i>
-              <p>Presensi</p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
