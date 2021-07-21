@@ -22,7 +22,7 @@
     <div class="news-ticker">
         <div class="news-ticker-contant">
             @foreach ($event as $tour)
-                <div class="nt-item"><span class="new">{{$tour->nama_game}}</span>{{$tour->nama_event}}</div>
+                <div class="nt-item"><span class="racing">{{$tour->nama_game}}</span>{{$tour->nama_event}}</div>
             @endforeach
         </div>
     </div>

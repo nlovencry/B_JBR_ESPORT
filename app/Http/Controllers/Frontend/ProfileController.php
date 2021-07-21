@@ -17,6 +17,7 @@ class ProfileController extends Controller
                             ->leftjoin('users','users.id','=','player.id')
                             ->leftjoin('game','game.id_game','=','player.id_game')
                             ->leftjoin('team','team.id_team','=','player.id_team')
+                            ->where('users.is_active','1')
                             ->latest('player.created_at')
                             ->paginate(3);
         $player = DB::table('player')
@@ -25,6 +26,7 @@ class ProfileController extends Controller
                             ->leftjoin('game','game.id_game','=','player.id_game')
                             ->leftjoin('team','team.id_team','=','player.id_team')
                             ->where('users.id',Auth::user()->id)
+                            ->where('users.is_active','1')
                             ->first();
         return view('frontend.profile',compact('eventfoot','playerfoot','player'));
     }
