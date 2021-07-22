@@ -10,5 +10,5 @@ class Event extends Model
     use HasFactory;
     protected $table = 'jadwal';
     protected $PrimaryKey = 'id_jadwal';
-    protected $fillable = ['id_game', 'id_coach', 'tanggal', 'nama_jadwal', 'waktu_mulai', 'keterangan'];
+    protected $fillable = ['id_game', 'id_coach','id_team', 'tanggal', 'nama_jadwal', 'waktu_mulai', 'keterangan'];
 }

@@ -16,14 +16,14 @@ class AkunSeeder extends Seeder
     {
         $user = [
             [
-                'name' => 'hayung',
-                'email' => 'hayung@gmail.com',
+                'name' => 'haya',
+                'email' => 'haya@gmail.com',
                 'jenis_kelamin' => '2',
                 'usia' => '20',
                 'nohp' => '0888888888',
                 'alamat' => 'BWI',
                 'password' => bcrypt('12345678'),
-                'role' => 1,
+                'role' => 3,
                 'is_active' => 1
             ],               
         ];
