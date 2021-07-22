@@ -6,9 +6,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-                        @foreach ($dataplayer as $player)
+                        @foreach ($dataplayer as $p)
                         @endforeach
-						<h3 class="community-top-title">Members ({{$player->total_player}})</h3>
+						<h3 class="community-top-title">Members ({{$p->total_player}})</h3>
 					</div>
 				</div>
 				<ul class="community-post-list">
@@ -31,8 +31,8 @@
 						</div>
 					</li>
                     @endforeach
-                    @if ($player->total_player != 0)
-                    @foreach ($dataplayer as $member)
+                    @if ($p->total_player != 0)
+                    @foreach ($player as $member)
                         <li>
                             <div class="community-post">
                                 <div class="author-avator set-bg" data-setbg="{{asset('images/'.$member->foto)}}"></div>

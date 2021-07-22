@@ -10,9 +10,11 @@ use Auth;
 class DataJadwalController extends Controller
 {
     public function index(){
+        $coach_id = DB::table('coach')->where('coach.id',Auth::user()->id)->first()->id_coach;
         $jadwal = DB::table('jadwal')
                                 ->select('jadwal.*','team.*')
                                 ->leftjoin('team','jadwal.id_team','=','team.id_team')
+                                ->where('jadwal.id_coach',$coach_id)
                                 ->get();
         // dd($jadwal);
         return view('backend.coach.data-jadwal',compact('jadwal'));

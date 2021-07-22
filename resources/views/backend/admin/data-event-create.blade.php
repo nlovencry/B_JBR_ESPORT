@@ -63,7 +63,7 @@
                   <div class="row">
                     <div class="col-12">
                       <label for="exampleInputPrice">Slot/Participant</label>
-                      <input type="number" name="slot" class="form-control" placeholder="Total Hadiah" required>
+                      <input type="number" name="slot" class="form-control" placeholder="Slot" required>
                     </div>
                   </div>
                   <div class="row">

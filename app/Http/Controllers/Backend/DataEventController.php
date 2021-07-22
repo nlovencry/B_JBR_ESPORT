@@ -83,4 +83,9 @@ class DataEventController extends Controller
         DB::table('event')->where('id_event',$request->id_event)->update($data);
         return redirect()->route('dataevent.index')->with('success','Data Event Berhasil Diperbarui');
     }
+
+    public function destroy($id_event){
+        DB::table('event')->where('id_event',$id_event)->delete();
+        return redirect()->route('dataevent.index')->with('success','Data Tournament Berhasil Dihapus');
+    }
 }

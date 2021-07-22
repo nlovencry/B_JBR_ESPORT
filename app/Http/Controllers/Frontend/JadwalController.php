@@ -24,10 +24,10 @@ class JadwalController extends Controller
         $team_id = DB::table('team')->where('id_team',$player_id->id_team)->first()->id_team;
         $datajadwal = DB::table('jadwal')
                             ->select('jadwal.*','users.name','coach.foto')
-                            ->join('coach','coach.id_coach','=','jadwal.id_coach')
-                            ->join('users','users.id','=','coach.id')
-                            ->join('team','team.id_team','=','jadwal.id_team')
-                            ->join('game','game.id_game','=','jadwal.id_game')
+                            ->leftjoin('coach','coach.id_coach','=','jadwal.id_coach')
+                            ->leftjoin('users','users.id','=','coach.id')
+                            ->leftjoin('team','team.id_team','=','jadwal.id_team')
+                            ->leftjoin('game','game.id_game','=','jadwal.id_game')
                             ->where('team.id_team',$team_id)
                             ->orderby('jadwal.created_at','DESC')
                             ->get();

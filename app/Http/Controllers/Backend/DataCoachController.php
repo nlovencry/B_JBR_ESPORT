@@ -29,13 +29,15 @@ class DataCoachController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
+            'id_game' => 'required',
             'email' => 'required|email',
-            'name' => 'required',
+            'name' => 'required|string',
             'jenis_kelamin' => 'required',
             'usia' => 'required',
             'nohp' => 'required|max:13',
             'alamat'=>'required',
             'foto' => 'required|mimes:png,jpg,jpeg',
+            'winrate' => 'required|mimes:png,jpg,jpeg',
         ]);
         $tanggal = now();
         $date = Carbon::parse($request->tanggal);

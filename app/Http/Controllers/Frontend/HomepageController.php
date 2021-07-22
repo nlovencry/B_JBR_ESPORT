@@ -15,7 +15,7 @@ class HomepageController extends Controller
         $event = DB::table('event')
                             ->select('event.*','game.nama_game')
                             ->leftjoin('game','game.id_game','=','event.id_game')
-                            ->latest()->paginate(3);
+                            ->latest()->paginate(2);
         $eventfoot = Event::latest()->paginate(3);
         $player = DB::table('player')
                             ->select('player.*','users.*','game.nama_game')

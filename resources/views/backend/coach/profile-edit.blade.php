@@ -32,11 +32,8 @@
                   <div class="row">
                     <div class="col-12">
                       <label for="exampleInputGame1">Pilih Game</label>
-                      <select name="id_game" class="form-control" required>
-                        @foreach ($datagame as $game)
-                          <option value="{{ isset($users) ? $game->id_game : ''}}">{{$game->nama_game}}</option>
-                        @endforeach
-                      </select>
+                      <input type="hidden" name="id_game" id="" value="{{$users->id_game}}">
+                      <input type="text" name="nama_game" id="" value="{{$users->nama_game}}" class="form-control" readonly>
                     </div>
                   </div>
                   <div class="form-group">

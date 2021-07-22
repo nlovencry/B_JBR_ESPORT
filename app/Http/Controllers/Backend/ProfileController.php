@@ -34,8 +34,7 @@ class ProfileController extends Controller
                             ->groupBy('coach.id_coach')
                             ->where('coach.id',Auth::user()->id)
                             ->first();
-        $datagame = DB::table('game')->get();
-        return view('backend.coach.profile-edit', compact('users','datagame'));
+        return view('backend.coach.profile-edit', compact('users'));
     }
 
     public function update(Request $request){

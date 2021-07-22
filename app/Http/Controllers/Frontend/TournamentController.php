@@ -22,6 +22,7 @@ class TournamentController extends Controller
         $tour = DB::table('event')
                             ->select('event.*','game.nama_game')
                             ->leftjoin('game','game.id_game','=','event.id_game')
+                            ->orderby('event.created_at','DESC')
                             ->get();
         return view('frontend.tournament', compact('eventfoot','playerfoot','tour'));
     }

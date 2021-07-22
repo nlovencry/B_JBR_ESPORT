@@ -54,12 +54,19 @@ class AllTeamController extends Controller
                             // dd($datacoach);
         $dataplayer = DB::table('team')
                             ->select('team.*','users.*','player.*',DB::raw('count(player.id_player) as total_player'),)
-                            ->leftjoin('player','player.id_team','=','team.id_team')
-                            ->leftjoin('users','users.id','=','player.id')
+                            ->join('player','player.id_team','=','team.id_team')
+                            ->join('users','users.id','=','player.id')
                             ->where('users.is_active',1)
                             ->where('player.id_team',$id_team)
                             ->get();
-                            // dd($dataplayer);
-        return view('frontend.team-detail',compact('eventfoot','playerfoot','datacoach','dataplayer'));
+        $player = DB::table('team')
+                            ->select('team.*','users.*','player.*')
+                            ->join('player','player.id_team','=','team.id_team')
+                            ->join('users','users.id','=','player.id')
+                            ->where('users.is_active',1)
+                            ->where('player.id_team',$id_team)
+                            ->get();
+                            // dd($player);
+        return view('frontend.team-detail',compact('eventfoot','playerfoot','datacoach','dataplayer','player'));
     }
 }

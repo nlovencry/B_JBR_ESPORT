@@ -37,15 +37,85 @@
                       <td>{{$de->slot}}</td>
                       <td>{{$de->price}}</td>
                       <td>
-                        {{-- <form action="{{ route('dataevent.destroy', $item->id_event) }}" method="POST"> --}}
-                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_tour">
+                        <form action="{{ route('dataevent.destroy', $de->id_event) }}" method="POST">
+                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#detail_tour{{$de->id_event}}">
                             Detail
                           </button>
+                          <div class="modal fade" id="detail_tour{{$de->id_event}}">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Detail Tournament</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <label for="exampleInputNama">Nama Tournament</label>
+                                      <input type="text" name="nama_event" class="form-control" value="{{ isset($de) ? $de->nama_event : ''}}" readonly>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <label for="exampleInputTanggal">Tanggal Mulai Pendaftaran</label>
+                                      <input type="email" name="tgl_mulai_pendaftaran" class="form-control" value="{{ isset($de) ? $de->tgl_mulai_pendaftaran : ''}}" readonly>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <label for="exampleInputTanggal">Tanggal Akhir Pendaftaran</label>
+                                      <input type="email" name="tgl_akhir_pendaftaran" class="form-control" value="{{ isset($de) ? $de->tgl_akhir_pendaftaran : ''}}" readonly>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-12">
+                                        <label for="exampleInputTanggal">Tanggal Mulai</label>
+                                        <input type="email" name="tanggal_mulai" class="form-control" value="{{ isset($de) ? $de->tanggal_mulai : ''}}" readonly>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-12">
+                                        <label for="exampleInputTanggal">Tanggal Pendaftaran</label>
+                                        <input type="email" name="tanggal_akhir" class="form-control" value="{{ isset($de) ? $de->tanggal_akhir : ''}}" readonly>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <label for="exampleInputHadiah">Slot/Participant</label>
+                                      <input type="text" name="slot" class="form-control" value="{{ isset($de) ? $de->slot : ''}}" readonly>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <label for="exampleInputHadiah">Hadiah</label>
+                                      <input type="text" name="price" class="form-control" value="{{ isset($de) ? $de->price : ''}}" readonly>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <label for="exampleInputKet">Keterangan</label>
+                                      <textarea name="keterangan" id="keterangan" class="form-control" rows="5" readonly>{{ isset($de) ? $de->keterangan : ''}}</textarea>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <label for="exampleInputPoster">Poster</label><br>
+                                      <img src="{{ asset('images/'.$de->gambar)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
                           <a href="{{ route('dataevent.edit',$de->id_event)}}" class="btn btn-warning btn-sm">Edit</a>
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
-                          {{-- </form> --}}
+                          </form>
                       </td>
                   </tr>
               @endforeach
@@ -59,78 +129,6 @@
     <!-- /.col -->
   </div>
   <!-- /.row -->
-</div>
-<div class="modal fade" id="detail_tour">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Detail Tournament</h4>
-      </div>
-      <div class="modal-body">
-        @foreach ($dataevent as $de)
-        <div class="row">
-          <div class="col-12">
-            <label for="exampleInputNama">Nama Tournament</label>
-            <input type="text" name="nama_event" class="form-control" value="{{ isset($de) ? $de->nama_event : ''}}" readonly>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="exampleInputTanggal">Tanggal Mulai Pendaftaran</label>
-            <input type="email" name="tgl_mulai_pendaftaran" class="form-control" value="{{ isset($de) ? $de->tgl_mulai_pendaftaran : ''}}" readonly>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="exampleInputTanggal">Tanggal Akhir Pendaftaran</label>
-            <input type="email" name="tgl_akhir_pendaftaran" class="form-control" value="{{ isset($de) ? $de->tgl_akhir_pendaftaran : ''}}" readonly>
-          </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-              <label for="exampleInputTanggal">Tanggal Mulai</label>
-              <input type="email" name="tanggal_mulai" class="form-control" value="{{ isset($de) ? $de->tanggal_mulai : ''}}" readonly>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-              <label for="exampleInputTanggal">Tanggal Pendaftaran</label>
-              <input type="email" name="tanggal_akhir" class="form-control" value="{{ isset($de) ? $de->tanggal_akhir : ''}}" readonly>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="exampleInputHadiah">Slot/Participant</label>
-            <input type="text" name="slot" class="form-control" value="{{ isset($de) ? $de->slot : ''}}" readonly>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="exampleInputHadiah">Hadiah</label>
-            <input type="text" name="price" class="form-control" value="{{ isset($de) ? $de->price : ''}}" readonly>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="exampleInputKet">Keterangan</label>
-            <textarea name="keterangan" id="keterangan" class="form-control" rows="5" readonly>{{ isset($de) ? $de->keterangan : ''}}</textarea>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="exampleInputPoster">Poster</label><br>
-            <img src="{{ asset('images/'.$de->gambar)}}" id="previewImg" alt="foto" style="max-width: 250px; max-height:250px">
-          </div>
-        </div>
-        @endforeach
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
 @endsection
