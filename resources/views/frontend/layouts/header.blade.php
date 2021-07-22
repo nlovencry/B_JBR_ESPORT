@@ -35,10 +35,10 @@
 				<ul>
 					<li><a href="{{url('/')}}">Home</a></li>
 					<li><a href="{{url('allteam')}}">Team</a></li>
-					<li><a href="#">Tournament</a></li>
+					<li><a href="{{url('tournament')}}">Tournament</a></li>
 					@if (Auth::user())
-					<li><a href="{{url('jadwal')}}">Jadwal</a></li>
 					@if(Auth::user()->role == 3)
+					<li><a href="{{url('jadwal')}}">Jadwal</a></li>
 					<li><a href="{{url('profil')}}">{{ Auth::user()->name }}</a></li>
 					@elseif(Auth::user()->role == 2)
 					<li><a href="{{url('profile')}}">{{ Auth::user()->name }}</a></li>

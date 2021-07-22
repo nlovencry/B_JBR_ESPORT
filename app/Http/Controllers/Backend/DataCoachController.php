@@ -29,13 +29,15 @@ class DataCoachController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
+            'id_game' => 'required',
             'email' => 'required|email',
-            'name' => 'required',
+            'name' => 'required|string',
             'jenis_kelamin' => 'required',
             'usia' => 'required',
             'nohp' => 'required|max:13',
             'alamat'=>'required',
             'foto' => 'required|mimes:png,jpg,jpeg',
+            'winrate' => 'required|mimes:png,jpg,jpeg',
         ]);
         $tanggal = now();
         $date = Carbon::parse($request->tanggal);
@@ -108,7 +110,6 @@ class DataCoachController extends Controller
             'alamat' => $request->alamat,
             'role' => 2,
             'is_active' => '1',
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         $data = [
@@ -116,7 +117,6 @@ class DataCoachController extends Controller
             'id_game' => $request->id_game,
             'foto' => $namafoto,
             'winrate' => $namawin,
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         DB::table('coach')->where('id_coach',$request->id_coach)->update($data);

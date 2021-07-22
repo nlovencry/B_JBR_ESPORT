@@ -9,7 +9,7 @@
                         @foreach ($datateam as $team)
 						<div class="col-md-6">
 							<div class="recent-game-item">
-								<div class="rgi-thumb set-bg" data-setbg="{{asset('frontend/img/recent-game/1.jpg')}}">
+								<div class="rgi-thumb set-bg" data-setbg="{{asset('frontend/img/team4.jpg')}}">
 									<div class="cata new">{{$team->nama_game}}</div>
 								</div>
 								<div class="rgi-content">

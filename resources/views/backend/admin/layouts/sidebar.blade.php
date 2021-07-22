@@ -75,13 +75,7 @@
           <li class="nav-item">
             <a href="{{ url('dataevent')}}" class="nav-link">
               <i class="nav-icon fas fa-trophy"></i>
-              <p>Event</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-              <i class="nav-icon fas fa-lock"></i>
-              <p>Ganti Password</p>
+              <p>Tournament</p>
             </a>
           </li>
         </ul>

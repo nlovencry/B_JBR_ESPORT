@@ -38,6 +38,7 @@ class DataPlayerController extends Controller
             'nohp' => 'required|max:13',
             'alamat'=>'required',
             'foto' => 'required|mimes:png,jpg,jpeg',
+            'winrate' => 'required|mimes:png,jpg,jpeg',
          ]);
         $tanggal = now();
         $date = Carbon::parse($request->tanggal);
@@ -50,25 +51,29 @@ class DataPlayerController extends Controller
             'alamat' => $request->alamat,
             'password' => bcrypt('12345678'),
             'role' => '3',
-            'is_active' => 1,
+            'is_active' => '1',
+            'created_at' => $tanggal,
+            'updated_at' => $tanggal,
         ]);
         $player_id = $user->id;
         if($request->hasfile('foto')){
             $foto = $request->file('foto');
             $namafoto = $player_id.'_'.$foto->getClientOriginalName();
-            $pathfoto = $foto->move('images',$namafoto);
+            $nama_foto = str_replace(' ','-',$namafoto);
+            $pathfoto = $foto->move('images',$nama_foto);
         }
         if($request->hasfile('winrate')){
             $winrate = $request->file('winrate');
             $namawin = $player_id.'_'.$winrate->getClientOriginalName();
-            $pathwin = $winrate->move('images',$namawin);
+            $nama_win = str_replace(' ','-',$namawin);
+            $pathwin = $winrate->move('images',$nama_win);
         }
         $data = [
                 'id' => $player_id,
                 'id_game' => $request->id_game,
                 'id_team' => 0,
-                'foto' => $namafoto,
-                'winrate' => $namawin,
+                'foto' => $nama_foto,
+                'winrate' => $nama_win,
                 'izin_ortu' => $request->izin_ortu,
                 'bersedia_offline' => $request->bersedia_offline,
                 'nohp_ortu' => $request->nohp_ortu,
@@ -94,17 +99,19 @@ class DataPlayerController extends Controller
     public function update(Request $request){
         $tanggal = now();
         $date = Carbon::parse($request->tanggal);
-        $namafoto =  $request->foto;
-        $namawin =  $request->winrate;
+        $nama_foto =   str_replace(' ','-',$request->foto);
+        $nama_winrate =  str_replace(' ','-',$request->winrate);
         if($request->hasfile('foto')){
             $foto = $request->file('foto');
             $namafoto = $request->id.'_'.$foto->getClientOriginalName();
-            $pathfoto = $foto->move('images',$namafoto);
+            $nama_foto = str_replace(' ','-',$namafoto);
+            $pathfoto = $foto->move('images',$nama_foto);
         }
         if($request->hasfile('winrate')){
             $winrate = $request->file('winrate');
             $namawin = $request->id.'_'.$winrate->getClientOriginalName();
-            $pathwin = $winrate->move('images',$namawin);
+            $nama_winrate = str_replace(' ','-',$namawin);
+            $pathwin = $winrate->move('images',$nama_win);
         }
          $user = [
             'email' => strtolower($request->email),
@@ -114,19 +121,17 @@ class DataPlayerController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'role' => 3,
-            'is_active' => 1,
-            'created_at' => $tanggal,
+            'is_active' => '1',
             'updated_at' => $tanggal,
         ];
          $data = [
             'id_game' => $request->id_game,
-            'id_team' => 0,
-            'foto' => $namafoto,
-            'winrate' => $namawin,
+            'id_team' => $request->id_team,
+            'foto' => $nama_foto,
+            'winrate' => $nama_winrate,
             'izin_ortu' => $request->izin_ortu,
             'bersedia_offline' => $request->bersedia_offline,
             'nohp_ortu' => $request->nohp_ortu,
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
          ];
         DB::table('player')->where('id_player',$request->id_player)->update($data);

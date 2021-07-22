@@ -37,11 +37,11 @@
                   <div class="row">
                     <div class="col-5">
                       <label for="exampleInputEmail">Email</label>
-                      <input type="email" name="email" class="form-control" value="{{old('email')}}">
+                      <input type="email" name="email" class="form-control" value="{{old('email')}}" placeholder="Email">
                     </div>
                     <div class="col-7">
                       <label for="exampleInputNama">Nama Lengkap</label>
-                      <input type="text" name="name" class="form-control" value="{{old('name')}}">
+                      <input type="text" name="name" class="form-control" value="{{old('name')}}" placeholder="Nama Lengkap">
                     </div>
                   </div>
                   <div class="row">
@@ -54,16 +54,16 @@
                     </div>
                     <div class="col-3">
                       <label for="exampleInputUsia">Usia</label>
-                      <input type="number" name="usia" class="form-control" value="{{old('usia')}}"d>
+                      <input type="number" name="usia" class="form-control" value="{{old('usia')}}" placeholder="Usia">
                     </div>
                     <div class="col-4">
                       <label for="exampleInputNoHP">No HP</label>
-                      <input type="number" name="nohp" class="form-control" value="{{old('nohp')}}">
+                      <input type="number" name="nohp" class="form-control" value="{{old('nohp')}}" placeholder="No HP">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputAlamat">Alamat</label>
-                    <textarea name="alamat" id="alamat" rows="5" class="form-control">{{old('alamat')}}</textarea>
+                    <textarea name="alamat" id="alamat" rows="5" class="form-control" placeholder="Alamat">{{old('alamat')}}</textarea>
                   </div>
                   <div class="row">
                     <div class="col-4">
@@ -82,7 +82,7 @@
                     </div>
                     <div class="col-4">
                       <label for="exampleInputNoHP">No HP OrangTua</label>
-                      <input type="number" name="nohp_ortu" class="form-control" value="{{old('nohp_ortu')}}">
+                      <input type="number" name="nohp_ortu" class="form-control" value="{{old('nohp_ortu')}}" placeholder="No HP Orang Tua">
                     </div>
                   </div>
                   <div class="form-group">

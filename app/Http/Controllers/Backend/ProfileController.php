@@ -34,8 +34,7 @@ class ProfileController extends Controller
                             ->groupBy('coach.id_coach')
                             ->where('coach.id',Auth::user()->id)
                             ->first();
-        $datagame = DB::table('game')->get();
-        return view('backend.coach.profile-edit', compact('users','datagame'));
+        return view('backend.coach.profile-edit', compact('users'));
     }
 
     public function update(Request $request){
@@ -61,7 +60,6 @@ class ProfileController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'role' => 2,
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         $data = [
@@ -69,7 +67,6 @@ class ProfileController extends Controller
             'id_game' => $request->id_game,
             'foto' => $namafoto,
             'winrate' => $namawin,
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         DB::table('coach')->where('id_coach',$request->id_coach)->update($data);

@@ -9,14 +9,14 @@
 						<h3 class="community-top-title">Profile</h3>
 					</div>
                     <div class="col-md-6 text-lg-right">
-						<a href="" class="btn btn-warning"><i class="fas fa-edit">Edit Profile</i></a>
+						<a href="{{route('profil.edit',Auth::user()->id)}}" class="btn btn-warning">Edit Profile</a>
 					</div>
 				</div>
 				<div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="review-item">
                             <div class="ti-content">
-                                <div class="review-cover set-bg" data-setbg="{{asset('images/'.$player->foto)}}"></div>
+                                <img src="{{asset('images/'.$player->foto)}}" alt="" style="max-width: 270px; max-height: 600px"><div class="review-cover set-bg" data-setbg=""></div>
                             </div>
                         </div>
                     </div>
