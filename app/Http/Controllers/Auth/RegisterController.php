@@ -86,18 +86,26 @@ class RegisterController extends Controller
         $player_id = $user->id;
         $tanggal = now();
         $date = Carbon::parse($tanggal);
-        $namafoto =  $data['foto'];
+        $nama_foto =  $data['foto'];
+        $nama_winrate =  $data['winrate'];
         if($data['foto']){
              $foto = $data['foto'];
              $namafoto = $data['name'].'_'.$foto->getClientOriginalName();
-             $pathfoto = $foto->move('images',$namafoto);
+             $nama_foto = str_replace(' ','-',$namafoto);
+             $pathfoto = $foto->move('images',$nama_foto);
+        }
+        if($data['winrate']){
+            $winrate = $data['winrate'];
+            $namawinrate = $data['name'].'_'.$winrate->getClientOriginalName();
+            $nama_winrate = str_replace(' ','-',$namawinrate);
+            $pathwinrate = $winrate->move('images',$nama_winrate);
         }
         $player = DB::table('player')->insert([
-            'id_game' => 1,
+            'id_game' => $data['id_game'],
             'id_team' => 0,
             'id' => $player_id,
-            'foto' => $namafoto,
-            'winrate' => 'default.jpg',
+            'foto' => $nama_foto,
+            'winrate' => $nama_winrate,
             'izin_ortu' => $data['izin_ortu'],
             'bersedia_offline' => $data['bersedia_offline'],
             'nohp_ortu' => $data['nohp_ortu'],

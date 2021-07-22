@@ -66,7 +66,7 @@ class DataPlayerController extends Controller
             $winrate = $request->file('winrate');
             $namawin = $player_id.'_'.$winrate->getClientOriginalName();
             $nama_win = str_replace(' ','-',$namawin);
-            $pathwin = $winrate->move('images',$namawin);
+            $pathwin = $winrate->move('images',$nama_win);
         }
         $data = [
                 'id' => $player_id,

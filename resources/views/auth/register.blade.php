@@ -23,7 +23,6 @@
                             <div class="col-12">
                             <label for="exampleInputGame1">Pilih Game</label>
                             <select name="id_game" class="form-control" required>
-                              <option value="1">Pilih</option>
                               @foreach ($datagame as $game)
                                 <option value="{{$game->id_game}}">{{$game->nama_game}}</option>
                               @endforeach 
