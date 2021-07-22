@@ -126,7 +126,6 @@ class DataPlayerController extends Controller
             'izin_ortu' => $request->izin_ortu,
             'bersedia_offline' => $request->bersedia_offline,
             'nohp_ortu' => $request->nohp_ortu,
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
          ];
         DB::table('player')->where('id_player',$request->id_player)->update($data);

@@ -65,7 +65,6 @@ class DataJadwalController extends Controller
             'waktu_mulai' => $waktu_asal,
             'waktu_akhir' => $waktu_akhir,
             'keterangan' => $request->keterangan,
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         DB::table('jadwal')->where('id_jadwal',$request->id_jadwal)->update($data);

@@ -61,7 +61,6 @@ class ProfileController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'role' => 2,
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         $data = [
@@ -69,7 +68,6 @@ class ProfileController extends Controller
             'id_game' => $request->id_game,
             'foto' => $namafoto,
             'winrate' => $namawin,
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         DB::table('coach')->where('id_coach',$request->id_coach)->update($data);

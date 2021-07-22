@@ -44,6 +44,7 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::resource('allteam','AllTeamController');
     Route::get('jadwal','JadwalController@index')->name('jadwal');
     Route::resource('profil','ProfileController');
+    Route::resource('tournament','TournamentController');
 });
 
 // Route::group(['middleware' => ['auth']], function (){

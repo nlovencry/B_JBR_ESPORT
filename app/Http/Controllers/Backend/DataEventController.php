@@ -78,7 +78,6 @@ class DataEventController extends Controller
                 'price' => $request->price,
                 'keterangan' => $request->keterangan,
                 'gambar' => $namafoto,
-                'created_at' => $tanggal,
                 'updated_at' => $tanggal,
         ];
         DB::table('event')->where('id_event',$request->id_event)->update($data);
