@@ -11,7 +11,7 @@ use DB;
 class HomepageController extends Controller
 {
     public function index(){
-        $games = DB::table('game')->latest()->paginate(3);;
+        $games = DB::table('game')->latest()->paginate(3);
         $event = DB::table('event')
                             ->select('event.*','game.nama_game')
                             ->leftjoin('game','game.id_game','=','event.id_game')
