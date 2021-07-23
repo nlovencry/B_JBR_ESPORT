@@ -12,3 +12,4 @@ class Event extends Model
     protected $PrimaryKey = 'id_event';
     protected $fillable = ['nama_event', 'keterangan', 'gambar', 'tgl_mulai_pendaftaran', 'tgl_akhir_pendaftaran','tanggal_mulai', 'tanggal_akhir','slot', 'price'];
 }
+?>
