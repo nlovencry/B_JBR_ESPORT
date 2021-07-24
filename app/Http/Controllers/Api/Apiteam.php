@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Team;
 use Illuminate\Support\Facades\DB;
 
+class Apiteam extends Controller{
+
 public function index()
     {
         # code...
@@ -14,10 +16,13 @@ public function index()
         return response()->json(['kode' => 201,'pesan' => 'success', 'data' => $team  ]);
     }
 
-    public function show($id_coach)
+    public function show($id_team)
     {
         # code...
-        $team = Team::find($id_coach)->first();
+        $team = Team::find($id_team)->first();
         return response()->json($team, 201);
     }
-    ?>
+
+}
+    
+?>

@@ -21,6 +21,8 @@ Route::group(['namespace' => 'Api'] ,function(){
     Route::get('/event/{id_event}','Apievent@show')->name('apievent.show');
     Route::get('/jadwal','Apijadwal@index')->name('apijadwal.index');
     Route::get('/jadwal/{id_jadwal}','Apijadwal@show')->name('apijadwal.show');
+    Route::get('/team','Apiteam@index')->name('apiteam.index');
+    Route::get('/team/{id_team}','Apiteam@show')->name('apiteam.show');
 });
 Route::post('/login', [auth::class, 'login']);
 Route::get('users/{id}', function ($id) {
