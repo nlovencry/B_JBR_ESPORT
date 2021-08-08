@@ -72,7 +72,7 @@ class ProfileController extends Controller
         DB::table('coach')->where('id_coach',$request->id_coach)->update($data);
         DB::table('users')->where('id',$request->id)->update($user);
         // dd($request);
-        return redirect()->route('profile.index')->with('success','Data Coach Berhasil Diperbarui');
+        return redirect()->route('profile.index')->with('success','Profile Berhasil Diperbarui');
     }
 
     public function show($id){

@@ -77,7 +77,7 @@
                     <div class="input-group">
                       <input type="hidden" id="foto" name="foto" value="{{ isset($datacoach) ? $datacoach->foto : ''}}">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+                        <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
                         <label class="custom-file-label" for="exampleInputFile">{{ isset($datacoach) ? $datacoach->foto : ''}}</label>
                       </div>
                     </div>
@@ -88,7 +88,7 @@
                     <div class="input-group">
                       <input type="hidden" id="foto" name="winrate" value="{{ isset($datacoach) ? $datacoach->winrate : ''}}">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile2(this)">
+                        <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile2(this)">
                         <label class="custom-file-label" for="exampleInputFile">{{ isset($datacoach) ? $datacoach->winrate : ''}}</label>
                       </div>
                     </div>

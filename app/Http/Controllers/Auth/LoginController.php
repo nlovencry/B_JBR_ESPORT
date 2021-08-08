@@ -59,7 +59,7 @@ class LoginController extends Controller
 
                     // dd($check);
         if ($check) {
-            if ($check->is_active == 2) {
+            if ($check->is_active != 1) {
                 
                 return redirect()->route('login')->with(['error'=>'akun anda sedang dinonaktifkan']);
             }

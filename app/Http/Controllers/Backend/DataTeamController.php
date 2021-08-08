@@ -39,7 +39,7 @@ class DataTeamController extends Controller
             'id_game' => $request->id_game,
             'nama_team' => $request->nama_team,
         ]);
-        return redirect()->route('datateam.index')->with('success','Data Jadwal Berhasil Disimpan');
+        return redirect()->route('datateam.index')->with('success','Data Team Berhasil Disimpan');
     }
 
     public function edit($id_team){

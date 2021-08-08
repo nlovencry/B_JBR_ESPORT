@@ -72,15 +72,15 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'email' => strtolower($data['email']),
+            'name' => ucwords(strtolower($data['name'])),
             'jenis_kelamin' => $data['jenis_kelamin'],
             'usia' => $data['usia'],
             'nohp' => $data['nohp'],
             'alamat' => $data['alamat'],
             'password' => Hash::make($data['password']),
             'role' => '3',
-            'is_active' => '1'
+            'is_active' => '1',
         ]);
 
         $player_id = $user->id;

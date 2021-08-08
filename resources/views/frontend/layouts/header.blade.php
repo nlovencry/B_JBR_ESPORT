@@ -11,7 +11,7 @@
 			<a class="site-logo" href="index.php">
 				<img src="{{asset('frontend/img/logo.png')}}" alt="">
 			</a>
-			<div class="user-panel">
+			{{-- <div class="user-panel">
 				@if (Auth::user())
 				<a href="{{ route('logout') }}"
 				onclick="event.preventDefault();
@@ -24,7 +24,7 @@
                 @else
 				<a href="{{ route('login')}}">Login / Register</a>
 				@endif
-			</div>
+			</div> --}}
 			<!-- responsive -->
 			<div class="nav-switch">
 				<i class="fa fa-bars"></i>

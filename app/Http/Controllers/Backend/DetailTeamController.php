@@ -43,7 +43,7 @@ class DetailTeamController extends Controller
             'id_team' => $request->id_team,
         ];
         DB::table('player')->where('id_player',$request->id_player)->update($data);
-        return redirect()->route('detailteam.show',$request->id_team)->with('success','Data Team Berhasil Diperbarui');
+        return redirect()->route('detailteam.show',$request->id_team)->with('success','Anggota Berhasil Ditambahkan');
     }
 
     public function remove($id){
@@ -53,6 +53,6 @@ class DetailTeamController extends Controller
                     ->where('player.id',$id)->update([
             'id_team' => 0,
         ]);
-        return redirect()->route('datateam.index');
+        return redirect()->route('datateam.index')->with('success','Anggota Berhasil Dihapus');
     }
 }

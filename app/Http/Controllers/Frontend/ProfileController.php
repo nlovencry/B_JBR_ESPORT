@@ -9,6 +9,7 @@ use App\Models\Game;
 use DB;
 use Auth;
 use Carbon\Carbon;
+use Hash;
 
 class ProfileController extends Controller
 {
@@ -74,6 +75,7 @@ class ProfileController extends Controller
             'usia' => $request->usia,
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
+            'password' => Hash::make($request->password),
             'role' => 3,
             'is_active' => 1,
             'updated_at' => $tanggal,
@@ -89,6 +91,6 @@ class ProfileController extends Controller
         DB::table('player')->where('id_player',$request->id_player)->update($data);
         DB::table('users')->where('id',$request->id)->update($user);
         // dd($request);
-        return redirect()->route('profil.index')->with('success','Profile Berhasil Diperbarui');
+        return redirect()->route('profil.index');
     }
 }

@@ -68,7 +68,7 @@
               <div class="input-group">
                 <input type="hidden" id="img" name="img" value="{{ isset($dataevent) ? $dataevent->gambar : ''}}">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="gambar" name="gambar" onchange="previewFile(this)">
+                  <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="gambar" name="gambar" onchange="previewFile(this)">
                   <label class="custom-file-label" for="exampleInputFile">{{ isset($dataevent) ? $dataevent->gambar : ''}}</label>
                 </div>
               </div>

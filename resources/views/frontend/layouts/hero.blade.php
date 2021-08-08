@@ -7,7 +7,18 @@
                 <div class="container">
                     <h2>{{$item->nama_game}}</h2>
                     <p>{{$item->keterangan}}</p>
-                    <a href="#" class="site-btn">Read More</a>
+                    @if (Auth::user())
+                    <a href="{{ route('logout') }}" class="site-btn"
+                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    @else
+                    <a href="{{ route('login')}}" class="site-btn">Login / Register</a>
+                    @endif
                 </div>
             </div>
         </div>
