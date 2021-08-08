@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
+    use HasFactory;
     protected $table = "team";
-
-    protected $fillable = [
-        'id_coach',
-        'id_game',
-        'nama_team',
-    ];
+    protected $PrimaryKey = 'id_team';
+    protected $fillable = ['id_coach','id_game','nama_team',];
 }
+?>

@@ -4,16 +4,19 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Jadwal;
+use App\Models\Game;
 use Illuminate\Support\Facades\DB;
 
-class Apijadwal extends Controller
+class Apigame extends Controller
 {
     public function index()
     {
         # code...
-        $jadwal = Jadwal::all();
-        return response()->json(['pesan' => 'success', 'data' => $jadwal  ]);
+        $game = Game::all();
+        return response()->json(['pesan' => 'success', 'data' => $game  ]);
     }
+
+    
+
 }
 ?>

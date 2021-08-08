@@ -16,11 +16,7 @@ class Apievent extends Controller
         return response()->json(['pesan' => 'success', 'data' => $event  ]);
     }
 
-    public function show($id_event)
-    {
-        # code...
-        $event = Event::find($id_event)->first();
-        return response()->json($event,);
-    }
+    
 
 }
+?>
