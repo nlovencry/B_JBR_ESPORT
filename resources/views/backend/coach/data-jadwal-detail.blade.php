@@ -9,11 +9,14 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+<<<<<<< Updated upstream
           @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
           @endif
+=======
+>>>>>>> Stashed changes
           <table id="example2" class="table table-bordered table-hover">
             <thead>
             <tr>

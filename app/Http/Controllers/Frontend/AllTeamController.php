@@ -16,7 +16,11 @@ class AllTeamController extends Controller
                             ->leftjoin('users','users.id','=','player.id')
                             ->leftjoin('game','game.id_game','=','player.id_game')
                             ->leftjoin('team','team.id_team','=','player.id_team')
+<<<<<<< Updated upstream
                             ->where('users.is_active','1')
+=======
+                            ->where('users.is_active',1)
+>>>>>>> Stashed changes
                             ->latest('player.created_at')
                             ->paginate(3);
         $datateam = DB::table('team')
@@ -41,7 +45,11 @@ class AllTeamController extends Controller
                             ->leftjoin('users','users.id','=','player.id')
                             ->leftjoin('game','game.id_game','=','player.id_game')
                             ->leftjoin('team','team.id_team','=','player.id_team')
+<<<<<<< Updated upstream
                             ->where('users.is_active','1')
+=======
+                            ->where('users.is_active',1)
+>>>>>>> Stashed changes
                             ->latest('player.created_at')
                             ->paginate(3);
         $datacoach = DB::table('team')
@@ -54,6 +62,7 @@ class AllTeamController extends Controller
                             // dd($datacoach);
         $dataplayer = DB::table('team')
                             ->select('team.*','users.*','player.*',DB::raw('count(player.id_player) as total_player'),)
+<<<<<<< Updated upstream
                             ->join('player','player.id_team','=','team.id_team')
                             ->join('users','users.id','=','player.id')
                             ->where('users.is_active',1)
@@ -68,5 +77,14 @@ class AllTeamController extends Controller
                             ->get();
                             // dd($player);
         return view('frontend.team-detail',compact('eventfoot','playerfoot','datacoach','dataplayer','player'));
+=======
+                            ->leftjoin('player','player.id_team','=','team.id_team')
+                            ->leftjoin('users','users.id','=','player.id')
+                            ->where('users.is_active',1)
+                            ->where('player.id_team',$id_team)
+                            ->get();
+                            // dd($dataplayer);
+        return view('frontend.team-detail',compact('eventfoot','playerfoot','datacoach','dataplayer'));
+>>>>>>> Stashed changes
     }
 }

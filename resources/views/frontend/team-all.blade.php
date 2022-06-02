@@ -9,7 +9,11 @@
                         @foreach ($datateam as $team)
 						<div class="col-md-6">
 							<div class="recent-game-item">
+<<<<<<< Updated upstream
 								<div class="rgi-thumb set-bg" data-setbg="{{asset('frontend/img/team4.jpg')}}">
+=======
+								<div class="rgi-thumb set-bg" data-setbg="{{asset('frontend/img/recent-game/1.jpg')}}">
+>>>>>>> Stashed changes
 									<div class="cata new">{{$team->nama_game}}</div>
 								</div>
 								<div class="rgi-content">
@@ -41,7 +45,11 @@
 								<div class="lb-content">
 									<div class="lb-date">{{$p->name}}</div>
 									<p>Game : {{$p->nama_game}}</p>
+<<<<<<< Updated upstream
 									<a href="#" class="lb-author">{{$p->nama_team}}</a>
+=======
+									<p class="lb-author">{{$p->nama_team}}</p>
+>>>>>>> Stashed changes
 								</div>
 							</div>
                             @endforeach
@@ -56,7 +64,11 @@
                                 <div class="review-text">
                                     <h5>{{$t->nama_event}}</h5>
                                     <p>{{$t->nama_game}}</p>
+<<<<<<< Updated upstream
 									<p>{{$t->price}}</p>
+=======
+									<p>Prize : {{$t->price}}</p>
+>>>>>>> Stashed changes
                                 </div>
                             @endforeach
 						</div>

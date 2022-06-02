@@ -26,7 +26,10 @@ class User extends Authenticatable
         'alamat',
         'password',
         'role',
+<<<<<<< Updated upstream
         'is_active'
+=======
+>>>>>>> Stashed changes
     ];
 
     /**

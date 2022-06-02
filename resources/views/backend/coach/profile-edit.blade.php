@@ -32,8 +32,16 @@
                   <div class="row">
                     <div class="col-12">
                       <label for="exampleInputGame1">Pilih Game</label>
+<<<<<<< Updated upstream
                       <input type="hidden" name="id_game" id="" value="{{$users->id_game}}">
                       <input type="text" name="nama_game" id="" value="{{$users->nama_game}}" class="form-control" readonly>
+=======
+                      <select name="id_game" class="form-control" required>
+                        @foreach ($datagame as $game)
+                          <option value="{{ isset($users) ? $game->id_game : ''}}">{{$game->nama_game}}</option>
+                        @endforeach
+                      </select>
+>>>>>>> Stashed changes
                     </div>
                   </div>
                   <div class="form-group">
@@ -74,7 +82,11 @@
                     <div class="input-group">
                       <input type="hidden" id="foto" name="foto" value="{{ isset($users) ? $users->foto : ''}}">
                       <div class="custom-file">
+<<<<<<< Updated upstream
                         <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+=======
+                        <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+>>>>>>> Stashed changes
                         <label class="custom-file-label" for="exampleInputFile">{{ isset($users) ? $users->foto : ''}}</label>
                       </div>
                     </div>
@@ -85,7 +97,11 @@
                     <div class="input-group">
                       <input type="hidden" id="foto" name="winrate" value="{{ isset($users) ? $users->winrate : ''}}">
                       <div class="custom-file">
+<<<<<<< Updated upstream
                         <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile2(this)">
+=======
+                        <input type="file" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile2(this)">
+>>>>>>> Stashed changes
                         <label class="custom-file-label" for="exampleInputFile">{{ isset($users) ? $users->winrate : ''}}</label>
                       </div>
                     </div>
