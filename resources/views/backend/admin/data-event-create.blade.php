@@ -82,7 +82,7 @@
                     <label for="exampleInputFile">Poster</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="gambar" onchange="previewFile(this)">
+                        <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="gambar" onchange="previewFile(this)">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>

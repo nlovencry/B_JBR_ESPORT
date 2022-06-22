@@ -21,10 +21,13 @@ Route::group(['namespace' => 'Api'] ,function(){
     Route::get('/event/{id_event}','Apievent@show')->name('apievent.show');
     Route::get('/jadwal','Apijadwal@index')->name('apijadwal.index');
     Route::get('/jadwal/{id_jadwal}','Apijadwal@show')->name('apijadwal.show');
+<<<<<<< Updated upstream
     Route::get('/team','Apiteam@index')->name('apiteam.index');
     Route::get('/team/{id_team}','Apiteam@show')->name('apiteam.show');
     Route::get('/game','Apigame@index')->name('apigame.index');
     Route::get('/game/{id_game}','Apigame@show')->name('apigame.show');
+=======
+>>>>>>> Stashed changes
 });
 Route::post('/login', [auth::class, 'login']);
 Route::get('users/{id}', function ($id) {

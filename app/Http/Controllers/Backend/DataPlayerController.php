@@ -111,7 +111,7 @@ class DataPlayerController extends Controller
             $winrate = $request->file('winrate');
             $namawin = $request->id.'_'.$winrate->getClientOriginalName();
             $nama_winrate = str_replace(' ','-',$namawin);
-            $pathwin = $winrate->move('images',$nama_win);
+            $pathwin = $winrate->move('images',$nama_winrate);
         }
          $user = [
             'email' => strtolower($request->email),
@@ -121,7 +121,6 @@ class DataPlayerController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'role' => 3,
-            'is_active' => '1',
             'updated_at' => $tanggal,
         ];
          $data = [
@@ -147,7 +146,7 @@ class DataPlayerController extends Controller
                     ->where('player.id',$id)->update([
             'is_active' => 2,
         ]);
-        return redirect()->route('dataplayer.index');
+        return redirect()->route('dataplayer.index')->with('success','Data Player Berhasil Nonaktifkan');
     }
 
     public function active($id){
@@ -157,6 +156,6 @@ class DataPlayerController extends Controller
                     ->where('player.id',$id)->update([
             'is_active' => 1,
         ]);
-        return redirect()->route('dataplayer.index');
+        return redirect()->route('dataplayer.index')->with('success','Data Player Berhasil Aktifkan');
     }
 }

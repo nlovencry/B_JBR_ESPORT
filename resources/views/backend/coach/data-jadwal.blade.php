@@ -14,12 +14,18 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+          @if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+          @endif
           <table id="example2" class="table table-bordered table-hover">
             <thead>
             <tr>
               <th>No</th>
               <th>Team</th>
               <th>Nama Jadwal</th>
+              <th>Tanggal</th>
               <th>Waktu</th>
               <th>Keterangan</th>
               <th>Aksi</th>
@@ -34,7 +40,8 @@
                       <td>{{$no++}}</td>
                       <td>{{$jd->nama_team}}</td>
                       <td>{{$jd->nama_jadwal}}</td>
-                      <td>{{$jd->waktu_mulai}}</td>
+                      <td>{{date("d-m-Y", strtotime($jd->waktu_mulai));}}</td>
+                      <td>{{date("H:i", strtotime($jd->waktu_mulai));}}</td>
                       <td>{{$jd->keterangan}}</td>
                       <td>
                         <form action="{{ route('datajadwal.destroy', $jd->id_jadwal) }}" method="POST">

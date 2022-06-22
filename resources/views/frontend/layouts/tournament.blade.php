@@ -15,7 +15,6 @@
                                 <li><span>Tournament Register:</span> {{$item->tgl_mulai_pendaftaran}}</li>
                                 <li><span>Tournament Begins:</span> {{$item->tanggal_mulai}}</li>
                                 <li><span>Participants:</span> {{$item->slot}} slot</li>
-                                <li><span>Tournament Author:</span> Admin</li>
                             </ul>
                             <p><span>Prizes:</span> {{$item->price}}</p>
                         </div>

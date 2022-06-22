@@ -21,7 +21,6 @@
                                     <div class="lb-content">
                                         <p>{{$item->tanggal_mulai}}</p>
                                         <p>{{$item->nama_event}}</p>
-                                        <p>{{$item->slot}} Slot</p>
                                         <p><div class="lb-date">Prizes: {{$item->price}}</div></p>
                                     </div>
                             </div>

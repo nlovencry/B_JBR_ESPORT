@@ -36,7 +36,7 @@ class DataGameController extends Controller
                 'created_at' => $tanggal,
                 'updated_at' => $tanggal,
             ]);
-        return redirect()->route('datagame.index')->with('success','Data Player Berhasil Disimpan');
+        return redirect()->route('datagame.index')->with('success','Data Game Berhasil Disimpan');
     }
 
     public function edit($id_game){

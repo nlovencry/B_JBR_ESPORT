@@ -1,6 +1,14 @@
 @extends('backend/coach/layouts/template')
 @section('content')
 <div class="container-fluid">
+<<<<<<< Updated upstream
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success">
+      <p>{{ $message }}</p>
+  </div>
+@endif
+=======
+>>>>>>> Stashed changes
         <div class="row">
           <div class="col-md-4">
             <!-- Profile Image -->

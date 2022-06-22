@@ -5,10 +5,16 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
+<<<<<<< Updated upstream
 use App\Models\Game;
 use DB;
 use Auth;
 use Carbon\Carbon;
+use Hash;
+=======
+use DB;
+use Auth;
+>>>>>>> Stashed changes
 
 class ProfileController extends Controller
 {
@@ -19,7 +25,11 @@ class ProfileController extends Controller
                             ->leftjoin('users','users.id','=','player.id')
                             ->leftjoin('game','game.id_game','=','player.id_game')
                             ->leftjoin('team','team.id_team','=','player.id_team')
+<<<<<<< Updated upstream
                             ->where('users.is_active','1')
+=======
+                            ->where('users.is_active',1)
+>>>>>>> Stashed changes
                             ->latest('player.created_at')
                             ->paginate(3);
         $player = DB::table('player')
@@ -31,6 +41,7 @@ class ProfileController extends Controller
                             ->first();
         return view('frontend.profile',compact('eventfoot','playerfoot','player'));
     }
+<<<<<<< Updated upstream
 
     public function edit($id){
         $eventfoot = Event::latest()->paginate(3);
@@ -74,6 +85,7 @@ class ProfileController extends Controller
             'usia' => $request->usia,
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
+            'password' => Hash::make($request->password),
             'role' => 3,
             'is_active' => 1,
             'updated_at' => $tanggal,
@@ -89,6 +101,8 @@ class ProfileController extends Controller
         DB::table('player')->where('id_player',$request->id_player)->update($data);
         DB::table('users')->where('id',$request->id)->update($user);
         // dd($request);
-        return redirect()->route('profil.index')->with('success','Profile Berhasil Diperbarui');
+        return redirect()->route('profil.index');
     }
+=======
+>>>>>>> Stashed changes
 }

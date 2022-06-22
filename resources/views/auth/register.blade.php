@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-7">
                               <label for="exampleInputNama">Nama Lengkap</label>
-                              <input type="text" name="name" class="form-control">
+                              <input type="text" name="name" class="form-control" value="{{old('name')}}">
                             </div>
                         </div>
                         <div class="row">
@@ -53,12 +53,12 @@
                             </div>
                             <div class="col-4">
                               <label for="exampleInputNoHP">No HP</label>
-                              <input type="number" name="nohp" class="form-control" >
+                              <input type="number" name="nohp" class="form-control" value="{{old('nohp')}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputAlamat">Alamat</label>
-                            <textarea name="alamat" id="alamat" rows="5" class="form-control" value="{{old('alamat')}}"></textarea>
+                            <textarea name="alamat" id="alamat" rows="5" class="form-control">{{old('alamat')}}</textarea>
                         </div>
                         <div class="row">
                             <div class="col-4">
@@ -84,19 +84,21 @@
                             <label for="exampleInputFile">Foto</label>
                             <div class="input-group">
                               <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+                                <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="foto" onchange="previewFile2(this)">
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                               </div>
                             </div>
+                            <span id="text-foto"></span>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Winrate</label>
                             <div class="input-group">
                               <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile(this)">
+                                <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile(this)">
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                               </div>
                             </div>
+                            <span id="text-winrate"></span>
                         </div>
                         <div class="row">
                            <div class="col-md-6">
@@ -108,7 +110,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-6">
+                            <div class="col-md-6">
                               <label for="exampleInputKonf">Konfirmasi Password</label>
                               <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                             </div>
@@ -134,3 +136,31 @@
     </div>
 </div>
 @endsection
+@push('js')
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('backend/dist/js/adminlte.min.js')}}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('backend/dist/js/demo.js')}}"></script>
+    <!-- Page specific script -->
+    <script>
+    $(function () {
+      bsCustomFileInput.init();
+    });
+</script>
+<script>
+  function previewFile2(input) {
+    var fu2 = document.getElementById("foto");
+    document.getElementById("text-foto").textContent=fu2.value;
+  } 
+</script>
+<script>
+  function previewFile(input) {
+    var fu1 = document.getElementById("winrate");
+    document.getElementById("text-winrate").textContent=fu1.value;
+  } 
+</script>
+@endpush

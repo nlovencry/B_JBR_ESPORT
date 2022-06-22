@@ -90,21 +90,27 @@
                                 <label for="name"><b>Foto</b></label>
                                 <input type="hidden" id="foto" name="foto" value="{{ isset($player) ? $player->foto : ''}}">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+                                    <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
                                     <label class="custom-file-label" for="exampleInputFile">{{ isset($player) ? $player->foto : ''}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-item" style="padding-bottom: 10px;">
+                            <div class="ti-content">
+                                <label for="name"><b>Winrate</b></label>
+                                <input type="hidden" id="foto" name="winrate" value="{{ isset($player) ? $player->winrate : ''}}">
+                                <div class="custom-file">
+                                    <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile(this)">
+                                    <label class="custom-file-label" for="exampleInputFile">{{ isset($player) ? $player->winrate : ''}}</label>
                                 </div>
                             </div>
                         </div>
                         <div class="review-item" style="padding-bottom: 20px;">
                             <div class="ti-content">
-                                <label for="name"><b>Winrate</b></label>
-                                <input type="hidden" id="foto" name="winrate" value="{{ isset($player) ? $player->winrate : ''}}">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile(this)">
-                                    <label class="custom-file-label" for="exampleInputFile">{{ isset($player) ? $player->winrate : ''}}</label>
-                                </div>
+                                <label for="name"><b>Ganti Password</b></label>
+                                <input type="password" class="form-control" name="password">
                             </div>
-                        </div>
+                        </div> 
                         <div class="col-md-13 text-lg-right">
                             <button class="btn btn-success" type="submit">Submit</button>
                         </div>
@@ -116,7 +122,6 @@
 	<!-- Page section end -->
 @include('frontend/layouts/latest')
 @include('frontend/layouts/footer')
-@push('js')
     <!-- Bootstrap 4 -->
     <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- bs-custom-file-input -->
@@ -126,7 +131,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('backend/dist/js/demo.js')}}"></script>
     <!-- Page specific script -->
-    <script>
+<script>
     $(function () {
       bsCustomFileInput.init();
     });
@@ -143,4 +148,3 @@
       }
   } 
 </script>
-@endpush

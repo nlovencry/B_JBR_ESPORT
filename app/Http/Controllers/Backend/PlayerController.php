@@ -29,7 +29,7 @@ class PlayerController extends Controller
                     ->where('player.id',$id)->update([
             'is_active' => 2,
         ]);
-        return redirect()->route('player.index');
+        return redirect()->route('player.index')->with('success','Data Player Berhasil Nonaktifkan');
     }
 
     public function active($id){
@@ -39,6 +39,6 @@ class PlayerController extends Controller
                     ->where('player.id',$id)->update([
             'is_active' => 1,
         ]);
-        return redirect()->route('player.index');
+        return redirect()->route('player.index')->with('success','Data Player Berhasil Aktifkan');
     }
 }

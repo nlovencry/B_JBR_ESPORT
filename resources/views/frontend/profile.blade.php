@@ -9,14 +9,22 @@
 						<h3 class="community-top-title">Profile</h3>
 					</div>
                     <div class="col-md-6 text-lg-right">
+<<<<<<< Updated upstream
 						<a href="{{route('profil.edit',Auth::user()->id)}}" class="btn btn-warning">Edit Profile</a>
+=======
+						<a href="" class="btn btn-warning"><i class="fas fa-edit">Edit Profile</i></a>
+>>>>>>> Stashed changes
 					</div>
 				</div>
 				<div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="review-item">
                             <div class="ti-content">
+<<<<<<< Updated upstream
                                 <img src="{{asset('images/'.$player->foto)}}" alt="" style="max-width: 270px; max-height: 600px"><div class="review-cover set-bg" data-setbg=""></div>
+=======
+                                <div class="review-cover set-bg" data-setbg="{{asset('images/'.$player->foto)}}"></div>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>

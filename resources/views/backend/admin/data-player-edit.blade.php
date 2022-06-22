@@ -94,7 +94,7 @@
                     <div class="input-group">
                       <input type="hidden" id="foto" name="foto" value="{{ isset($dataplayer) ? $dataplayer->foto : ''}}">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+                        <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
                         <label class="custom-file-label" for="exampleInputFile">{{ isset($dataplayer) ? $dataplayer->foto : ''}}</label>
                       </div>
                     </div>
@@ -105,7 +105,7 @@
                     <div class="input-group">
                       <input type="hidden" id="foto" name="winrate" value="{{ isset($dataplayer) ? $dataplayer->winrate : ''}}">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile(this)">
+                        <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile(this)">
                         <label class="custom-file-label" for="exampleInputFile">{{ isset($dataplayer) ? $dataplayer->winrate : ''}}</label>
                       </div>
                     </div>
