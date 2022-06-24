@@ -5,6 +5,19 @@
             <h2>Recent Team</h2>
         </div>
         <div class="row">
+<<<<<<< Updated upstream
+            @foreach ($team as $item)
+            <div class="col-lg-4 col-md-6" style="margin-bottom: 25px">
+                <div class="recent-game-item">
+                    <div class="rgi-thumb set-bg" data-setbg="{{asset('frontend/img/team4.jpg')}}">
+                        <div class="cata racing">{{$item->nama_game}}</div>
+                    </div>
+                    <div class="rgi-content">
+                        <h5>{{$item->nama_team}}</h5>
+                        <ul>
+                            <p>Jumlah Anggota : {{$item->total_player}}</p>
+                        </ul>
+=======
             @foreach ($games as $item)
             <div class="col-lg-4 col-md-6" style="margin-bottom: 25px">
                 <div class="recent-game-item">
@@ -19,10 +32,13 @@
                             <div class="rgi-star"><img src="{{asset('frontend/img/icons/star.png')}}" alt=""></div>
                             <div class="rgi-heart"><img src="{{asset('frontend/img/icons/heart.png')}}" alt=""></div>
                         </div>
+>>>>>>> Stashed changes
                     </div>
                 </div>	
             </div>
             @endforeach
+<<<<<<< Updated upstream
+=======
             {{-- <div class="col-lg-4 col-md-6">
                 <div class="recent-game-item">
                     <div class="rgi-thumb set-bg" data-setbg="{{asset('frontend/img/recent-game/2.jpg')}}">
@@ -55,6 +71,7 @@
                     </div>
                 </div>	
             </div> --}}
+>>>>>>> Stashed changes
         </div>
     </div>
 </section>

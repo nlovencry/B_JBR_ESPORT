@@ -36,7 +36,7 @@ class DataGameController extends Controller
                 'created_at' => $tanggal,
                 'updated_at' => $tanggal,
             ]);
-        return redirect()->route('datagame.index')->with('success','Data Player Berhasil Disimpan');
+        return redirect()->route('datagame.index')->with('success','Data Game Berhasil Disimpan');
     }
 
     public function edit($id_game){
@@ -50,7 +50,6 @@ class DataGameController extends Controller
         $data = [
             'nama_game' => $request->nama_game,
             'keterangan' => $request->keterangan,
-            'created_at' => $tanggal,
             'updated_at' => $tanggal,
         ];
         DB::table('game')->where('id_game',$request->id_game)->update($data);

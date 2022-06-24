@@ -17,16 +17,28 @@ class JadwalController extends Controller
                             ->leftjoin('users','users.id','=','player.id')
                             ->leftjoin('game','game.id_game','=','player.id_game')
                             ->leftjoin('team','team.id_team','=','player.id_team')
+<<<<<<< Updated upstream
+                            ->where('users.is_active','1')
+=======
+                            ->where('users.is_active',1)
+>>>>>>> Stashed changes
                             ->latest('player.created_at')
                             ->paginate(3);
         $player_id = DB::table('player')->where('id',Auth::user()->id)->first();
         $team_id = DB::table('team')->where('id_team',$player_id->id_team)->first()->id_team;
         $datajadwal = DB::table('jadwal')
                             ->select('jadwal.*','users.name','coach.foto')
+<<<<<<< Updated upstream
+                            ->leftjoin('coach','coach.id_coach','=','jadwal.id_coach')
+                            ->leftjoin('users','users.id','=','coach.id')
+                            ->leftjoin('team','team.id_team','=','jadwal.id_team')
+                            ->leftjoin('game','game.id_game','=','jadwal.id_game')
+=======
                             ->join('coach','coach.id_coach','=','jadwal.id_coach')
                             ->join('users','users.id','=','coach.id')
                             ->join('team','team.id_team','=','jadwal.id_team')
                             ->join('game','game.id_game','=','jadwal.id_game')
+>>>>>>> Stashed changes
                             ->where('team.id_team',$team_id)
                             ->orderby('jadwal.created_at','DESC')
                             ->get();

@@ -16,14 +16,19 @@ class AkunSeeder extends Seeder
     {
         $user = [
             [
-                'name' => 'bunga',
-                'email' => 'bunga@gmail.com',
+<<<<<<< Updated upstream
+                'name' => 'haya',
+                'email' => 'haya@gmail.com',
+=======
+                'name' => 'hayung',
+                'email' => 'hayung@gmail.com',
+>>>>>>> Stashed changes
                 'jenis_kelamin' => '2',
                 'usia' => '20',
                 'nohp' => '0888888888',
                 'alamat' => 'BWI',
                 'password' => bcrypt('12345678'),
-                'role' => 1,
+                'role' => 3,
                 'is_active' => 1
             ],               
         ];

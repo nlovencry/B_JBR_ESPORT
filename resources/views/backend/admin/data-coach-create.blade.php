@@ -28,7 +28,7 @@
             <div class="row">
               <div class="col-12">
                 <label for="exampleInputGame1">Pilih Game</label>
-                <select name="id_game" class="form-control" required>
+                <select name="id_game" class="form-control">
                   @foreach ($datagame as $game)
                     <option value="{{$game->id_game}}">{{$game->nama_game}}</option>
                   @endforeach 
@@ -38,49 +38,48 @@
             <div class="row">
               <div class="col-5">
                 <label for="exampleInputEmail">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                <input type="email" name="email" class="form-control" value="{{old('email')}}" placeholder="Email">
               </div>
               <div class="col-7">
                 <label for="exampleInputNama">Nama Lengkap</label>
-                <input type="text" name="name" class="form-control" placeholder="Nama Lengkap" required>
+                <input type="text" name="name" class="form-control" value="{{old('name')}}" placeholder="Nama Lengkap">
               </div>
             </div>
             <div class="row">
               <div class="col-5">
                 <label for="exampleInputJk">Jenis Kelamin</label>
-                <select name="jenis_kelamin" class="form-control" required>
+                <select name="jenis_kelamin" class="form-control">
                     <option value="1">Laki-laki</option>
                     <option value="2">Perempuan</option>
                 </select>
               </div>
               <div class="col-3">
                 <label for="exampleInputUsia">Usia</label>
-                <input type="number" name="usia" class="form-control" placeholder="Usia" required>
+                <input type="number" name="usia" class="form-control" value="{{old('usia')}}" placeholder="Usia">
               </div>
               <div class="col-4">
                 <label for="exampleInputNoHP">No HP</label>
-                <input type="number" name="nohp" class="form-control" placeholder="No HP" required>
+                <input type="number" name="nohp" class="form-control" value="{{old('nohp')}}" placeholder="No HP">
               </div>
             </div>
             <div class="form-group">
               <label for="exampleInputAlamat">Alamat</label>
-              <textarea name="alamat" id="alamat" rows="5" class="form-control" placeholder="Alamat Lengkap"></textarea>
+              <textarea name="alamat" id="alamat" rows="5" class="form-control" placeholder="Alamat Lengkap">{{old('alamat')}}</textarea>
             </div>
             <div class="form-group">
               <label for="exampleInputFile">Foto</label>
               <div class="input-group">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+                  <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
                   <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                 </div>
               </div>
-              {{-- <img src="{{ asset('images')}}/default.png" id="previewImg" alt="foto" style="max-width: 200px; margin-top: 20px; max-height:200px"> --}}
             </div>
             <div class="form-group">
               <label for="exampleInputFile">Winrate</label>
               <div class="input-group">
                 <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="foto" name="winrate" onchange="previewFile(this)">
+                  <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="winrate" onchange="previewFile(this)">
                   <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                 </div>
               </div>
@@ -89,7 +88,7 @@
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{{ url('dataevent')}}" class="btn btn-secondary">Cancel</a>
+            <a href="{{ url('datacoach')}}" class="btn btn-secondary">Cancel</a>
           </div>
         </form>
       </div>

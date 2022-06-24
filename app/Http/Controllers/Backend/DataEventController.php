@@ -46,7 +46,7 @@ class DataEventController extends Controller
             ]);
         }
         // dd($request);
-        return redirect()->route('dataevent.index')->with('success','Data Player Berhasil Disimpan');
+        return redirect()->route('dataevent.index')->with('success','Data Tournament Berhasil Disimpan');
     }
 
     public function edit($id_event){
@@ -78,10 +78,14 @@ class DataEventController extends Controller
                 'price' => $request->price,
                 'keterangan' => $request->keterangan,
                 'gambar' => $namafoto,
-                'created_at' => $tanggal,
                 'updated_at' => $tanggal,
         ];
         DB::table('event')->where('id_event',$request->id_event)->update($data);
-        return redirect()->route('dataevent.index')->with('success','Data Event Berhasil Diperbarui');
+        return redirect()->route('dataevent.index')->with('success','Data Tournament Berhasil Diperbarui');
+    }
+
+    public function destroy($id_event){
+        DB::table('event')->where('id_event',$id_event)->delete();
+        return redirect()->route('dataevent.index')->with('success','Data Tournament Berhasil Dihapus');
     }
 }

@@ -11,7 +11,7 @@
 			<a class="site-logo" href="index.php">
 				<img src="{{asset('frontend/img/logo.png')}}" alt="">
 			</a>
-			<div class="user-panel">
+			{{-- <div class="user-panel">
 				@if (Auth::user())
 				<a href="{{ route('logout') }}"
 				onclick="event.preventDefault();
@@ -24,7 +24,7 @@
                 @else
 				<a href="{{ route('login')}}">Login / Register</a>
 				@endif
-			</div>
+			</div> --}}
 			<!-- responsive -->
 			<div class="nav-switch">
 				<i class="fa fa-bars"></i>
@@ -35,10 +35,10 @@
 				<ul>
 					<li><a href="{{url('/')}}">Home</a></li>
 					<li><a href="{{url('allteam')}}">Team</a></li>
-					<li><a href="#">Tournament</a></li>
+					<li><a href="{{url('tournament')}}">Tournament</a></li>
 					@if (Auth::user())
-					<li><a href="{{url('jadwal')}}">Jadwal</a></li>
 					@if(Auth::user()->role == 3)
+					<li><a href="{{url('jadwal')}}">Jadwal</a></li>
 					<li><a href="{{url('profil')}}">{{ Auth::user()->name }}</a></li>
 					@elseif(Auth::user()->role == 2)
 					<li><a href="{{url('profile')}}">{{ Auth::user()->name }}</a></li>

@@ -32,8 +32,8 @@
                     <label for="exampleInputGame1">Pilih Game</label>
                     <select name="id_game" class="form-control" required>
                       @foreach ($datagame as $game)
-                        <option value="{{ isset($dataplayer) ? $dataplayer->id_game : ''}}">{{$game->nama_game}}</option>
-                      @endforeach
+                      <option {{  $dataplayer->id_game == $game->id_game ? "selected" : ''}} value="{{ $game->id_game }}">{{$game->nama_game}}</option>
+                    @endforeach
                     </select>
                     <input type="hidden" name="id_team" value="{{$dataplayer->id_team}}">
                     <input type="hidden" name="id" value="{{$dataplayer->id}}">
@@ -94,7 +94,7 @@
                     <div class="input-group">
                       <input type="hidden" id="foto" name="foto" value="{{ isset($dataplayer) ? $dataplayer->foto : ''}}">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
+                        <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="foto" onchange="previewFile(this)">
                         <label class="custom-file-label" for="exampleInputFile">{{ isset($dataplayer) ? $dataplayer->foto : ''}}</label>
                       </div>
                     </div>
@@ -105,7 +105,7 @@
                     <div class="input-group">
                       <input type="hidden" id="foto" name="winrate" value="{{ isset($dataplayer) ? $dataplayer->winrate : ''}}">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile(this)">
+                        <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="winrate" name="winrate" onchange="previewFile(this)">
                         <label class="custom-file-label" for="exampleInputFile">{{ isset($dataplayer) ? $dataplayer->winrate : ''}}</label>
                       </div>
                     </div>

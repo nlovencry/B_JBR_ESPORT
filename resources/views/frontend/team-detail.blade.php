@@ -6,9 +6,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
+<<<<<<< Updated upstream
+                        @foreach ($dataplayer as $p)
+                        @endforeach
+						<h3 class="community-top-title">Members ({{$p->total_player}})</h3>
+=======
                         @foreach ($dataplayer as $player)
                         @endforeach
 						<h3 class="community-top-title">Members ({{$player->total_player}})</h3>
+>>>>>>> Stashed changes
 					</div>
 				</div>
 				<ul class="community-post-list">
@@ -31,8 +37,13 @@
 						</div>
 					</li>
                     @endforeach
+<<<<<<< Updated upstream
+                    @if ($p->total_player != 0)
+                    @foreach ($player as $member)
+=======
                     @if ($player->total_player != 0)
                     @foreach ($dataplayer as $member)
+>>>>>>> Stashed changes
                         <li>
                             <div class="community-post">
                                 <div class="author-avator set-bg" data-setbg="{{asset('images/'.$member->foto)}}"></div>

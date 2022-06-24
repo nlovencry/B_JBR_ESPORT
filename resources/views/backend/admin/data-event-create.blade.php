@@ -63,7 +63,7 @@
                   <div class="row">
                     <div class="col-12">
                       <label for="exampleInputPrice">Slot/Participant</label>
-                      <input type="number" name="slot" class="form-control" placeholder="Total Hadiah" required>
+                      <input type="number" name="slot" class="form-control" placeholder="Slot" required>
                     </div>
                   </div>
                   <div class="row">
@@ -82,7 +82,7 @@
                     <label for="exampleInputFile">Poster</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="gambar" onchange="previewFile(this)">
+                        <input type="file" accept=".jpg,.jpeg,.png,.JPG,.JPEG,.PNG" class="custom-file-input" id="foto" name="gambar" onchange="previewFile(this)">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>

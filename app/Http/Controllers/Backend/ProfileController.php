@@ -34,8 +34,12 @@ class ProfileController extends Controller
                             ->groupBy('coach.id_coach')
                             ->where('coach.id',Auth::user()->id)
                             ->first();
+<<<<<<< Updated upstream
+        return view('backend.coach.profile-edit', compact('users'));
+=======
         $datagame = DB::table('game')->get();
         return view('backend.coach.profile-edit', compact('users','datagame'));
+>>>>>>> Stashed changes
     }
 
     public function update(Request $request){
@@ -61,7 +65,10 @@ class ProfileController extends Controller
             'nohp' => $request->nohp,
             'alamat' => $request->alamat,
             'role' => 2,
+<<<<<<< Updated upstream
+=======
             'created_at' => $tanggal,
+>>>>>>> Stashed changes
             'updated_at' => $tanggal,
         ];
         $data = [
@@ -69,13 +76,20 @@ class ProfileController extends Controller
             'id_game' => $request->id_game,
             'foto' => $namafoto,
             'winrate' => $namawin,
+<<<<<<< Updated upstream
+=======
             'created_at' => $tanggal,
+>>>>>>> Stashed changes
             'updated_at' => $tanggal,
         ];
         DB::table('coach')->where('id_coach',$request->id_coach)->update($data);
         DB::table('users')->where('id',$request->id)->update($user);
         // dd($request);
+<<<<<<< Updated upstream
+        return redirect()->route('profile.index')->with('success','Profile Berhasil Diperbarui');
+=======
         return redirect()->route('profile.index')->with('success','Data Coach Berhasil Diperbarui');
+>>>>>>> Stashed changes
     }
 
     public function show($id){
